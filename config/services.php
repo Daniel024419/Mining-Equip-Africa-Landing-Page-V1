@@ -34,5 +34,21 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    'mnotify' => [
+        'api_key' => env('MNOTIFY_API_KEY'),
+        'sender_id' => env('MNOTIFY_SENDER_ID'),
+    ],
+
+    'hubtel' => [
+        'client_id' => env('HUBTEL_CLIENT_ID'),
+        'client_secret' => env('HUBTEL_CLIENT_SECRET'),
+        'sender_id' => env('HUBTEL_CLIENT_SENDER_ID'),
+    ],
+    
+     'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT_URI'),
+    ],
 
 ];
