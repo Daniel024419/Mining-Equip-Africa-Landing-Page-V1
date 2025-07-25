@@ -4,12 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\Dashboard\Home\DashboardHomeController;
 use App\Http\Controllers\Frontend\Home\FrontendHomeController;
 use App\Http\Controllers\Dashboard\Posts\DashboardPostsController;
 use App\Http\Controllers\Dashboard\Quotes\DashboardQuotesController;
 use App\Http\Controllers\Dashboard\Projects\DashboardProjectsController;
 use App\Http\Controllers\Dashboard\Services\DashboardServicesController;
 
+//home
 Route::prefix('/')
     ->name('frontend.')
     ->group(function () {
@@ -20,9 +22,14 @@ Route::prefix('/')
                 Route::get('/about', 'about')->name('about');
                 Route::get('/contacts', 'contacts')->name('contacts');
                 Route::get('/services', 'services')->name('services');
-                Route::get('/projects', 'contacts')->name('contacts');
+                Route::get('/projects', 'projects')->name('projects');
                 Route::get('/quotes', 'quotes')->name('quotes');
-                Route::get('/features', 'features')->name('feature');
+                Route::get('/blog', 'blog')->name('blog');
+                Route::get('/team', 'teams')->name('teams');
+                Route::get('/testimonial', 'testimonial')->name('testimonial');
+                Route::get('/features', 'features')->name('features');
+                Route::get('/gallery', 'gallery')->name('gallery');
+                Route::get('/equipments/{type}', 'equipments')->name('equipments');
             });
     });
 
@@ -65,10 +72,10 @@ Route::prefix('/admin')
             });
 
         //admin
-        Route::controller(DashboardPostsController::class)
-            ->name('home.')
+        Route::controller(DashboardHomeController::class)
+            ->name('admin.')
             ->group(function () {
-                Route::get('/index', 'index')->name('index');
+                Route::get('/', 'index')->name('index');
                 Route::get('/profile', 'profile')->name('profile');
             });
 
@@ -77,7 +84,6 @@ Route::prefix('/admin')
             ->name('projects.')
             ->group(function () {
                 Route::get('home/', 'home')->name('home');
-                Route::get('/profile', 'profile')->name('about');
             });
 
         //quotes

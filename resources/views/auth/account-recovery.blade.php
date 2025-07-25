@@ -100,7 +100,7 @@
                             messageBox.textContent = data.message || "Password reset successful.";
                             messageBox.style.color = "green";
                             setTimeout(() => {
-                                window.location.href = "{{ route('dashboard.posts.index') }}";
+                                window.location.href = "{{ route('dashboard.admin.index') }}";
                             }, 2000);
                         } else {
                             messageBox.textContent = data.message || "Failed to reset password.";

@@ -44,7 +44,7 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="services.html">All Services</a>
-                        <a class="dropdown-item" href="add-service.html">Add Service</a>
+                        <a class="dropdown-item" href="add-{{ route('frontend.home.services') }}">Add Service</a>
                     </div>
                 </li>
 
@@ -56,7 +56,7 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="projects.html">All Projects</a>
-                        <a class="dropdown-item" href="add-project.html">Add Project</a>
+                        <a class="dropdown-item" href="add-{{ route('frontend.home.projects') }}">Add Project</a>
                     </div>
                 </li>
 

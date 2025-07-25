@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     @include('dashboard.partials.head') 
-    <title>Mining Equip Africa | Home | Index</title>
+    <title>Mining Equip Africa | Posts | Index</title>
 </head>
 
 <body>
@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1><i class="fas fa-cog"></i> Dashboard</h1>
+                    <h1><i class="fas fa-cog"></i> Posts</h1>
                 </div>
             </div>
         </div>
@@ -26,16 +26,10 @@
                 <div class="col-md-3">
                     <a href="#" class="btn btn-block btn-primary" data-toggle="modal"
                         data-target="#addPostModal">
-                        <i class="fas fa-plus"></i> Adicionar Post
+                        <i class="fas fa-plus"></i> Add Post / Article
                     </a>
                 </div>
 
-                <div class="col-md-3">
-                    <a href="#" class="btn btn-block btn-warning" data-toggle="modal"
-                        data-target="#addUserModal">
-                        <i class="fas fa-plus"></i> Adicionar Usuário
-                    </a>
-                </div>
             </div>
         </div>
     </section>

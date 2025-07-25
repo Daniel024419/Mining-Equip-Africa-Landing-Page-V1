@@ -40,7 +40,7 @@ class AuthController extends Controller
             $column = filter_var($credentials['identifier'], FILTER_VALIDATE_EMAIL) ? 'email' : 'phone';
             if (Auth::guard('web')->attempt([$column => $credentials['identifier'], 'password' => $credentials['password']], $remember)) {
                 $request->session()->regenerate();
-                return redirect()->route('dashboard.posts.index');
+                return redirect()->route('dashboard.admin.index');
             }
         } catch (\Exception $e) {
             logger()->error($e);
