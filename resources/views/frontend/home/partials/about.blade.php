@@ -24,7 +24,7 @@
                     <p class="text-uppercase text-warning fs-5 mb-0 fw-bold">AFRICA'S MINING EQUIPMENT SPECIALISTS</p>
                     <h2 class="display-4 text-capitalize mb-3" style="color: #FFD700;">Powering Africa's Mining Industry</h2>
                     <p class="mb-4 fs-5">
-                        Since 2017, Mining Equip Africa has delivered reliable equipment solutions and drilling services to mining operations across the continent. We combine industry expertise with cutting-edge technology to maximize your productivity.
+                        Mining Equip Africa LTD is a market-focused mining services company providing comprehensive equipment solutions for both underground and surface operations. Established in 2017, we meet the growing demand for heavy-duty equipment in Africa's capital-intensive mining sector.
                     </p>
 
                     <!-- Key Services -->
@@ -36,45 +36,63 @@
                             <div class="col-lg-8">
                                 <div class="d-flex mb-4 align-items-center">
                                     <div class="text-warning me-3">
-                                        <i class="fas fa-hard-hat fa-3x"></i>
+                                        <i class="fas fa-tags fa-3x"></i>
                                     </div>
                                     <div>
-                                        <h4 class="text-warning mb-1">Full-Service Solutions</h4>
-                                        <p class="mb-0">Equipment sales, leasing, and refurbishment</p>
+                                        <h4 class="text-warning mb-1">Equipment Sales & Leasing</h4>
+                                        <p class="mb-0">New and refurbished mining machinery with flexible purchase/lease options</p>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">
                                     <div class="text-warning me-3">
-                                        <i class="fas fa-tools fa-3x"></i>
+                                        <i class="fas fa-shopping-cart fa-3x"></i>
                                     </div>
                                     <div>
-                                        <h4 class="text-warning mb-1">Certified Technicians</h4>
-                                        <p class="mb-0">Factory-trained equipment maintenance teams</p>
+                                        <h4 class="text-warning mb-1">Equipment Purchasing</h4>
+                                        <p class="mb-0">We buy used mining equipment in any condition across Africa</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Key Features Grid -->
-                    <div class="row gy-3 gx-4 pb-4">
-                        <div class="col-lg-6">
-                            <p class="text-white"><i class="fas fa-check-circle text-warning me-2"></i> <strong>RC & Diamond Drilling</strong></p>
-                            <p class="text-white"><i class="fas fa-check-circle text-warning me-2"></i> <strong>24/7 Technical Support</strong></p>
-                        </div>
-                        <div class="col-lg-6">
-                            <p class="text-white"><i class="fas fa-check-circle text-warning me-2"></i> <strong>Operator Training Programs</strong></p>
-                            <p class="text-white"><i class="fas fa-check-circle text-warning me-2"></i> <strong>Africa-Wide Logistics</strong></p>
+                    <!-- Company Details -->
+                    <div class="mb-4">
+                        <h4 class="text-warning mb-3">Our Mission</h4>
+                        <p class="text-light">
+                            To establish first-class integrated mining services across Africa, delivering exceptional value through efficient equipment solutions and maintaining the highest industry standards.
+                        </p>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="d-flex mb-3">
+                                    <i class="fas fa-phone-alt text-warning me-3 mt-1"></i>
+                                    <div>
+                                        <h5 class="text-warning mb-1">Contact</h5>
+                                        <p class="text-light mb-0">+233 24 442 8332</p>
+                                        <p class="text-light mb-0">Office: 031 229 1486</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex mb-3">
+                                    <i class="fas fa-map-marker-alt text-warning me-3 mt-1"></i>
+                                    <div>
+                                        <h5 class="text-warning mb-1">Location</h5>
+                                        <p class="text-light mb-0">P.O. Box TD 483, Takoradi, Ghana</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- CTA Buttons -->
                     <div class="d-flex flex-wrap gap-3">
                         <a href="#" class="btn btn-warning py-3 px-4 fw-bold text-dark">
-                            <i class="fas fa-hard-hat me-2"></i> View Equipment
+                            <i class="fas fa-truck me-2"></i> View Inventory
                         </a>
                         <a href="#" class="btn btn-outline-warning py-3 px-4 fw-bold">
-                            <i class="fas fa-phone-alt me-2"></i> Contact Experts
+                            <i class="fas fa-file-alt me-2"></i> Company Profile
                         </a>
                     </div>
                 </div>

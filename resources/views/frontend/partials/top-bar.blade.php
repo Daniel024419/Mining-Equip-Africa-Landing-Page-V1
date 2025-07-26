@@ -8,7 +8,7 @@
                         <i class="fas fa-map-marker-alt text-warning me-2"></i>P.O. Box TD 483, Takoradi, Ghana
                     </a>
                     <a href="tel:+233244428332" class="text-light me-4 hover-gold">
-                        <i class="fas fa-phone-alt text-warning me-2"></i>+233 24 442 8332
+                        <i class="fas fa-phone-alt text-warning me-2"></i>+233 24 442 8332 /
                         +233 55 324 7728
                     </a>
                     <a href="mailto:info@miningequipafrica.com" class="text-light hover-gold">

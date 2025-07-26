@@ -7,7 +7,7 @@
                     <h4 class="text-white mb-4" style="color: #FFD700 !important;">Stay Updated</h4>
                     <p class="mb-4 text-light">Subscribe for the latest updates on mining equipment, industry trends, and exclusive offers.</p>
                     <div class="position-relative">
-                        <input class="form-control bg-dark border-0 w-100 py-3 ps-4 text-white" type="email" placeholder="Your Email">
+                        <input class="form-control bg-dark border-1 w-100 py-3 ps-4 text-white" type="email" placeholder="Your Email">
                         <button class="btn btn-warning position-absolute top-0 end-0 mt-1 me-1 py-2 px-3" type="button">
                             <i class="fas fa-paper-plane"></i>
                         </button>
@@ -57,12 +57,13 @@
                         <li class="mb-3"><i class="fas fa-phone me-3 text-warning"></i> +233 24 442 8332</li>
                         <li class="mb-3"><i class="fas fa-phone me-3 text-warning"></i> +233 20 067 2219</li>
                         <li class="mb-3"><i class="fas fa-phone me-3 text-warning"></i> +233 55 324 7728</li>
+                        <li class="mb-3"><i class="fas fa-phone me-3 text-warning"></i> OFFICE 0312291486</li>
                     </ul>
                     <div class="social-icons mt-4">
-                        <a href="#" class="btn btn-dark btn-square rounded-circle me-2"><i class="fab fa-facebook-f text-warning"></i></a>
-                        <a href="#" class="btn btn-dark btn-square rounded-circle me-2"><i class="fab fa-linkedin-in text-warning"></i></a>
-                        <a href="#" class="btn btn-dark btn-square rounded-circle me-2"><i class="fab fa-instagram text-warning"></i></a>
-                        <a href="#" class="btn btn-dark btn-square rounded-circle"><i class="fab fa-youtube text-warning"></i></a>
+                        <a href="#" class="btn btn-dark btn-square rounded-circle me-2 btn-outline-warning"><i class="fab fa-facebook-f text-warning"></i></a>
+                        <a href="#" class="btn btn-dark btn-square rounded-circle me-2 btn-outline-warning"><i class="fab fa-linkedin-in text-warning"></i></a>
+                        <a href="#" class="btn btn-dark btn-square rounded-circle me-2 btn-outline-warning"><i class="fab fa-instagram text-warning"></i></a>
+                        <a href="#" class="btn btn-dark btn-square rounded-circle me-2 btn-outline-warning"><i class="fab fa-youtube text-warning"></i></a>
                     </div>
                 </div>
             </div>

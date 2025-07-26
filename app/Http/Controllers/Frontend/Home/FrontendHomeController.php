@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Frontend\Home;
 
-use App\Http\Controllers\Controller;
+use App\Models\Service;
+use App\Models\Equipment;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class FrontendHomeController extends Controller
 {
@@ -45,9 +47,20 @@ class FrontendHomeController extends Controller
      */
     public function services()
     {
-        return view('frontend.home.services');
+        $services = Service::latest()->paginate(6);
+        return view('frontend.home.services', compact('services'));
     }
-
+    
+    /**
+     * showService
+     *
+     * @param  mixed $service
+     * @return void
+     */
+    public function showService(Service $service)
+    {
+        return view('services.show', compact('service'));
+    }
 
     /**
      * projects
@@ -84,7 +97,7 @@ class FrontendHomeController extends Controller
      * testimonial
      *
      * @return void
-     */    
+     */
     /**
      * testimonial
      *
@@ -94,7 +107,7 @@ class FrontendHomeController extends Controller
     {
         return view('frontend.home.testimonial');
     }
-    
+
     /**
      * features
      *
@@ -104,7 +117,7 @@ class FrontendHomeController extends Controller
     {
         return view('frontend.home.features');
     }
-    
+
     /**
      * gallery
      *
@@ -112,9 +125,11 @@ class FrontendHomeController extends Controller
      */
     public function gallery()
     {
-        return view('frontend.home.gallery');
+        $equipment = Equipment::latest()->paginate(9);
+
+        return view('frontend.home.gallery', compact('equipment'));
     }
-    
+
     /**
      * equipment
      *
@@ -122,6 +137,19 @@ class FrontendHomeController extends Controller
      */
     public function equipments()
     {
-        return view('frontend.home.equipments');
+        $equipment = Equipment::latest()->paginate(9);
+
+        return view('frontend.home.equipments', compact('equipment'));
+    }
+
+    /**
+     * showEquiment
+     *
+     * @param  Equipment $equipment
+     * @return void
+     */
+    public function showEquiment(Equipment $equipment)
+    {
+        return view('equipment.show', compact('equipment'));
     }
 }

@@ -7,7 +7,6 @@
 </head>
 
 <body>
-
     <!-- Spinner Start -->
     @include('frontend.partials.spinner')
     <!-- Spinner End -->
@@ -15,7 +14,6 @@
     <!-- Topbar Start -->
     @include('frontend.partials.top-bar')
     <!-- Topbar End -->
-
 
     <!-- Navbar & Hero Start -->
     @include('frontend.partials.nav-bar')
@@ -28,10 +26,9 @@
     <!-- Header Start -->
     <div class="container-fluid bg-breadcrumb">
         <div class="container text-center py-5" style="max-width: 900px;">
-            <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Services</h4>
+            <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Our Services</h4>
             <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
                 <li class="breadcrumb-item"><a href="{{ route('frontend.home.index') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Pages</a></li>
                 <li class="breadcrumb-item active text-secondary">Services</li>
             </ol>
         </div>
@@ -42,156 +39,75 @@
     <div class="container-fluid service bg-light py-5">
         <div class="container py-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <p class="text-uppercase text-secondary fs-5 mb-0">Our Services</p>
-                <h2 class="display-4 text-capitalize mb-3">our service is creative, & decent</h2>
+                <p class="text-uppercase text-primary fs-5 mb-0">Mining Solutions</p>
+                <h2 class="display-4 text-capitalize mb-3">Specialized Mining Services</h2>
+                <p class="lead">Comprehensive solutions for Africa's mining industry</p>
             </div>
+
+            <!-- Service Filter -->
+            <div class="row mb-5 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="col-12 text-center">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-primary active" data-filter="all">All
+                            Services</button>
+                        <button type="button" class="btn btn-outline-primary" data-filter="equipment">Equipment
+                            Services</button>
+                        <button type="button" class="btn btn-outline-primary"
+                            data-filter="consulting">Consulting</button>
+                        <button type="button" class="btn btn-outline-primary" data-filter="support">Support</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Grid -->
+            <!-- Services Grid -->
             <div class="row g-4">
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('frontend/img/service-1.jpg')}}" class="img-fluid w-100" alt="Image">
-                        </div>
-                        <div class="service-content text-center p-4">
-                            <div class="bg-secondary btn-xl-square mx-auto" style="width: 120px; height: 120px;">
-                                <i class="fas fa-home text-primary fa-4x"></i>
+                @foreach ($services as $service)
+                    <div class="col-lg-4 col-md-6 mb-4 wow fadeInUp" data-wow-delay="{{ 0.2 + $loop->index * 0.1 }}s"
+                        data-category="{{ $service->category }}">
+                        <div
+                            class="service-card h-100 bg-white rounded-4 overflow-hidden shadow-sm transition-all hover-shadow-lg">
+                            <div class="service-img position-relative overflow-hidden">
+                                <img src="{{ asset('storage/' . $service->image) }}"
+                                    class="img-fluid w-100 transition-transform hover-scale" alt="{{ $service->title }}"
+                                    style="height: 220px; object-fit: cover;">
+                                <div
+                                    class="service-badge position-absolute top-3 end-3 bg-primary text-white px-3 py-1 rounded-pill small">
+                                    {{ ucfirst($service->category) }}
+                                </div>
+                                <div
+                                    class="service-overlay position-absolute w-100 h-100 top-0 start-0 bg-dark opacity-10">
+                                </div>
                             </div>
-                            <a href="#" class="d-block fs-4 my-4">General Construction</a>
-                            <p class="text-white mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Mollitia, minima!</p>
-                            <a class="btn btn-secondary py-2 px-4" href="#">Read More</a>
-                        </div>
-                        <div class="service-tytle">
-                            <div class="d-flex align-items-center ps-4 w-100">
-                                <h4>General Construction</h4>
-                            </div>
-                            <div class="btn-xl-square bg-secondary p-4" style="width: 80px; height: 80px;">
-                                <i class="fas fa-home text-primary fa-2x"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('frontend/img/service-2.jpg')}}" class="img-fluid w-100" alt="Image">
-                        </div>
-                        <div class="service-content text-center p-4">
-                            <div class="bg-secondary btn-xl-square mx-auto" style="width: 120px; height: 120px;">
-                                <i class="fas fa-users-cog text-primary fa-4x"></i>
-                            </div>
-                            <a href="#" class="d-block fs-4 my-4">Property Maintenance</a>
-                            <p class="text-white mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Mollitia, minima!</p>
-                            <a class="btn btn-secondary py-2 px-4" href="#">Read More</a>
-                        </div>
-                        <div class="service-tytle">
-                            <div class="d-flex align-items-center justify-content-start ps-4 w-100">
-                                <h4>Property Maintenance</h4>
-                            </div>
-                            <div class="btn-xl-square bg-secondary p-4" style="width: 80px; height: 80px;">
-                                <i class="fas fa-users-cog text-primary fa-2x"></i>
+                            <div class="service-content p-4 pb-5 position-relative">
+                                <div class="service-icon position-absolute top-0 start-50 translate-middle">
+                                    <div class="bg-primary btn-xl-square mx-auto d-flex align-items-center justify-content-center shadow-sm"
+                                        style="width: 70px; height: 70px; margin-top: -35px; border: 4px solid white;">
+                                        <i class="{{ $service->icon }} text-white fa-2x"></i>
+                                    </div>
+                                </div>
+                                <div class="pt-4 text-center">
+                                    <h4 class="mb-3 fw-bold">{{ $service->title }}</h4>
+                                    <p class="mb-4 text-muted">{{ Str::limit($service->description, 120) }}</p>
+                                    <a href="{{ route('frontend.home.showService', $service->id) }}"
+                                        class="btn btn-primary rounded-pill px-4 py-2 d-inline-flex align-items-center">
+                                        Learn More <i class="fas fa-arrow-right ms-2 small"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('frontend/img/service-3.jpg')}}" class="img-fluid w-100" alt="Image">
-                        </div>
-                        <div class="service-content text-center p-4">
-                            <div class="bg-secondary btn-xl-square mx-auto" style="width: 120px; height: 120px;">
-                                <i class="fas fa-hospital-user text-primary fa-4x"></i>
-                            </div>
-                            <a href="#" class="d-block fs-4 my-4">Project managment</a>
-                            <p class="text-white mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Mollitia, minima!</p>
-                            <a class="btn btn-secondary py-2 px-4" href="#">Read More</a>
-                        </div>
-                        <div class="service-tytle">
-                            <div class="d-flex align-items-center justify-content-start ps-4 w-100">
-                                <h4>Project managment</h4>
-                            </div>
-                            <div class="btn-xl-square bg-secondary p-4" style="width: 80px; height: 80px;">
-                                <i class="fas fa-hospital-user text-primary fa-2x"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('frontend/img/service-4.jpg')}}" class="img-fluid w-100" alt="Image">
-                        </div>
-                        <div class="service-content text-center p-4">
-                            <div class="bg-secondary btn-xl-square mx-auto" style="width: 100px; height: 100px;">
-                                <i class="fas fa-file-invoice-dollar text-primary fa-4x"></i>
-                            </div>
-                            <a href="#" class="d-block fs-4 my-4">Virtual Design & Build</a>
-                            <p class="text-white mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Mollitia, minima!</p>
-                            <a class="btn btn-secondary py-2 px-4" href="#">Read More</a>
-                        </div>
-                        <div class="service-tytle">
-                            <div class="d-flex align-items-center justify-content-start ps-4 w-100">
-                                <h4>Virtual Design & Build</h4>
-                            </div>
-                            <div class="btn-xl-square bg-secondary p-4" style="width: 80px; height: 80px;">
-                                <i class="fas fa-file-invoice-dollar text-primary fa-2x"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('frontend/img/service-5.jpg')}}" class="img-fluid w-100" alt="Image">
-                        </div>
-                        <div class="service-content text-center p-4">
-                            <div class="bg-secondary btn-xl-square mx-auto" style="width: 100px; height: 100px;">
-                                <i class="fas fa-cogs text-primary fa-4x"></i>
-                            </div>
-                            <a href="#" class="d-block fs-4 my-4">Preconstruction</a>
-                            <p class="text-white mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Mollitia, minima!</p>
-                            <a class="btn btn-secondary py-2 px-4" href="#">Read More</a>
-                        </div>
-                        <div class="service-tytle">
-                            <div class="d-flex align-items-center justify-content-start ps-4 w-100">
-                                <h4>Preconstruction</h4>
-                            </div>
-                            <div class="btn-xl-square bg-secondary p-4" style="width: 80px; height: 80px;">
-                                <i class="fas fa-cogs text-primary fa-2x"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('frontend/img/service-6.jpg')}}" class="img-fluid w-100" alt="Image">
-                        </div>
-                        <div class="service-content text-center p-4">
-                            <div class="bg-secondary btn-xl-square mx-auto" style="width: 100px; height: 100px;">
-                                <i class="fas fa-sitemap text-primary fa-4x"></i>
-                            </div>
-                            <a href="#" class="d-block fs-4 my-4">Design Build</a>
-                            <p class="text-white mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Mollitia, minima!</p>
-                            <a class="btn btn-secondary py-2 px-4" href="#">Read More</a>
-                        </div>
-                        <div class="service-tytle">
-                            <div class="d-flex align-items-center justify-content-start ps-4 w-100">
-                                <h4>Design Build</h4>
-                            </div>
-                            <div class="btn-xl-square bg-secondary p-4" style="width: 80px; height: 80px;">
-                                <i class="fas fa-sitemap text-primary fa-2x"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
-                    <a class="btn btn-secondary py-3 px-5 mt-4" href="#">More Services</a>
+                @endforeach
+            </div>
+
+            <!-- Pagination -->
+            <div class="row mt-5 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="col-12">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            {{ $services->links() }}
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -204,6 +120,25 @@
 
     <!-- JavaScript Libraries -->
     @include('frontend.partials.script')
+
+    <!-- Service Filter Script -->
+    <script>
+        $(document).ready(function() {
+            $('[data-filter]').click(function() {
+                const filter = $(this).data('filter');
+                $('[data-filter]').removeClass('active');
+                $(this).addClass('active');
+
+                if (filter === 'all') {
+                    $('[data-category]').fadeIn();
+                } else {
+                    $('[data-category]').each(function() {
+                        $(this).toggle($(this).data('category') === filter);
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

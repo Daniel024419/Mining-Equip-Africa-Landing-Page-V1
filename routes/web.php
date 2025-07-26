@@ -30,6 +30,8 @@ Route::prefix('/')
                 Route::get('/features', 'features')->name('features');
                 Route::get('/gallery', 'gallery')->name('gallery');
                 Route::get('/equipments/{type}', 'equipments')->name('equipments');
+                Route::get('/show/equipment/{equipment}','showEquiment')->name('showEquiment');
+                Route::get('/services/show/{service}','showService')->name('showService');
             });
     });
 

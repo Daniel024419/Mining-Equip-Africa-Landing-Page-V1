@@ -27,7 +27,7 @@
                         </div>
                         <h4 class="text-warning my-3">Drilling Projects</h4>
                         <div class="counter-counting">
-                            <span class="text-white fs-1 fw-bold" data-toggle="counter-up">156</span>
+                            <span class="text-white fs-1 fw-bold" data-toggle="counter-up">86</span>
                             <span class="h1 fw-bold text-warning">+</span>
                         </div>
                         <p class="text-light mt-2 mb-0">RC, Diamond & Blast</p>
@@ -61,7 +61,7 @@
                         </div>
                         <h4 class="text-warning my-3">Years Experience</h4>
                         <div class="counter-counting">
-                            <span class="text-white fs-1 fw-bold" data-toggle="counter-up">15</span>
+                            <span class="text-white fs-1 fw-bold" data-toggle="counter-up">8</span>
                             <span class="h1 fw-bold text-warning">+</span>
                         </div>
                         <p class="text-light mt-2 mb-0">African mining expertise</p>
