@@ -1,23 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    @include('dashboard.partials.head') 
-    <title>Mining Equip Africa | Equipment | Index</title>
+    @include('dashboard.partials.head')
+    <title>Mining Equip Africa | equipments | Equipments</title>
 </head>
 
 <body>
     @include('dashboard.partials.nav')
-    
-    <!-- HEADER -->
-    <header id="main-header" class="text-white bg-primary py-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h1><i class="fas fa-cog"></i> Equipment</h1>
-                </div>
-            </div>
-        </div>
-    </header>
+
 
     <!-- ACTIONS -->
     <section id="actions" class="bg-light mb-4 py-4">
@@ -25,104 +16,93 @@
             <div class="row">
                 <div class="col-md-3">
                     <a href="#" class="btn btn-block btn-primary" data-toggle="modal"
-                        data-target="#addPostModal">
-                        <i class="fas fa-plus"></i> Adicionar Post
+                        data-target="#addEquipmentModal">
+                        <i class="fas fa-plus"></i> Add Equipments
                     </a>
                 </div>
 
-                <div class="col-md-3">
-                    <a href="#" class="btn btn-block btn-success" data-toggle="modal"
-                        data-target="#addCategoryModal">
-                        <i class="fas fa-plus"></i> Adicionar Categoria
-                    </a>
-                </div>
-
-                <div class="col-md-3">
-                    <a href="#" class="btn btn-block btn-warning" data-toggle="modal"
-                        data-target="#addUserModal">
-                        <i class="fas fa-plus"></i> Adicionar Usuário
-                    </a>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- POSTS & INFOS -->
-    <main id="posts">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-9">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Últimos Posts</h4>
-                        </div>
-                        <table class="table table-striped">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Título</th>
-                                    <th>Categoria</th>
-                                    <th>Data</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                                
-                                <tr>
-                                    <td>7</td>
-                                    <td>Post Sete</td>
-                                    <td>Desenvolvimento Mobile</td>
-                                    <td>30 de maio de 2020</td>
-                                    <td>
-                                        <a href="details.html" class="btn btn-secondary">
-                                            <i class="fas fa-angle-double-right"></i> Mais Detalhes
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card text-center text-white bg-primary mb-3">
-                        <div class="card-body">
-                            <h3>Posts</h3>
-                            <h4 class="display-4">
-                                <i class="fas fa-pencil-alt"></i> 7
-                            </h4>
-                            <a href="posts.html" class="btn btn-sm btn-outline-light">Ver Todos</a>
-                        </div>
-                    </div>
-
-                    <div class="card text-center text-white bg-success mb-3">
-                        <div class="card-body">
-                            <h3>Categorias</h3>
-                            <h4 class="display-4">
-                                <i class="fas fa-folder"></i> 5
-                            </h4>
-                            <a href="categories.html" class="btn btn-sm btn-outline-light">Ver Todas</a>
-                        </div>
-                    </div>
-
-                    <div class="card text-center text-white bg-warning mb-3">
-                        <div class="card-body">
-                            <h3>Usuários</h3>
-                            <h4 class="display-4">
-                                <i class="fas fa-users"></i> 4
-                            </h4>
-                            <a href="users.html" class="btn btn-sm btn-outline-light">Ver Todos</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- equipments & Info -->
+    <div class="card">
+        <div class="card-header">
+            <h4>All Equipments</h4>
         </div>
-    </main>
+
+        <table class="table table-striped table-scroll">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Condition</th>
+                    <th>Year</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($equipments as $index => $equipment)
+                    <tr>
+                        <td>{{ $index + 1 }}</td>
+
+                        <td>
+                            @if ($equipment->image)
+                                <img src="{{ asset('storage/' . $equipment->image) }}" alt="{{ $equipment->name }}"
+                                    width="60" height="60" style="object-fit: cover;">
+                            @else
+                                <span class="text-muted">No Image</span>
+                            @endif
+                        </td>
+
+                        <td>{{ $equipment->name }}</td>
+                        <td>{{ $equipment->category ?? '—' }}</td>
+                        <td>{{ $equipment->condition ?? '—' }}</td>
+                        <td>{{ $equipment->year ?? '—' }}</td>
+                        <td>¢{{ number_format($equipment->price, 2) }}</td>
+
+                        <td>
+                            <a href="{{ route('dashboard.equipments.show', $equipment->id) }}" class="btn btn-sm btn-info">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="{{ route('dashboard.equipments.edit', $equipment->id) }}"
+                                class="btn btn-sm btn-warning">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <form action="{{ route('dashboard.equipments.destroy', $equipment->id) }}" method="POST"
+                                class="d-inline" onsubmit="return confirm('Do you want to delete this equipment?');">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="9" class="text-center">No equipments created yet.</td>
+                    </tr>
+                @endforelse
+            </tbody>
+
+        </table>
+    </div>
+
 
     <!-- FOOTER -->
     @include('dashboard.partials.footer')
 
+    <!-- MODALS -->
+
+    <!-- ADD equipment MODAL -->
+    @include('dashboard.equipments.add-equipment-modal')
+
     @include('dashboard.partials.script')
+
 </body>
 
 </html>

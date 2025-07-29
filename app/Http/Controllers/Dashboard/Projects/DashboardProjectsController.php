@@ -14,7 +14,7 @@ class DashboardProjectsController extends Controller
     public function index()
     {
         $projects = Project::latest()->paginate(10);
-        return view('projects.index', compact('projects'));
+        return view('dashboard.projects.index', compact('projects'));
     }
 
     /**
@@ -47,8 +47,7 @@ class DashboardProjectsController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'image' => 'storage/' . $path,
-            'badges' => $request->badges,
-            
+            'badges' => $request->badges ?? [],
         ]);
 
         return redirect()->route('projects.index')->with('success', 'Project created successfully.');

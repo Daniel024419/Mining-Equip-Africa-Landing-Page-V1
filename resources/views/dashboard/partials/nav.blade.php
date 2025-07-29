@@ -1,12 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+
+
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm sticky-top" style="background-color: #2e2e2e;">
     <div class="container">
 
-        <a class="navbar-brand d-flex align-items-center" href="{{ route('dashboard.posts.index') }}"
-            style="font-family: 'Poppins', sans-serif;">
+        <a class="navbar-brand d-flex align-items-center" href="{{ route('dashboard.posts.index') }}">
             <img src="{{ asset('logo.png') }}" alt="EquipMining Africa Logo" class="mr-2" style="height: 40px;">
-            <span class="font-weight-bold text-dark" style="font-size: 1.25rem; letter-spacing: 0.5px;">
-                <span style="color: #e6b800;">Africa</span>
-            </span>
+            <span class="font-weight-bold text-warning" style="font-size: 1.35rem;">Equip<span class="text-light">Mining</span> Africa</span>
         </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar"
@@ -15,76 +14,80 @@
         </button>
 
         <div class="collapse navbar-collapse" id="mainNavbar">
-            <!-- Left-side nav links -->
             <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link active text-dark" href="{{route('dashboard.posts.index')}}">
-                        <i class="fas fa-tachometer-alt mr-1 text-primary"></i> Dashboard
+                    <a class="nav-link text-light" href="{{ route('dashboard.posts.index') }}">
+                        <i class="fas fa-tachometer-alt text-warning mr-1"></i> Dashboard
                     </a>
                 </li>
 
-                <!-- Blog Posts -->
+                <!-- Posts -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-dark" href="#" id="postsDropdown" role="button"
-                        data-toggle="dropdown">
-                        <i class="fas fa-edit mr-1 text-primary"></i> Posts
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="postsDropdown" data-toggle="dropdown">
+                        <i class="fas fa-newspaper text-warning mr-1"></i> Posts
                     </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{{route('dashboard.posts.index')}}">All Posts</a>
-                        <a class="dropdown-item" href="#">Add New</a>
-                        <a class="dropdown-item" href="#">Categories</a>
+                    <div class="dropdown-menu bg-dark border-0">
+                        <a class="dropdown-item text-light" href="{{ route('dashboard.posts.index') }}">All Posts</a>
+                        <a class="dropdown-item text-light" href="#">Add New</a>
+                        <a class="dropdown-item text-light" href="#">Categories</a>
                     </div>
                 </li>
 
                 <!-- Services -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-dark" href="#" id="servicesDropdown" role="button"
-                        data-toggle="dropdown">
-                        <i class="fas fa-concierge-bell mr-1 text-primary"></i> Services
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="servicesDropdown" data-toggle="dropdown">
+                        <i class="fas fa-cogs text-warning mr-1"></i> Services
                     </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{{ route('dashboard.services.index') }}">All Services</a>
-                        <a class="dropdown-item" href="add-">Add Service</a>
+                    <div class="dropdown-menu bg-dark border-0">
+                        <a class="dropdown-item text-light" href="{{ route('dashboard.services.index') }}">All Services</a>
                     </div>
                 </li>
 
                 <!-- Projects -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-dark" href="#" id="projectsDropdown" role="button"
-                        data-toggle="dropdown">
-                        <i class="fas fa-project-diagram mr-1 text-primary"></i> Projects
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="projectsDropdown" data-toggle="dropdown">
+                        <i class="fas fa-project-diagram text-warning mr-1"></i> Projects
                     </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{{ route('dashboard.projects.home') }}">All Projects</a>
-                        <a class="dropdown-item" href="add-">Add Project</a>
+                    <div class="dropdown-menu bg-dark border-0">
+                        <a class="dropdown-item text-light" href="{{ route('dashboard.projects.index') }}">All Projects</a>
+                    </div>
+                </li>
+
+                <!-- Equipments -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="equipmentsDropdown" data-toggle="dropdown">
+                        <i class="fas fa-industry text-warning mr-1"></i> Equipments
+                    </a>
+                    <div class="dropdown-menu bg-dark border-0">
+                        <a class="dropdown-item text-light" href="{{ route('dashboard.equipments.index') }}">All Equipments</a>
                     </div>
                 </li>
 
                 <!-- Users -->
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{route('dashboard.users.index')}}">
-                        <i class="fas fa-users mr-1 text-primary"></i> Users
+                    <a class="nav-link text-light" href="{{ route('dashboard.users.index') }}">
+                        <i class="fas fa-users text-warning mr-1"></i> Users
                     </a>
                 </li>
             </ul>
 
-            <!-- Right-side user menu -->
             <ul class="navbar-nav ml-auto">
+                <!-- User dropdown -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-dark" href="#" id="userDropdown" role="button"
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="userDropdown" role="button"
                         data-toggle="dropdown">
-                        <i class="fas fa-user-circle mr-1 text-primary"></i> Gideon
+                        <i class="fas fa-user-circle text-warning mr-1"></i> {{ Auth::user()->name ?? 'User' }}
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#profileModal">
-                            <i class="fas fa-user me-1"></i> Profile
+                    <div class="dropdown-menu dropdown-menu-right bg-dark border-0">
+                        <a class="dropdown-item text-light" href="#" data-toggle="modal" data-target="#profileModal">
+                            <i class="fas fa-user mr-1"></i> Profile
                         </a>
-
-                        <a class="dropdown-item" href="{{ route('dashboard.admin.settings') }}">
+                        <a class="dropdown-item text-light" href="{{ route('dashboard.admin.settings') }}">
                             <i class="fas fa-cog mr-1"></i> Settings
                         </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger" href="#">
+                        <div class="dropdown-divider bg-secondary"></div>
+                        <a class="dropdown-item text-danger" href="#" data-toggle="modal" data-target="#logoutModal">
                             <i class="fas fa-sign-out-alt mr-1"></i> Logout
                         </a>
                     </div>
@@ -94,11 +97,4 @@
     </div>
 </nav>
 
-@if(session('success'))
-    <div class="alert alert-success mt-3">
-        {{ session('success') }}
-    </div>
-@endif
-
-
-
+@include('dashboard.partials.logout-modal')

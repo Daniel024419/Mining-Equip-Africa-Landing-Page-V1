@@ -71,7 +71,7 @@ Route::controller(ForgotPasswordController::class)
         Route::post('/api/verify-otp', 'verifyCode')->name('verifyCode');
     });
 
-Route::prefix('/login')
+Route::prefix('/dashboard')
     ->name('dashboard.')
     ->middleware([AuthMiddleware::class])
     ->group(function () {
@@ -79,6 +79,7 @@ Route::prefix('/login')
         //auth
         Route::controller(AuthController::class)
             ->name('auth.')
+            ->prefix('/login')
             ->withoutMiddleware([AuthMiddleware::class])
             ->group(function () {
                 Route::get('/', 'index')->name('index');
@@ -104,8 +105,14 @@ Route::prefix('/login')
         //projects
         Route::controller(DashboardProjectsController::class)
             ->name('projects.')
+            ->prefix('/projects')
             ->group(function () {
-                Route::get('home/', 'home')->name('home');
+                Route::get('/index', 'index')->name('index');
+                Route::post('/store', 'store')->name('store');
+                Route::put('/update/{post}', 'update')->name('update');
+                Route::get('/edit/{post}', 'edit')->name('edit');
+                Route::get('/show/{post}', 'show')->name('show');
+                Route::delete('/delete/{post}', 'destroy')->name('destroy');
             });
 
         //quotes
@@ -114,6 +121,7 @@ Route::prefix('/login')
             ->prefix('/quotes')
             ->group(function () {
                 Route::get('/index', 'index')->name('index');
+                Route::post('/store', 'store')->name('store');
             });
 
         //services
@@ -122,12 +130,23 @@ Route::prefix('/login')
             ->prefix('/services')
             ->group(function () {
                 Route::get('/index', 'index')->name('index');
+                Route::post('/store', 'store')->name('store');
+                Route::put('/update/{service}', 'update')->name('update');
+                Route::get('/edit/{service}', 'edit')->name('edit');
+                Route::get('/show/{service}', 'show')->name('show');
+                Route::delete('/delete/{service}', 'destroy')->name('destroy');
             });
         //services
         Route::controller(DashboardEquipmentsController::class)
             ->name('equipments.')
+            ->prefix('/equipments')
             ->group(function () {
                 Route::get('/index', 'index')->name('index');
+                Route::post('/store', 'store')->name('store');
+                Route::put('/update/{post}', 'update')->name('update');
+                Route::get('/edit/{post}', 'edit')->name('edit');
+                Route::get('/show/{post}', 'show')->name('show');
+                Route::delete('/delete/{post}', 'destroy')->name('destroy');
             });
         //posts
         Route::controller(DashboardPostsController::class)
@@ -135,6 +154,11 @@ Route::prefix('/login')
             ->prefix('/posts')
             ->group(function () {
                 Route::get('/index', 'index')->name('index');
+                Route::post('/store', 'store')->name('store');
+                Route::put('/update/{post}', 'update')->name('update');
+                Route::get('/edit/{post}', 'edit')->name('edit');
+                Route::get('/show/{post}', 'show')->name('show');
+                Route::delete('/delete/{post}', 'destroy')->name('destroy');
             });
 
         //inquiry
@@ -144,12 +168,17 @@ Route::prefix('/login')
             ->group(function () {
                 Route::get('/index', 'index')->name('index');
             });
-    
-         //inquiry
+
+        //inquiry
         Route::controller(UsersController::class)
             ->name('users.')
             ->prefix('/users')
             ->group(function () {
                 Route::get('/index', 'index')->name('index');
+                Route::post('/store', 'store')->name('store');
+                Route::put('/update/{user}', 'update')->name('update');
+                Route::get('/edit/{user}', 'edit')->name('edit');
+                Route::get('/show/{user}', 'show')->name('show');
+                Route::delete('/delete/{user}', 'destroy')->name('destroy');
             });
     });
