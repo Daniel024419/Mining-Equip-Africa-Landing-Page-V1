@@ -50,142 +50,56 @@
             </div>
 
             <div class="row g-4">
-                <!-- Drilling Equipment -->
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="equipment-item border border-warning rounded-4 overflow-hidden bg-dark h-100">
-                        <div class="equipment-img">
-                            <img src="{{ asset('frontend/img/drilling-rig.jpg') }}" class="img-fluid w-100"
-                                alt="RC Drilling Rig" style="height: 250px; object-fit: cover;">
-                            <div
-                                class="equipment-badge bg-warning text-dark px-3 py-1 position-absolute top-0 end-0 m-3 rounded-pill fw-bold">
-                                NEW
-                            </div>
-                        </div>
-                        <div class="equipment-content p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h3 class="text-warning mb-0">RC Drilling Rigs</h3>
-                                <div class="text-warning">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
+                @forelse ($equipments as $equipment)
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="{{ 0.2 + ($loop->index % 3) * 0.2 }}s">
+                        <div class="equipment-item border border-warning rounded-4 overflow-hidden bg-dark h-100">
+                            <div class="equipment-img position-relative">
+                                <img src="{{ $equipment->image_url }}" class="img-fluid w-100"
+                                    alt="{{ $equipment->name }}" style="height: 250px; object-fit: cover;">
+                                <div
+                                    class="equipment-badge bg-warning text-dark px-3 py-1 position-absolute top-0 end-0 m-3 rounded-pill fw-bold text-uppercase">
+                                    {{ strtoupper($equipment->condition) }}
                                 </div>
                             </div>
-                            <ul class="text-light mb-4">
-                                <li>Depth capacity: 150-300m</li>
-                                <li>Fuel-efficient diesel engines</li>
-                                <li>Laterite soil attachments</li>
-                                <li>24-month warranty</li>
-                            </ul>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn btn-outline-warning py-2 px-4">View Models</a>
-                                <span class="text-warning fw-bold">From GHS 120,000</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Excavators -->
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="equipment-item border border-warning rounded-4 overflow-hidden bg-dark h-100">
-                        <div class="equipment-img">
-                            <img src="{{ asset('frontend/img/excavator.jpg') }}" class="img-fluid w-100"
-                                alt="Mining Excavator" style="height: 250px; object-fit: cover;">
-                            <div
-                                class="equipment-badge bg-warning text-dark px-3 py-1 position-absolute top-0 end-0 m-3 rounded-pill fw-bold">
-                                USED
-                            </div>
-                        </div>
-                        <div class="equipment-content p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h3 class="text-warning mb-0">Hydraulic Excavators</h3>
-                                <div class="text-warning">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
+                            <div class="equipment-content p-4">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h3 class="text-warning mb-0">{{ Str::ucfirst($equipment->name ) }}</h3>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                                <ul class="text-light mb-4">
+                                    <li>Category: {{ $equipment->category }}</li>
+                                    <li>Year: {{ $equipment->year }}</li>
+                                    <li>{{ Str::limit($equipment->description, 60) }}</li>
+                                </ul>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="{{route('frontend.home.showEquiment',$equipment->id)}}" class="btn btn-outline-warning py-2 px-4">Details</a>
+                                    <span class="text-warning fw-bold">
+                                        {{ is_numeric($equipment->price) ? 'GHS ' . number_format($equipment->price, 2) : $equipment->price }}
+                                    </span>
                                 </div>
                             </div>
-                            <ul class="text-light mb-4">
-                                <li>20-50 ton capacity</li>
-                                <li>CAT & Komatsu models</li>
-                                <li>Fully refurbished</li>
-                                <li>6-month warranty</li>
-                            </ul>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn btn-outline-warning py-2 px-4">Inventory</a>
-                                <span class="text-warning fw-bold">From GHS 85,000</span>
-                            </div>
                         </div>
                     </div>
-                </div>
+                    
+                @empty
+                    <h2 class="text-white" >No {{ request('condition') }} equiment matching the condition is found</h2>
+                @endforelse 
 
-                <!-- Haul Trucks -->
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="equipment-item border border-warning rounded-4 overflow-hidden bg-dark h-100">
-                        <div class="equipment-img">
-                            <img src="{{ asset('frontend/img/haul-truck.jpg') }}" class="img-fluid w-100"
-                                alt="Mining Haul Truck" style="height: 250px; object-fit: cover;">
-                            <div
-                                class="equipment-badge bg-warning text-dark px-3 py-1 position-absolute top-0 end-0 m-3 rounded-pill fw-bold">
-                                LEASE
-                            </div>
-                        </div>
-                        <div class="equipment-content p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h3 class="text-warning mb-0">Articulated Haul Trucks</h3>
-                                <div class="text-warning">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                            <ul class="text-light mb-4">
-                                <li>30-40 ton payload</li>
-                                <li>All-terrain capability</li>
-                                <li>Low-hour units available</li>
-                                <li>Full maintenance packages</li>
-                            </ul>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn btn-outline-warning py-2 px-4">Lease Options</a>
-                                <span class="text-warning fw-bold">GHS 8,500/month</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Additional Equipment Rows -->
-                <!-- Row 2 -->
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="equipment-item border border-warning rounded-4 overflow-hidden bg-dark h-100">
-                        <!-- Diamond Core Drilling Equipment -->
-                    </div>
-                </div>
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="equipment-item border border-warning rounded-4 overflow-hidden bg-dark h-100">
-                        <!-- Loaders -->
-                    </div>
-                </div>
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="equipment-item border border-warning rounded-4 overflow-hidden bg-dark h-100">
-                        <!-- Blast Hole Drills -->
-                    </div>
-                </div>
-
-                <!-- CTA Button -->
-                <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
-                    <a class="btn btn-warning py-3 px-5 mt-4 fw-bold text-dark" href="#">
-                        <i class="fas fa-hard-hat me-2"></i> View Full Equipment Catalog
-                    </a>
+                <!-- Pagination -->
+                <div class="row mt-5 wow fadeInUp mt-3 justify-content-center" data-wow-delay="0.3s">
+                    {{ $equipments->links('pagination::bootstrap-4') }}
                 </div>
             </div>
         </div>
     </div>
     <!-- Equipment End -->
+
 
     <!-- Equipment Categories Start -->
     <div class="container-fluid bg-black py-5">

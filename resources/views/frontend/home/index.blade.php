@@ -51,7 +51,7 @@
     <!-- Projects End -->
 
     <!-- Team Start -->
-    @include('frontend.home.partials.team')
+    {{-- @include('frontend.home.partials.team') --}}
     <!-- Team End -->
 
     <!-- Blog Start -->

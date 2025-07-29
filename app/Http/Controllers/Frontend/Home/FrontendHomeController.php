@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Frontend\Home;
 
+use App\Models\Inquiry;
+use App\Models\Project;
 use App\Models\Service;
 use App\Models\Equipment;
 use Illuminate\Http\Request;
@@ -43,14 +45,22 @@ class FrontendHomeController extends Controller
     /**
      * services
      *
-     * @return void
+     * @param  string|null $category
+     * @return \Illuminate\View\View
      */
-    public function services()
+    public function services(?string $category = null)
     {
-        $services = Service::latest()->paginate(6);
+        $query = Service::latest();
+
+        if ($category) {
+            $query->where('category', $category);
+        }
+
+        $services = $query->paginate(6);
+
         return view('frontend.home.services', compact('services'));
     }
-    
+
     /**
      * showService
      *
@@ -59,7 +69,9 @@ class FrontendHomeController extends Controller
      */
     public function showService(Service $service)
     {
-        return view('services.show', compact('service'));
+        $relatedServices = [];
+
+        return view('frontend.home.services-show', compact('service', 'relatedServices'));
     }
 
     /**
@@ -69,7 +81,10 @@ class FrontendHomeController extends Controller
      */
     public function projects()
     {
-        return view('frontend.home.projects');
+        $projects = Project::latest()->paginate(10);
+        return view('frontend.home.projects', [
+            'projects' => $projects
+        ]);
     }
 
 
@@ -131,15 +146,23 @@ class FrontendHomeController extends Controller
     }
 
     /**
-     * equipment
+     * Display a list of equipment, optionally filtered by condition.
      *
-     * @return void
+     * @param string|null $condition
+     * @return \Illuminate\View\View
      */
-    public function equipments()
+    public function equipments(string | null $condition)
     {
-        $equipment = Equipment::latest()->paginate(9);
+        $query = Equipment::query()->latest();
 
-        return view('frontend.home.equipments', compact('equipment'));
+        // Apply condition filter only if it's provided and not 'all'
+        if ($condition && strtolower($condition) !== 'all') {
+            $query->where('condition', $condition);
+        }
+
+        $equipments = $query->paginate(10);
+
+        return view('frontend.home.equipments', compact('equipments'));
     }
 
     /**
@@ -150,6 +173,24 @@ class FrontendHomeController extends Controller
      */
     public function showEquiment(Equipment $equipment)
     {
-        return view('equipment.show', compact('equipment'));
+        return view('frontend.home.equipment-details', compact('equipment'));
+    }
+
+    /**
+     * Store a newly created inquiry in storage.
+     */
+    public function storeInquiries(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:20',
+            'service' => 'required|string',
+            'message' => 'required|string',
+        ]);
+
+        Inquiry::create($validated);
+
+        return redirect()->back()->with('success', 'Inquiry submitted successfully.');
     }
 }

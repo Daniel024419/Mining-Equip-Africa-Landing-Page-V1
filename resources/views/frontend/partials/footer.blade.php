@@ -12,10 +12,10 @@
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
-                    <div class="mt-4">
+                    {{-- <div class="mt-4">
                         <h5 class="text-warning mb-3">Trusted By</h5>
                         <img src="https://via.placeholder.com/120x40/000000/FFD700?text=Partners" alt="Partners" class="img-fluid me-2" style="max-height: 40px;">
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
@@ -38,11 +38,11 @@
                 <div class="footer-item">
                     <h4 class="text-warning mb-4">Our Services</h4>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-light hover-gold"><i class="fas fa-angle-right me-2 text-warning"></i> Equipment Sales & Leasing</a></li>
-                        <li class="mb-2"><a href="#" class="text-light hover-gold"><i class="fas fa-angle-right me-2 text-warning"></i> Drilling Services (RC, Diamond, Blast)</a></li>
-                        <li class="mb-2"><a href="#" class="text-light hover-gold"><i class="fas fa-angle-right me-2 text-warning"></i> Equipment Purchasing</a></li>
-                        <li class="mb-2"><a href="#" class="text-light hover-gold"><i class="fas fa-angle-right me-2 text-warning"></i> Mining Training Programs</a></li>
-                        <li class="mb-2"><a href="#" class="text-light hover-gold"><i class="fas fa-angle-right me-2 text-warning"></i> Logistics & Transport</a></li>
+                        <li class="mb-2"><a href="{{route('frontend.home.services')}}" class="text-light hover-gold"><i class="fas fa-angle-right me-2 text-warning"></i> Equipment Sales & Leasing</a></li>
+                        <li class="mb-2"><a href="{{route('frontend.home.services')}}" class="text-light hover-gold"><i class="fas fa-angle-right me-2 text-warning"></i> Drilling Services (RC, Diamond, Blast)</a></li>
+                        <li class="mb-2"><a href="{{route('frontend.home.services')}}" class="text-light hover-gold"><i class="fas fa-angle-right me-2 text-warning"></i> Equipment Purchasing</a></li>
+                        <li class="mb-2"><a href="{{route('frontend.home.services')}}" class="text-light hover-gold"><i class="fas fa-angle-right me-2 text-warning"></i> Mining Training Programs</a></li>
+                        <li class="mb-2"><a href="{{route('frontend.home.services')}}" class="text-light hover-gold"><i class="fas fa-angle-right me-2 text-warning"></i> Logistics & Transport</a></li>
                     </ul>
                 </div>
             </div>

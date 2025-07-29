@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             EquipmentSeeder::class,
             ServiceSeeder::class,
+            ProjectSeeder::class,
+            InquirySeeder::class,
         ]);
     }
 }

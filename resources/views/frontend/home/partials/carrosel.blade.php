@@ -16,10 +16,10 @@
                     <h1 class="display-3 text-white mb-4 fw-bold">Premium Mining Machinery</h1>
                     <p class="lead text-light mb-4">New, used and leased equipment with full-service support across Africa</p>
                     <div class="d-flex flex-wrap gap-3">
-                        <a href="#" class="btn btn-warning px-4 py-3 fw-bold">
+                        <a href="{{ route('frontend.home.services') }}" class="btn btn-warning px-4 py-3 fw-bold">
                             <i class="fas fa-truck-monster me-2"></i> Browse Inventory
                         </a>
-                        <a href="#" class="btn btn-outline-light px-4 py-3">
+                        <a href="{{ route('frontend.home.about') }}" class="btn btn-outline-light px-4 py-3">
                             <i class="fas fa-phone-alt me-2"></i> Contact Experts
                         </a>
                     </div>
@@ -34,7 +34,7 @@
                     <h1 class="display-3 text-white mb-4 fw-bold">Advanced Exploration Technology</h1>
                     <p class="lead text-light mb-4">RC, Diamond & Blast drilling services with Africa's most reliable rigs</p>
                     <div class="d-flex flex-wrap gap-3 justify-content-center">
-                        <a href="#" class="btn btn-warning px-4 py-3 fw-bold">
+                        <a href="{{route('frontend.home.services')}}" class="btn btn-warning px-4 py-3 fw-bold">
                             <i class="fas fa-hammer me-2"></i> View Services
                         </a>
                         <a href="#" class="btn btn-outline-light px-4 py-3">
@@ -52,9 +52,6 @@
                     <h1 class="display-3 text-white mb-4 fw-bold">World-Class Operator Programs</h1>
                     <p class="lead text-light mb-4">Reduce downtime and accidents with our certified equipment training</p>
                     <div class="d-flex flex-wrap gap-3 justify-content-end">
-                        <a href="#" class="btn btn-warning px-4 py-3 fw-bold">
-                            <i class="fas fa-user-graduate me-2"></i> Courses
-                        </a>
                         <a href="#" class="btn btn-outline-light px-4 py-3">
                             <i class="fas fa-calendar-alt me-2"></i> Schedule
                         </a>

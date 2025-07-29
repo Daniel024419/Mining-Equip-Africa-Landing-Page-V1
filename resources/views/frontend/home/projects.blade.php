@@ -48,138 +48,38 @@
             </div>
             <div class="row g-5">
                 <!-- Project 1: Gold Mining -->
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="project-item border border-warning rounded-4 overflow-hidden bg-dark">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="project-img h-100">
-                                    <img src="{{ asset('frontend/img/gold-mining-project.jpg') }}"
-                                        class="img-fluid h-100 w-100" alt="Gold Mining Project"
-                                        style="object-fit: cover;">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="project-content p-4">
-                                    <p class="fs-5 text-warning mb-2">Gold Mining</p>
-                                    <a href="#" class="h4 text-white d-block mb-3">Obuasi Gold Fields
-                                        Expansion</a>
-                                    <p class="text-light mb-4">Deployed 12 RC drilling rigs with modified laterite soil
-                                        attachments, achieving 98% uptime over 6-month contract.</p>
-                                    <div class="d-flex flex-wrap">
-                                        <span class="badge bg-warning text-dark me-2 mb-2">RC Drilling</span>
-                                        <span class="badge bg-warning text-dark me-2 mb-2">Equipment Lease</span>
-                                        <span class="badge bg-warning text-dark mb-2">Operator Training</span>
+                @forelse ($projects as $project)
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="{{ $project->delay }}">
+                        <div class="project-item border border-warning rounded-4 overflow-hidden bg-dark">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <div class="project-img h-100">
+                                        <img src="{{ asset($project->image) }}" class="img-fluid h-100 w-100"
+                                            alt="{{ $project->title }}" style="object-fit: cover;">
                                     </div>
-                                    <a class="btn btn-warning mt-3 py-2 px-4 fw-bold text-dark" href="#">
-                                        <i class="fas fa-hard-hat me-2"></i> Case Study
-                                    </a>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="project-content p-4">
+                                        <p class="fs-5 text-warning mb-2">{{ $project->category }}</p>
+                                        <a href="#"
+                                            class="h4 text-white d-block mb-3">{{ $project->title }}</a>
+                                        <p class="text-light mb-4">{{ $project->description }}</p>
+                                        <div class="d-flex flex-wrap">
+                                            @foreach ($project->badges as $badge)
+                                                <span
+                                                    class="badge bg-warning text-dark me-2 mb-2">{{ $badge }}</span>
+                                            @endforeach
+                                        </div>
+                                    
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @empty
+                    <h2>No project yet..</h2>
+                @endforelse
 
-                <!-- Project 2: Copper Mining -->
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="project-item border border-warning rounded-4 overflow-hidden bg-dark">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="project-img h-100">
-                                    <img src="{{ asset('frontend/img/copper-mining-project.jpg') }}"
-                                        class="img-fluid h-100 w-100" alt="Copper Mining Project"
-                                        style="object-fit: cover;">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="project-content p-4">
-                                    <p class="fs-5 text-warning mb-2">Copper Mining</p>
-                                    <a href="#" class="h4 text-white d-block mb-3">Lubambe Underground
-                                        Operations</a>
-                                    <p class="text-light mb-4">Provided diamond core drilling equipment and maintenance
-                                        team for 24/7 underground operations in Zambia.</p>
-                                    <div class="d-flex flex-wrap">
-                                        <span class="badge bg-warning text-dark me-2 mb-2">Diamond Drilling</span>
-                                        <span class="badge bg-warning text-dark me-2 mb-2">Underground</span>
-                                        <span class="badge bg-warning text-dark mb-2">Maintenance</span>
-                                    </div>
-                                    <a class="btn btn-warning mt-3 py-2 px-4 fw-bold text-dark" href="#">
-                                        <i class="fas fa-chart-line me-2"></i> Results
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: Iron Ore -->
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="project-item border border-warning rounded-4 overflow-hidden bg-dark">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="project-img h-100">
-                                    <img src="{{ asset('frontend/img/iron-ore-project.jpg') }}"
-                                        class="img-fluid h-100 w-100" alt="Iron Ore Project" style="object-fit: cover;">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="project-content p-4">
-                                    <p class="fs-5 text-warning mb-2">Iron Ore</p>
-                                    <a href="#" class="h4 text-white d-block mb-3">Simandou Range Blast
-                                        Drilling</a>
-                                    <p class="text-light mb-4">Custom blast hole rigs for Guinea's high-altitude
-                                        operations, increasing production by 35% over previous contractor.</p>
-                                    <div class="d-flex flex-wrap">
-                                        <span class="badge bg-warning text-dark me-2 mb-2">Blast Drilling</span>
-                                        <span class="badge bg-warning text-dark me-2 mb-2">High Altitude</span>
-                                        <span class="badge bg-warning text-dark mb-2">Custom Rigs</span>
-                                    </div>
-                                    <a class="btn btn-warning mt-3 py-2 px-4 fw-bold text-dark" href="#">
-                                        <i class="fas fa-mountain me-2"></i> Details
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4: Training Program -->
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="project-item border border-warning rounded-4 overflow-hidden bg-dark">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="project-img h-100">
-                                    <img src="{{ asset('frontend/img/training-project.jpg') }}"
-                                        class="img-fluid h-100 w-100" alt="Training Project"
-                                        style="object-fit: cover;">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="project-content p-4">
-                                    <p class="fs-5 text-warning mb-2">Safety Training</p>
-                                    <a href="#" class="h4 text-white d-block mb-3">West Africa Operator
-                                        Certification</a>
-                                    <p class="text-light mb-4">Certified 142 heavy equipment operators across Ghana,
-                                        Mali and Burkina Faso to international safety standards.</p>
-                                    <div class="d-flex flex-wrap">
-                                        <span class="badge bg-warning text-dark me-2 mb-2">Certification</span>
-                                        <span class="badge bg-warning text-dark me-2 mb-2">Safety</span>
-                                        <span class="badge bg-warning text-dark mb-2">Multi-Country</span>
-                                    </div>
-                                    <a class="btn btn-warning mt-3 py-2 px-4 fw-bold text-dark" href="#">
-                                        <i class="fas fa-user-graduate me-2"></i> Program
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CTA Button -->
-                <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
-                    <a class="btn btn-outline-warning py-3 px-5 fw-bold" href="#">
-                        <i class="fas fa-folder-open me-2"></i> View All Projects
-                    </a>
-                </div>
             </div>
         </div>
     </div>

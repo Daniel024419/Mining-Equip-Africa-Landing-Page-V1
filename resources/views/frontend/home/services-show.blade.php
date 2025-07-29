@@ -29,7 +29,7 @@
             <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">{{ $service->title }}</h4>
             <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
                 <li class="breadcrumb-item"><a href="{{ route('frontend.home.index') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('services.index') }}">Services</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('frontend.home.services') }}">Services</a></li>
                 <li class="breadcrumb-item active text-secondary">{{ $service->title }}</li>
             </ol>
         </div>
@@ -80,19 +80,19 @@
                         <h4 class="mb-4">Our Service Categories</h4>
                         <ul class="list-unstyled">
                             <li class="mb-2">
-                                <a href="{{ route('services.index') }}?category=equipment" class="d-flex justify-content-between align-items-center py-2 px-3 rounded {{ $service->category == 'equipment' ? 'bg-light' : '' }}">
+                                <a href="{{ route('frontend.home.services') }}?category=equipment" class="d-flex justify-content-between align-items-center py-2 px-3 rounded {{ $service->category == 'equipment' ? 'bg-light' : '' }}">
                                     <span><i class="fas fa-truck-pickup text-primary me-2"></i> Equipment Services</span>
                                     <i class="fas fa-arrow-right"></i>
                                 </a>
                             </li>
                             <li class="mb-2">
-                                <a href="{{ route('services.index') }}?category=consulting" class="d-flex justify-content-between align-items-center py-2 px-3 rounded {{ $service->category == 'consulting' ? 'bg-light' : '' }}">
+                                <a href="{{ route('frontend.home.services') }}?category=consulting" class="d-flex justify-content-between align-items-center py-2 px-3 rounded {{ $service->category == 'consulting' ? 'bg-light' : '' }}">
                                     <span><i class="fas fa-clipboard-check text-primary me-2"></i> Consulting</span>
                                     <i class="fas fa-arrow-right"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('services.index') }}?category=support" class="d-flex justify-content-between align-items-center py-2 px-3 rounded {{ $service->category == 'support' ? 'bg-light' : '' }}">
+                                <a href="{{ route('frontend.home.services') }}?category=support" class="d-flex justify-content-between align-items-center py-2 px-3 rounded {{ $service->category == 'support' ? 'bg-light' : '' }}">
                                     <span><i class="fas fa-tools text-primary me-2"></i> Support</span>
                                     <i class="fas fa-arrow-right"></i>
                                 </a>
@@ -104,7 +104,7 @@
                     <div class="contact-cta bg-primary rounded shadow-sm p-4 text-white">
                         <h4 class="mb-4">Need This Service?</h4>
                         <p class="mb-4">Contact us today to discuss how we can support your mining operations.</p>
-                        <a href="{{ route('contact') }}" class="btn btn-light py-2 px-4">Contact Us</a>
+                        <a href="{{ route('frontend.home.contacts') }}" class="btn btn-light py-2 px-4">Contact Us</a>
                     </div>
                 </div>
             </div>
@@ -123,7 +123,7 @@
                         <div class="related-content p-4">
                             <h5 class="mb-3">{{ $related->title }}</h5>
                             <p class="mb-3">{{ Str::limit($related->description, 100) }}</p>
-                            <a href="{{ route('services.show', $related->id) }}" class="btn btn-primary py-2 px-4">View Details</a>
+                            <a href="{{ route('frontend.home.showService', $related->id) }}" class="btn btn-primary py-2 px-4">View Details</a>
                         </div>
                     </div>
                 </div>

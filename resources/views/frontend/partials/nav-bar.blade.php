@@ -22,6 +22,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle px-3 text-white" data-bs-toggle="dropdown">Equipment</a>
                         <div class="dropdown-menu m-0 border-0 shadow-sm" style="background: #111;">
+                            <a href="{{ route('frontend.home.equipments','all') }}" class="dropdown-item text-white">All Machinery</a>
                             <a href="{{ route('frontend.home.equipments','new') }}" class="dropdown-item text-white">New Machinery</a>
                             <a href="{{ route('frontend.home.equipments','used') }}" class="dropdown-item text-white">Used Equipment</a>
                             <a href="{{ route('frontend.home.equipments','rental') }}" class="dropdown-item text-white">Rental Fleet</a>

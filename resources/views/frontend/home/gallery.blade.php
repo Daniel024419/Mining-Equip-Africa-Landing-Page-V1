@@ -59,7 +59,7 @@
 
             <!-- Gallery Grid -->
             <div class="row g-4">
-                @foreach($equipment as $item)
+                @forelse($equipment as $item)
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s" data-category="{{ $item->category }}">
                     <div class="gallery-item bg-white rounded shadow-sm overflow-hidden h-100">
                         <div class="gallery-img position-relative">
@@ -82,19 +82,16 @@
                         </div>
                     </div>
                 </div>
-                @endforeach
+                @empty
+                    <h2>No equipment yet</h2>
+                @endforelse
             </div>
 
             <!-- Pagination -->
-            <div class="row mt-5 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="col-12">
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination justify-content-center">
-                            {{ $equipment->links() }}
-                        </ul>
-                    </nav>
-                </div>
+            <div class="row mt-5 wow fadeInUp mt-3 justify-content-center" data-wow-delay="0.3s">
+                {{ $equipment->links('pagination::bootstrap-4') }}
             </div>
+             
         </div>
     </div>
     <!-- Gallery End -->

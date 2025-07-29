@@ -53,7 +53,7 @@
                 <div class="p-4 bg-white rounded shadow-sm">
                     <h4 class="text-primary mb-3">Contact Us</h4>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><i class="fas fa-phone me-2 text-primary"></i> +233244428332</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2 text-primary"></i> +233244428332 / +233 55 324 7728 / +233 20 067 2219</li>
                         <li class="mb-2"><i class="fas fa-building me-2 text-primary"></i> Office: 0312291486</li>
                     </ul>
                 </div>

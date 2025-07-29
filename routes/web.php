@@ -2,12 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\GoogleController;
-use App\Http\Controllers\Dashboard\Home\DashboardHomeController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Frontend\Home\FrontendHomeController;
+use App\Http\Controllers\Dashboard\Home\DashboardHomeController;
 use App\Http\Controllers\Dashboard\Posts\DashboardPostsController;
 use App\Http\Controllers\Dashboard\Quotes\DashboardQuotesController;
+use App\Http\Controllers\Dashboard\Inquiry\DashboardInquiryController;
 use App\Http\Controllers\Dashboard\Projects\DashboardProjectsController;
 use App\Http\Controllers\Dashboard\Services\DashboardServicesController;
 
@@ -29,9 +30,10 @@ Route::prefix('/')
                 Route::get('/testimonial', 'testimonial')->name('testimonial');
                 Route::get('/features', 'features')->name('features');
                 Route::get('/gallery', 'gallery')->name('gallery');
-                Route::get('/equipments/{type}', 'equipments')->name('equipments');
-                Route::get('/show/equipment/{equipment}','showEquiment')->name('showEquiment');
-                Route::get('/services/show/{service}','showService')->name('showService');
+                Route::get('/equipments/{condition}', 'equipments')->name('equipments');
+                Route::get('/show/equipment/{equipment}', 'showEquiment')->name('showEquiment');
+                Route::get('/services/show/{service}', 'showService')->name('showService');
+                Route::post('/store-inquiries', 'storeInquiries')->name('storeInquiries');
             });
     });
 
@@ -105,6 +107,13 @@ Route::prefix('/admin')
         //posts
         Route::controller(DashboardPostsController::class)
             ->name('posts.')
+            ->group(function () {
+                Route::get('/index', 'index')->name('index');
+            });
+
+        //inquiry
+        Route::controller(DashboardInquiryController::class)
+            ->name('inquiry.')
             ->group(function () {
                 Route::get('/index', 'index')->name('index');
             });

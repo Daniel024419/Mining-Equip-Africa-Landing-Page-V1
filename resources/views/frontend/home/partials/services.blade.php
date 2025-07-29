@@ -122,7 +122,7 @@
 
             <!-- CTA Button -->
             <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
-                <a class="btn btn-outline-warning py-3 px-5 mt-4 fw-bold" href="#">
+                <a class="btn btn-outline-warning py-3 px-5 mt-4 fw-bold" href="{{route('frontend.home.services')}}">
                     <i class="fas fa-hard-hat me-2"></i> View All Services
                 </a>
             </div>

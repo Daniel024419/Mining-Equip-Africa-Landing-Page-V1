@@ -37,7 +37,7 @@
 
     <!-- Services Start -->
     <div class="container-fluid service bg-light py-5">
-        <div class="container py-5">
+        <div class="container py-5 bg-black ">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
                 <p class="text-uppercase text-primary fs-5 mb-0">Mining Solutions</p>
                 <h2 class="display-4 text-capitalize mb-3">Specialized Mining Services</h2>
@@ -68,7 +68,7 @@
                         <div
                             class="service-card h-100 bg-white rounded-4 overflow-hidden shadow-sm transition-all hover-shadow-lg">
                             <div class="service-img position-relative overflow-hidden">
-                                <img src="{{ asset('storage/' . $service->image) }}"
+                                <img src="{{ asset('files/' . $service->image) }}"
                                     class="img-fluid w-100 transition-transform hover-scale" alt="{{ $service->title }}"
                                     style="height: 220px; object-fit: cover;">
                                 <div
@@ -87,7 +87,7 @@
                                     </div>
                                 </div>
                                 <div class="pt-4 text-center">
-                                    <h4 class="mb-3 fw-bold">{{ $service->title }}</h4>
+                                    <h4 class="mb-3 fw-bold">{{ Str::ucfirst($service->title) }}</h4>
                                     <p class="mb-4 text-muted">{{ Str::limit($service->description, 120) }}</p>
                                     <a href="{{ route('frontend.home.showService', $service->id) }}"
                                         class="btn btn-primary rounded-pill px-4 py-2 d-inline-flex align-items-center">
@@ -101,14 +101,8 @@
             </div>
 
             <!-- Pagination -->
-            <div class="row mt-5 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="col-12">
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination justify-content-center">
-                            {{ $services->links() }}
-                        </ul>
-                    </nav>
-                </div>
+            <div class="row mt-5 wow fadeInUp mt-3 justify-content-center" data-wow-delay="0.3s">
+                {{ $services->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </div>
