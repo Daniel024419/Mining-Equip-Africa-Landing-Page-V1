@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Dashboard\Equipments\DashboardEquipmentsController;
 use App\Http\Controllers\Frontend\Home\FrontendHomeController;
 use App\Http\Controllers\Dashboard\Home\DashboardHomeController;
 use App\Http\Controllers\Dashboard\Posts\DashboardPostsController;
@@ -11,6 +12,9 @@ use App\Http\Controllers\Dashboard\Quotes\DashboardQuotesController;
 use App\Http\Controllers\Dashboard\Inquiry\DashboardInquiryController;
 use App\Http\Controllers\Dashboard\Projects\DashboardProjectsController;
 use App\Http\Controllers\Dashboard\Services\DashboardServicesController;
+use App\Http\Controllers\Dashboard\Users\UsersController;
+use App\Http\Controllers\Frontend\Home\CommentController;
+use App\Http\Middleware\Auth\AuthMiddleware;
 
 //home
 Route::prefix('/')
@@ -26,6 +30,7 @@ Route::prefix('/')
                 Route::get('/projects', 'projects')->name('projects');
                 Route::get('/quotes', 'quotes')->name('quotes');
                 Route::get('/blog', 'blog')->name('blog');
+                Route::get('/blog/show/{post}', 'showPost')->name('showPost');
                 Route::get('/team', 'teams')->name('teams');
                 Route::get('/testimonial', 'testimonial')->name('testimonial');
                 Route::get('/features', 'features')->name('features');
@@ -34,6 +39,16 @@ Route::prefix('/')
                 Route::get('/equipment/show/{equipment}', 'showEquiment')->name('showEquiment');
                 Route::get('/services/show/{service}', 'showService')->name('showService');
                 Route::post('/store-inquiries', 'storeInquiries')->name('storeInquiries');
+                Route::post('/users/store-vistor', 'registerVistor')->name('registerVistor');
+            });
+
+        //post comment
+        Route::controller(CommentController::class)
+            ->group(function () {
+
+                Route::post('/posts/{post}/comments', 'store')->name('comments.store');
+
+                Route::delete('/comments/{comment}', 'destroy')->name('comments.destroy');
             });
     });
 
@@ -56,17 +71,19 @@ Route::controller(ForgotPasswordController::class)
         Route::post('/api/verify-otp', 'verifyCode')->name('verifyCode');
     });
 
-Route::prefix('/admin')
+Route::prefix('/login')
     ->name('dashboard.')
+    ->middleware([AuthMiddleware::class])
     ->group(function () {
 
         //auth
         Route::controller(AuthController::class)
             ->name('auth.')
+            ->withoutMiddleware([AuthMiddleware::class])
             ->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::post('/auth/login', 'login')->name('login');
-                Route::post('/auth/logout', 'logout')->name('logout');
+                Route::get('/auth/logout', 'logout')->name('logout');
                 Route::post('/auth/account-recovery/find-account', 'findAccount')->name('recovery.find_account');
                 Route::post('/auth/account-recovery-update', 'update')->name('update');
 
@@ -78,9 +95,10 @@ Route::prefix('/admin')
         //admin
         Route::controller(DashboardHomeController::class)
             ->name('admin.')
+            ->prefix('/dashboard/home')
             ->group(function () {
-                Route::get('/', 'index')->name('index');
-                Route::get('/profile', 'profile')->name('profile');
+                Route::post('/profile/update', 'updateProfile')->name('updateProfile');
+                Route::get('/settings', 'settings')->name('settings');
             });
 
         //projects
@@ -93,20 +111,28 @@ Route::prefix('/admin')
         //quotes
         Route::controller(DashboardQuotesController::class)
             ->name('quotes.')
+            ->prefix('/quotes')
             ->group(function () {
-                Route::get('index/', 'index')->name('index');
+                Route::get('/index', 'index')->name('index');
             });
 
         //services
         Route::controller(DashboardServicesController::class)
             ->name('services.')
+            ->prefix('/services')
             ->group(function () {
                 Route::get('/index', 'index')->name('index');
             });
-
+        //services
+        Route::controller(DashboardEquipmentsController::class)
+            ->name('equipments.')
+            ->group(function () {
+                Route::get('/index', 'index')->name('index');
+            });
         //posts
         Route::controller(DashboardPostsController::class)
             ->name('posts.')
+            ->prefix('/posts')
             ->group(function () {
                 Route::get('/index', 'index')->name('index');
             });
@@ -114,6 +140,15 @@ Route::prefix('/admin')
         //inquiry
         Route::controller(DashboardInquiryController::class)
             ->name('inquiry.')
+            ->prefix('/inquiry')
+            ->group(function () {
+                Route::get('/index', 'index')->name('index');
+            });
+    
+         //inquiry
+        Route::controller(UsersController::class)
+            ->name('users.')
+            ->prefix('/users')
             ->group(function () {
                 Route::get('/index', 'index')->name('index');
             });

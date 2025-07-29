@@ -24,9 +24,11 @@
                         <a href="#" class="nav-link dropdown-toggle px-3 text-white"
                             data-bs-toggle="dropdown">Equipment</a>
                         <div class="dropdown-menu m-0 border-0 shadow-sm" style="background: #111;">
-                            <a href="{{ route('frontend.home.equipments', 'all') }}" class="dropdown-item text-white">All
+                            <a href="{{ route('frontend.home.equipments', 'all') }}"
+                                class="dropdown-item text-white">All
                                 Machinery</a>
-                            <a href="{{ route('frontend.home.equipments', 'new') }}" class="dropdown-item text-white">New
+                            <a href="{{ route('frontend.home.equipments', 'new') }}"
+                                class="dropdown-item text-white">New
                                 Machinery</a>
                             <a href="{{ route('frontend.home.equipments', 'used') }}"
                                 class="dropdown-item text-white">Used Equipment</a>
@@ -134,6 +136,15 @@
                     <a href="tel:0244428332" class="btn btn-warning py-2 px-4 ms-3 fw-bold text-dark">
                         <i class="fas fa-phone-alt me-2"></i>
                     </a>
+                    @auth
+                        <a class="btn btn-secondary py-2 px-4 ms-3 fw-bold text-dark"
+                            href="{{ route('dashboard.auth.logout') }}"><i class="fa fa-lock"></i> Logout</a>
+                    @else
+                        <a class="btn btn-secondary py-2 px-4 ms-3 fw-bold text-dark"
+                            href="{{ route('dashboard.auth.index') }}"><i class="fa fa-user"></i> Login</a>
+                    @endauth
+
+
                 </div>
             </div>
 

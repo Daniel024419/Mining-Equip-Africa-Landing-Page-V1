@@ -10,12 +10,27 @@
 <body>
     <div class="login-container">
         <div class="card shadow-sm">
-            <div class="card-header text-center bg-gold text-white">
-                <h4>EquipAfrica Login</h4>
+            <div class="card-header bg-gold text-white position-relative">
+                <div class="d-flex justify-content-between align-items-start">
+                    <a href="{{ route('frontend.home.index') }}" class="text-white text-decoration-none">
+                        ← Back Home
+                    </a>
+                    <!-- Empty spacer for future elements or alignment -->
+                    <div></div>
+                </div>
+
+                <div class="text-center mt-2">
+                    <h4 class="mb-0">
+                        <img src="{{ asset('logo.png') }}" alt="Logo" style="max-height: 50px; width: auto;">
+                    </h4>
+                </div>
             </div>
+
+
             <div class="card-body">
-                <form id="loginForm" autocomplete="off" method="POST" action="{{route('dashboard.auth.login')}}" enctype="multipart/form-data">
-                   @csrf
+                <form id="loginForm" autocomplete="off" method="POST" action="{{ route('dashboard.auth.login') }}"
+                    enctype="multipart/form-data">
+                    @csrf
                     <div class="form-group">
                         <label for="email">Email or Phone</label>
                         <div class="input-group">
@@ -36,8 +51,8 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-lock"></i></span>
                             </div>
-                            <input name="password" type="password" autocomplete="off" id="password" class="form-control"
-                                placeholder="Enter password" required />
+                            <input name="password" type="password" autocomplete="off" id="password"
+                                class="form-control" placeholder="Enter password" required />
                             <div class="input-group-append">
                                 <span class="input-group-text password-toggle" onclick="togglePassword()">
                                     <i id="toggleIcon" class="fas fa-eye"></i>
@@ -49,7 +64,7 @@
                     <button type="submit" id="loginBtn" class="btn btn-gold btn-block">Login</button>
 
                     <div class="text-right mt-2">
-                        <a href="#" class="text-muted" data-toggle="modal"
+                        <a href="#" style="color: rgb(66, 119, 255)" class="text-muted" data-toggle="modal"
                             data-target="#forgotPasswordModal">Forgot Password?</a>
                     </div>
 
@@ -58,7 +73,7 @@
                     <div class="text-center">
                         <p class="mb-2">Or login with</p>
                         <div class="d-flex justify-content-center">
-                            <a href="{{route('auth.google')}}" class="btn btn-light border mr-2">
+                            <a href="{{ route('auth.google') }}" class="btn btn-light border mr-2">
                                 <i class="fab fa-google text-danger"></i> Google
                             </a>
                             <a href="#" class="btn btn-light border">
@@ -66,7 +81,7 @@
                             </a>
                         </div>
                     </div>
-                    @error('error')
+                    @error('identifier')
                         <div class="invalid-feedback">
                             <div>
                                 {{ $message }}
@@ -75,10 +90,10 @@
                     @enderror
 
 
-                    @if (session('error'))
+                    @if (session('identifier'))
                         <div class="invalid-feedback">
                             <div>
-                                {{ session('error') }}
+                                {{ session('identifier') }}
                             </div>
                         </div>
                     @endif

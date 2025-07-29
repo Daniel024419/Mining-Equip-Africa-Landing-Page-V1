@@ -103,7 +103,7 @@
 
  <script>
      // Show current year
-     document.getElementById('year').textContent = `© ${new Date().getFullYear()} EquipAfrica`;
+     document.getElementById('year').textContent = `© ${new Date().getFullYear()} MiningEquipAfrica`;
 
      // Toggle password visibility
      function togglePassword() {

@@ -12,6 +12,9 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    const USER_TYPE_ADMIN = 'admin';
+    const USER_TYPE_VISITOR = 'vistor';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -22,6 +25,7 @@ class User extends Authenticatable
         'email',
         'phone',
         'password',
+        'type',
     ];
 
     /**
@@ -42,8 +46,27 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * isVistor
+     *
+     * @return bool
+     */
+    public function isVistor(): bool
+    {
+        return self::USER_TYPE_VISITOR == $this->type;
+    }
+
+    /**
+     * isVistor
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return self::USER_TYPE_ADMIN == $this->type;
     }
 }

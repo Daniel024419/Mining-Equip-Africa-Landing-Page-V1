@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Frontend\Home;
 
+use App\Models\Post;
+use App\Models\User;
 use App\Models\Inquiry;
 use App\Models\Project;
 use App\Models\Service;
 use App\Models\Equipment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendHomeController extends Controller
 {
@@ -95,7 +99,28 @@ class FrontendHomeController extends Controller
      */
     public function blog()
     {
-        return view('frontend.home.blog');
+        $posts = Post::latest('published_at')
+            ->where('published_at', '<=', now())
+            ->paginate(3);
+
+        return view('frontend.home.blog', ['posts' => $posts]);
+    }
+
+    /**
+     * showPost
+     *
+     * @param  Post $post
+     * @return void
+     */
+    public function showPost(Post $post)
+    {
+        $recentPosts = Post::where('id', '!=', $post->id)
+            ->where('published_at', '<=', now())
+            ->latest('published_at')
+            ->take(3)
+            ->get();
+
+        return view('frontend.home.show-blog-post',  compact('post', 'recentPosts'));
     }
 
     /**
@@ -192,5 +217,47 @@ class FrontendHomeController extends Controller
         Inquiry::create($validated);
 
         return redirect()->back()->with('success', 'Inquiry submitted successfully.');
+    }
+
+    /**
+     * register
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function registerVistor(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            'phone' => 'nullable|string|max:20'
+        ]);
+
+        DB::beginTransaction();
+
+        try {
+            $user = User::create([
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'password' => trim($request->input('password')),
+                'phone' => $request->input('phone'),
+                'type' => User::USER_TYPE_VISITOR
+            ]);
+
+            Auth::login($user);
+
+            DB::commit();
+
+            return redirect()->back()->with(
+                'message', 'Registration successful',
+            );
+        } catch (\Exception $e) {
+            DB::rollBack();
+            logger($e);
+            return redirect()->back()->with(
+                'message' , 'Registration failed. Please try again.',
+            );
+        }
     }
 }

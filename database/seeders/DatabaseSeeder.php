@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             ProjectSeeder::class,
             InquirySeeder::class,
+            PostSeeder::class,
+            CommentSeeder::class,
         ]);
     }
 }

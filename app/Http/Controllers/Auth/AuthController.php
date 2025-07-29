@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Auth\LoginRequest;
@@ -17,8 +19,14 @@ class AuthController extends Controller
      */
     public function index()
     {
+        /** @var User $user */
+        $user = Auth::user();
         if (Auth::guard('web')->check()) {
-            return redirect()->route(Auth::guard('web')->user()->user->role->name . '.dashboard.index')->with('login_success', true);
+            if ($user->isAdmin()) {
+                return redirect()->route('dashboard.posts.index')->with('login_success', true);
+            } else {
+                return redirect()->route('frontend.home.blog');
+            }
         }
 
         return view('auth.login');
@@ -40,32 +48,50 @@ class AuthController extends Controller
             $column = filter_var($credentials['identifier'], FILTER_VALIDATE_EMAIL) ? 'email' : 'phone';
             if (Auth::guard('web')->attempt([$column => $credentials['identifier'], 'password' => $credentials['password']], $remember)) {
                 $request->session()->regenerate();
-                return redirect()->route('dashboard.admin.index');
+                /** @var User $user */
+                $user = Auth::user();
+                if ($user->isAdmin()) {
+                    return redirect()->route('dashboard.posts.index')->with('login_success', true);
+                } else {
+                    return redirect()->back();
+                }
             }
         } catch (\Exception $e) {
-            logger()->error($e);
             return back()->withErrors([
                 'error' => 'Authentication cant be processed now, Please try again later',
             ])->onlyInput('identifier');
         }
         logger()->error('request ' . $request);
-        return back()->withErrors([
-            'identifier' => 'The provided credentials do not match our records.',
+        return back()->with([
+            'identifier',
+            'The provided credentials do not match our records.',
         ])->onlyInput('identifier');
     }
 
 
     /**
-     * logout
+     * Log the user out of the application.
      *
-     * @param  Request $request
-     * @return void
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function logout(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect()->route('dashboard.auth.index')->with('warning', 'You are not logged in.');
+        }
+
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
         Auth::logout();
+        $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('dashboard.auth.index');
+        if ($user->isAdmin()) {
+            return redirect()->route('dashboard.auth.index');
+        }
+
+        return redirect()->back()->with('success', 'You have been logged out.');
     }
 }
