@@ -4,7 +4,7 @@
 <meta name="title" content="Mining Equip Africa | Heavy Equipment Sales & Drilling Services">
 <meta name="description" content="Africa's leading mining equipment provider - New/used machinery sales, RC/diamond drilling services, operator training & 24/7 support across West Africa. Get quotes today.">
 <meta name="keywords" content="mining equipment Africa, used mining machinery, RC drilling services, diamond core drilling, heavy equipment training, Ghana mining supplies, excavators for sale, blast drilling equipment">
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- Canonical URL -->
 <link rel="canonical" href="https://www.miningequipafrica.com">
 
@@ -46,7 +46,7 @@
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "P.O. Box TD 483",
-    "addressLocality": "Takoradi",
+    "addressLocality": "Takoradi Airport Ridge",
     "addressCountry": "GH"
   },
   "contactPoint": {

@@ -31,7 +31,7 @@ Route::prefix('/')
                 Route::get('/features', 'features')->name('features');
                 Route::get('/gallery', 'gallery')->name('gallery');
                 Route::get('/equipments/{condition}', 'equipments')->name('equipments');
-                Route::get('/show/equipment/{equipment}', 'showEquiment')->name('showEquiment');
+                Route::get('/equipment/show/{equipment}', 'showEquiment')->name('showEquiment');
                 Route::get('/services/show/{service}', 'showService')->name('showService');
                 Route::post('/store-inquiries', 'storeInquiries')->name('storeInquiries');
             });

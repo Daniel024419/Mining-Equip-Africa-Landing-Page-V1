@@ -184,7 +184,7 @@
                     <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.4s">
                         <div class="contact-map border border-warning rounded-4 overflow-hidden h-100">
                             <iframe class="w-100" style="min-height: 500px;"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.755238226239!2d-1.773905925018757!3d5.614777994389591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdb90a4a0b0e1e5%3A0x6f2e6b7a3a5a5a5a!2sTakoradi%2C%20Ghana!5e0!3m2!1sen!2sus!4v1694259649153!5m2!1sen!2sus"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.755238226239!2d-1.773905925018757!3d5.614777994389591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdb90a4a0b0e1e5%3A0x6f2e6b7a3a5a5a5a!2sTakoradi Airport Ridge%2C%20Ghana!5e0!3m2!1sen!2sus!4v1694259649153!5m2!1sen!2sus"
                                 loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
@@ -198,7 +198,7 @@
                                     <i class="fas fa-map-marker-alt fa-2x text-warning mt-1 me-3"></i>
                                     <div>
                                         <h5 class="text-warning">Headquarters</h5>
-                                        <p class="text-light mb-0 small">P.O. Box TD 483<br>Takoradi, Ghana</p>
+                                        <p class="text-light mb-0 small">P.O. Box TD 483<br>Takoradi Airport Ridge, Ghana</p>
                                     </div>
                                 </div>
                             </div>

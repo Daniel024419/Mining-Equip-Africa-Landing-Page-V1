@@ -5,7 +5,7 @@
             <div class="col-lg-6 text-center text-lg-start mb-lg-0">
                 <div class="d-flex flex-wrap align-items-center">
                     <a href="{{ route('frontend.home.contacts') }}" class="text-light me-4 hover-gold">
-                        <i class="fas fa-map-marker-alt text-warning me-2"></i>P.O. Box TD 483, Takoradi, Ghana
+                        <i class="fas fa-map-marker-alt text-warning me-2"></i>P.O. Box TD 483, Takoradi Airport Ridge, Ghana
                     </a>
                     <a href="tel:+233244428332" class="text-light me-4 hover-gold">
                         <i class="fas fa-phone-alt text-warning me-2"></i>+233 24 442 8332 /

@@ -80,7 +80,7 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <a href="{{route('frontend.home.showEquiment',$equipment->id)}}" class="btn btn-outline-warning py-2 px-4">Details</a>
                                     <span class="text-warning fw-bold">
-                                        {{ is_numeric($equipment->price) ? 'GHS ' . number_format($equipment->price, 2) : $equipment->price }}
+                                        GHS {{ is_numeric($equipment->price) ? number_format($equipment->price, 2) : $equipment->price }}
                                     </span>
                                 </div>
                             </div>

@@ -88,7 +88,8 @@
                                     <i class="fas fa-map-marker-alt text-warning me-3 mt-1"></i>
                                     <div>
                                         <h5 class="text-warning mb-1">Location</h5>
-                                        <p class="text-light mb-0">P.O. Box TD 483, Takoradi, Ghana</p>
+                                        <p class="text-light mb-0">P.O. Box TD 483, Takoradi Airport Ridge, Ghana</p>
+                                        <p class="text-light mb-0" > Biabiani, Ghana </p>
                                     </div>
                                 </div>
                             </div>
