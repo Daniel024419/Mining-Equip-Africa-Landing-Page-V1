@@ -42,7 +42,7 @@
             <tbody>
                 @forelse ($posts as $index => $post)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $post->id}}</td>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->slug ?? '—' }}</td>
                         <td>{{ $post->published_at ? $post->published_at : 'N/A' }}</td>
@@ -53,16 +53,17 @@
                             <a href="{{ route('dashboard.posts.edit', $post->id) }}" class="btn btn-sm btn-warning">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <form action="{{ route('dashboard.posts.destroy', $post->id) }}" method="POST"
-                                class="d-inline" onsubmit="return confirm('you want to delete this post?');">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-danger">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </form>
+
+                            <!-- Trigger Delete Modal -->
+                            <button class="btn btn-sm btn-danger" data-toggle="modal"
+                                data-target="#deletePostModal{{ $post->id }}">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+
+                            @include('dashboard.posts.delete-post-modal')
                         </td>
                     </tr>
+
                 @empty
                     <tr>
                         <td colspan="5" class="text-center">Not post created yet.</td>

@@ -120,8 +120,9 @@ class DashboardPostsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy(int $post)
     {
+        $post = Post::find($post);
         try {
             $post->delete();
             return redirect()->back()->with('success', 'Post deleted successfully!');

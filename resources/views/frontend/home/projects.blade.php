@@ -65,10 +65,13 @@
                                             class="h4 text-white d-block mb-3">{{ $project->title }}</a>
                                         <p class="text-light mb-4">{{ $project->description }}</p>
                                         <div class="d-flex flex-wrap">
-                                            @foreach ($project->badges as $badge)
+                                            @if ($project->badges)
+                                              @foreach ($project->badges as $badge)
                                                 <span
                                                     class="badge bg-warning text-dark me-2 mb-2">{{ $badge }}</span>
-                                            @endforeach
+                                            @endforeach  
+                                            @endif
+                                            
                                         </div>
                                     
                                     </div>

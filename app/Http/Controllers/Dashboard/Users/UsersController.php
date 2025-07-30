@@ -14,7 +14,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::query()->latest()->paginate(10);
+        $users = User::query()->where('type',User::USER_TYPE_ADMIN)->latest()->paginate(10);
         return view('dashboard.users.index', ['users' => $users]);
     }
 

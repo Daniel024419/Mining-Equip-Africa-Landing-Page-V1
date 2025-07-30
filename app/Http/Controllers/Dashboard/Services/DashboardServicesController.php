@@ -47,7 +47,7 @@ class DashboardServicesController extends Controller
             return redirect()->back()->with('success', 'Service created successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('error', 'Failed to create service.');
+            return redirect()->back()->with('error', 'Failed to create service.'.$e->getMessage());
         }
     }
 

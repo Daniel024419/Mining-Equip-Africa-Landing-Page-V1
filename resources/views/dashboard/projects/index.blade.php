@@ -27,7 +27,7 @@
     <!-- Projects & Info -->
     <div class="card">
         <div class="card-header">
-            <h4>All Projects</h4>
+            <h4>All Projects ( {{ $projects->total()}}) </h4>
         </div>
 
         <table class="table table-striped table-scroll">
@@ -44,7 +44,7 @@
             <tbody>
                 @forelse ($projects as $index => $project)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $project->id }}</td>
 
                         <td>
                             @if ($project->image)
@@ -67,16 +67,17 @@
                                 class="btn btn-sm btn-warning">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <form action="{{ route('dashboard.projects.destroy', $project->id) }}" method="POST"
-                                class="d-inline" onsubmit="return confirm('Do you want to delete this project?');">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-danger">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </form>
+
+                            <!-- Trigger Delete Modal -->
+                            <button class="btn btn-sm btn-danger" data-toggle="modal"
+                                data-target="#deleteProjectModal{{ $project->id }}">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+
+                           @include('dashboard.projects.delete-project-modal')
                         </td>
                     </tr>
+
                 @empty
                     <tr>
                         <td colspan="6" class="text-center">No projects created yet.</td>

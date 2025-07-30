@@ -98,3 +98,5 @@
 </nav>
 
 @include('dashboard.partials.logout-modal')
+@include('dashboard.global-error-handler')
+@include('dashboard.global-success-handler')

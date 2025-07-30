@@ -109,10 +109,10 @@ Route::prefix('/dashboard')
             ->group(function () {
                 Route::get('/index', 'index')->name('index');
                 Route::post('/store', 'store')->name('store');
-                Route::put('/update/{post}', 'update')->name('update');
-                Route::get('/edit/{post}', 'edit')->name('edit');
-                Route::get('/show/{post}', 'show')->name('show');
-                Route::delete('/delete/{post}', 'destroy')->name('destroy');
+                Route::put('/update/{project}', 'update')->name('update');
+                Route::get('/edit/{project}', 'edit')->name('edit');
+                Route::get('/show/{project}', 'show')->name('show');
+                Route::delete('/delete/{project}', 'destroy')->name('destroy');
             });
 
         //quotes

@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Dashboard\Projects;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class DashboardProjectsController extends Controller
 {
-    /**
-     * Display a listing of the projects.
-     */
     public function index()
     {
         $projects = Project::latest()->paginate(10);
@@ -18,15 +17,10 @@ class DashboardProjectsController extends Controller
     }
 
     /**
-     * Show the form for creating a new project.
-     */
-    public function create()
-    {
-        return view('projects.create');
-    }
-
-    /**
-     * Store a newly created project in storage.
+     * store
+     *
+     * @param  Request $request
+     * @return void
      */
     public function store(Request $request)
     {
@@ -39,38 +33,59 @@ class DashboardProjectsController extends Controller
             'badges.*' => 'string'
         ]);
 
-        // Upload image
-        $path = $request->file('image')->store('projects', 'public');
+        try {
+            DB::beginTransaction();
 
-        Project::create([
-            'category' => $request->category,
-            'title' => $request->title,
-            'description' => $request->description,
-            'image' => 'storage/' . $path,
-            'badges' => $request->badges ?? [],
-        ]);
+            $path = $request->file('image')->store('projects', 'public');
 
-        return redirect()->route('projects.index')->with('success', 'Project created successfully.');
+            Project::create([
+                'category' => $request->category,
+                'title' => $request->title,
+                'description' => $request->description,
+                'image' => 'storage/' . $path,
+                'badges' => $request->badges ?? [],
+            ]);
+
+            DB::commit();
+
+            return redirect()
+                ->back()
+                ->with('success', 'Project created successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Project store failed', ['error' => $e->getMessage()]);
+            return back()->withInput()->with('error', 'Failed to create project. Please try again.');
+        }
     }
-
+    
     /**
-     * Display the specified project.
+     * show
+     *
+     * @param  Project $project
+     * @return void
      */
     public function show(Project $project)
     {
         return view('projects.show', compact('project'));
     }
-
+    
     /**
-     * Show the form for editing the specified project.
+     * edit
+     *
+     * @param  Project $project
+     * @return void
      */
     public function edit(Project $project)
     {
         return view('projects.edit', compact('project'));
     }
-
+    
     /**
-     * Update the specified project in storage.
+     * update
+     *
+     * @param  Request $request
+     * @param  Project $project
+     * @return void
      */
     public function update(Request $request, Project $project)
     {
@@ -83,26 +98,54 @@ class DashboardProjectsController extends Controller
             'badges.*' => 'string',
         ]);
 
-        $data = $request->only([
-            'category', 'title', 'description', 'badges',
-        ]);
+        try {
+            DB::beginTransaction();
 
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('projects', 'public');
-            $data['image'] = 'storage/' . $path;
+            $data = $request->only(['category', 'title', 'description', 'badges']);
+
+            if ($request->hasFile('image')) {
+                $path = $request->file('image')->store('projects', 'public');
+                $data['image'] = 'storage/' . $path;
+            }
+
+            $project->update($data);
+
+            DB::commit();
+
+            return redirect()
+                ->bac()
+                ->with('success', 'Project updated successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Project update failed', ['error' => $e->getMessage()]);
+            return back()->withInput()->with('error', 'Failed to update project. Please try again.');
         }
-
-        $project->update($data);
-
-        return redirect()->route('projects.index')->with('success', 'Project updated successfully.');
     }
-
+    
     /**
-     * Remove the specified project from storage.
+     * destroy
+     *
+     * @param  Project $project
+     * @return void
      */
     public function destroy(Project $project)
     {
-        $project->delete();
-        return redirect()->route('projects.index')->with('success', 'Project deleted successfully.');
+        try {
+            DB::beginTransaction();
+
+            $project->delete();
+
+            DB::commit();
+
+            return redirect()
+                ->back()
+                ->with('success', 'Project deleted successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Project deletion failed', ['error' => $e->getMessage()]);
+            return redirect()
+                ->back()
+                ->with('error', 'Failed to delete project. Please try again.');
+        }
     }
 }

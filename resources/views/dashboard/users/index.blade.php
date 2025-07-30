@@ -26,7 +26,7 @@
     <!-- USERS & INFOS -->
     <div class="card">
         <div class="card-header bg-dark text-white">
-            <h4>All Users</h4>
+            <h4>All Users ( {{$users->total()}} )</h4>
         </div>
 
         <div class="table-responsive" style="max-height: 400px;">
@@ -54,16 +54,17 @@
                                 <a href="{{ route('dashboard.users.edit', $user->id) }}" class="btn btn-sm btn-warning">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form action="{{ route('dashboard.users.destroy', $user->id) }}" method="POST"
-                                    class="d-inline" onsubmit="return confirm('Do you want to delete this user?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-sm btn-danger">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </form>
+                                <!-- Trigger Delete Modal -->
+                                <button class="btn btn-sm btn-danger" data-toggle="modal"
+                                    data-target="#deleteUserModal{{ $user->id }}">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+
+                                @include('dashboard.users.delete-user-modal')
+
                             </td>
                         </tr>
+
                     @empty
                         <tr>
                             <td colspan="6" class="text-center text-muted">No users created yet.</td>
@@ -82,7 +83,6 @@
 
     <!-- ADD user MODAL -->
     @include('dashboard.users.add-user-modal')
-
     @include('dashboard.partials.script')
 </body>
 

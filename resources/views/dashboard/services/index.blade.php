@@ -14,8 +14,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <a href="#" class="btn btn-block btn-primary" data-toggle="modal"
-                        data-target="#addServiceModal">
+                    <a href="#" class="btn btn-block btn-primary" data-toggle="modal" data-target="#addServiceModal">
                         <i class="fas fa-plus"></i> Add Services
                     </a>
                 </div>
@@ -25,10 +24,8 @@
 
 
     <div class="card">
-        @include('dashboard.global-success-handler')
-        @include('dashboard.global-error-handler')
         <div class="card-header">
-            <h4>All services</h4>
+            <h4>All services ( {{ $services->total()}} )</h4>
         </div>
 
         <table class="table table-striped table-scroll">
@@ -58,6 +55,7 @@
                                 —
                             @endif
                         </td>
+
                         <td>
                             <a href="{{ route('dashboard.services.show', $service->id) }}" class="btn btn-sm btn-info">
                                 <i class="fas fa-eye"></i>
@@ -66,17 +64,17 @@
                                 class="btn btn-sm btn-warning">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <form action="{{ route('dashboard.services.destroy', $service->id) }}" method="POST"
-                                class="d-inline"
-                                onsubmit="return confirm('Are you sure you want to delete this service?');">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-danger">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </form>
+
+                            <!-- Trigger Delete Modal -->
+                            <button class="btn btn-sm btn-danger" data-toggle="modal"
+                                data-target="#deleteServiceModal{{ $service->id }}">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+
+                           @include('dashboard.services.delete-services-modal')
                         </td>
                     </tr>
+
                 @empty
                     <tr>
                         <td colspan="7" class="text-center">No services created yet.</td>

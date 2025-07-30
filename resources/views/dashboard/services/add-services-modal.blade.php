@@ -19,7 +19,12 @@
 
                         <div class="col-md-6 form-group">
                             <label for="category">Category</label>
-                            <input type="text" name="category" class="form-control" />
+                            <select name="category" required class="form-control">
+                                <option value=""> Select category</option>
+                                @foreach (['equipment', 'consulting', 'support'] as $cat)
+                                <option value="{{$cat}}"> {{$cat}} </option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="col-md-12 form-group">
@@ -32,28 +37,29 @@
                             <select name="icon" class="form-control">
                                 <option value="">Select an icon</option>
                                 @foreach ([
-                                    'fas fa-hard-hat' => 'Hard Hat',
-                                    'fas fa-truck-loading' => 'Truck Loading',
-                                    'fas fa-dumpster' => 'Dumpster',
-                                    'fas fa-tools' => 'Tools',
-                                    'fas fa-cogs' => 'Cogs',
-                                    'fas fa-industry' => 'Industry',
-                                    'fas fa-hammer' => 'Hammer',
-                                    'fas fa-wrench' => 'Wrench',
-                                    'fas fa-screwdriver' => 'Screwdriver',
-                                    'fas fa-truck-moving' => 'Truck Moving',
-                                    'fas fa-trailer' => 'Trailer',
-                                    'fas fa-oil-can' => 'Oil Can',
-                                    'fas fa-mountain' => 'Mountain',
-                                    'fas fa-gem' => 'Gem',
-                                    'fas fa-shield-alt' => 'Safety Shield',
-                                    'fas fa-anchor' => 'Anchor',
-                                    'fas fa-fire-extinguisher' => 'Fire Extinguisher',
-                                    'fas fa-plug' => 'Electric/Plug',
-                                    'fas fa-recycle' => 'Recycle',
-                                    'fas fa-bolt' => 'Power/Bolt',
-                                ] as $icon => $label)
-                                    <option value="{{ $icon }}">{{ $label }} ({{ $icon }})</option>
+        'fas fa-hard-hat' => 'Hard Hat',
+        'fas fa-truck-loading' => 'Truck Loading',
+        'fas fa-dumpster' => 'Dumpster',
+        'fas fa-tools' => 'Tools',
+        'fas fa-cogs' => 'Cogs',
+        'fas fa-industry' => 'Industry',
+        'fas fa-hammer' => 'Hammer',
+        'fas fa-wrench' => 'Wrench',
+        'fas fa-screwdriver' => 'Screwdriver',
+        'fas fa-truck-moving' => 'Truck Moving',
+        'fas fa-trailer' => 'Trailer',
+        'fas fa-oil-can' => 'Oil Can',
+        'fas fa-mountain' => 'Mountain',
+        'fas fa-gem' => 'Gem',
+        'fas fa-shield-alt' => 'Safety Shield',
+        'fas fa-anchor' => 'Anchor',
+        'fas fa-fire-extinguisher' => 'Fire Extinguisher',
+        'fas fa-plug' => 'Electric/Plug',
+        'fas fa-recycle' => 'Recycle',
+        'fas fa-bolt' => 'Power/Bolt',
+    ] as $icon => $label)
+                                    <option value="{{ $icon }}">{{ $label }} ({{ $icon }})
+                                    </option>
                                 @endforeach
                             </select>
                         </div>

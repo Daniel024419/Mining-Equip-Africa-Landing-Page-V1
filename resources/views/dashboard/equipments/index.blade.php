@@ -47,7 +47,7 @@
             <tbody>
                 @forelse ($equipments as $index => $equipment)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $equipment->id }}</td>
 
                         <td>
                             @if ($equipment->image)
@@ -65,23 +65,25 @@
                         <td>¢{{ number_format($equipment->price, 2) }}</td>
 
                         <td>
-                            <a href="{{ route('dashboard.equipments.show', $equipment->id) }}" class="btn btn-sm btn-info">
+                            <a href="{{ route('dashboard.equipments.show', $equipment) }}" class="btn btn-sm btn-info">
                                 <i class="fas fa-eye"></i>
                             </a>
-                            <a href="{{ route('dashboard.equipments.edit', $equipment->id) }}"
+                            <a href="{{ route('dashboard.equipments.edit', $equipment) }}"
                                 class="btn btn-sm btn-warning">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <form action="{{ route('dashboard.equipments.destroy', $equipment->id) }}" method="POST"
-                                class="d-inline" onsubmit="return confirm('Do you want to delete this equipment?');">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-danger">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </form>
+
+                            <!-- Delete Button Trigger -->
+                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#deleteEquipmentModal-{{ $equipment->id }}">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+
+                           @include('dashboard.equipments.delete-equipment-modal')
                         </td>
                     </tr>
+
+
                 @empty
                     <tr>
                         <td colspan="9" class="text-center">No equipments created yet.</td>
