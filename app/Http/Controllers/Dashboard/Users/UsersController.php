@@ -60,7 +60,7 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        return view('', compact('user'));
+        return view('dashboard.users.show', compact('user'));
     }
 
     /**
@@ -71,7 +71,7 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        return view('', compact('user'));
+        return view('dashboard.users.edit', compact('user'));
     }
 
     /**

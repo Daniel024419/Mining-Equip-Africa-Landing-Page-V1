@@ -66,24 +66,29 @@ class DashboardPostsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show(int $post)
     {
-        return view('', ['post' => $post]);
+        $post = Post::find($post);
+        return view('dashboard.posts.show', ['post' => $post]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function edit(Post $post)
+    public function edit(int $post)
     {
-        return view('', ['post' => $post]);
+        $post = Post::find($post);
+
+        return view('dashboard.posts.edit', ['post' => $post]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, int $post)
     {
+        $post = Post::find($post);
+
         $request->validate([
             'title'         => 'required|string|max:255',
             'slug'          => 'required|string|max:255|unique:posts,slug,' . $post->id,

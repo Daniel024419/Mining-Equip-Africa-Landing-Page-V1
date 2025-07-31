@@ -143,10 +143,10 @@ Route::prefix('/dashboard')
             ->group(function () {
                 Route::get('/index', 'index')->name('index');
                 Route::post('/store', 'store')->name('store');
-                Route::put('/update/{post}', 'update')->name('update');
-                Route::get('/edit/{post}', 'edit')->name('edit');
-                Route::get('/show/{post}', 'show')->name('show');
-                Route::delete('/delete/{post}', 'destroy')->name('destroy');
+                Route::put('/update/{equipment}', 'update')->name('update');
+                Route::get('/edit/{equipment}', 'edit')->name('edit');
+                Route::get('/show/{equipment}', 'show')->name('show');
+                Route::delete('/delete/{equipment}', 'destroy')->name('destroy');
             });
         //posts
         Route::controller(DashboardPostsController::class)

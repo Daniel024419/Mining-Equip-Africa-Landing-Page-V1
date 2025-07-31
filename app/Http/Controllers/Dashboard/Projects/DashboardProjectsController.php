@@ -66,7 +66,7 @@ class DashboardProjectsController extends Controller
      */
     public function show(Project $project)
     {
-        return view('projects.show', compact('project'));
+        return view('dashboard.projects.show', compact('project'));
     }
     
     /**
@@ -77,7 +77,7 @@ class DashboardProjectsController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('projects.edit', compact('project'));
+        return view('dashboard.projects.edit', compact('project'));
     }
     
     /**
@@ -113,7 +113,7 @@ class DashboardProjectsController extends Controller
             DB::commit();
 
             return redirect()
-                ->bac()
+                ->back()
                 ->with('success', 'Project updated successfully.');
         } catch (\Exception $e) {
             DB::rollBack();

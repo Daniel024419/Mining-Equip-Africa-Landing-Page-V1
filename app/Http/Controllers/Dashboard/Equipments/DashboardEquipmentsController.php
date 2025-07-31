@@ -60,7 +60,7 @@ class DashboardEquipmentsController extends Controller
      */
     public function show(Equipment $equipment)
     {
-        return view('', compact('equipment'));
+        return view('dashboard.equipments.show', compact('equipment'));
     }
 
     /**
