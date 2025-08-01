@@ -2,14 +2,28 @@
 
 namespace App\Http\Controllers\Dashboard\Projects;
 
-use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use App\Service\FileUploadInterface;
 
 class DashboardProjectsController extends Controller
 {
+    /**
+     * destinationPath
+     *
+     * @var string
+     */
+    public $destinationPath = '';
+
+    public function __construct(
+        private FileUploadInterface $fileUploadInterface
+    ) {
+        $this->destinationPath = public_path('/files');
+    }
+
     public function index()
     {
         $projects = Project::latest()->paginate(10);
@@ -35,14 +49,19 @@ class DashboardProjectsController extends Controller
 
         try {
             DB::beginTransaction();
+            $path = '';
 
-            $path = $request->file('image')->store('projects', 'public');
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                $path = $this->fileUploadInterface->uploadFiles($request->file('image'), $this->destinationPath);
+            } else {
+                $path = 'defualt.png';
+            }
 
             Project::create([
                 'category' => $request->category,
                 'title' => $request->title,
-                'description' => $request->description,
-                'image' => 'storage/' . $path,
+                'description' => $request->description ?? '',
+                'image' => $path,
                 'badges' => $request->badges ?? [],
             ]);
 
@@ -57,7 +76,7 @@ class DashboardProjectsController extends Controller
             return back()->withInput()->with('error', 'Failed to create project. Please try again.');
         }
     }
-    
+
     /**
      * show
      *
@@ -68,7 +87,7 @@ class DashboardProjectsController extends Controller
     {
         return view('dashboard.projects.show', compact('project'));
     }
-    
+
     /**
      * edit
      *
@@ -79,7 +98,7 @@ class DashboardProjectsController extends Controller
     {
         return view('dashboard.projects.edit', compact('project'));
     }
-    
+
     /**
      * update
      *
@@ -103,9 +122,17 @@ class DashboardProjectsController extends Controller
 
             $data = $request->only(['category', 'title', 'description', 'badges']);
 
-            if ($request->hasFile('image')) {
-                $path = $request->file('image')->store('projects', 'public');
-                $data['image'] = 'storage/' . $path;
+            $oldimageName = $project->image ?? '';
+
+            $imageFile = $request->has('image') ? $request->file('image') : '';
+
+            if ($imageFile && $imageFile->isValid()) {
+                $data['image'] = $this->fileUploadInterface->uploadFiles($imageFile, $this->destinationPath);
+                if (file_exists($this->destinationPath . '/' . $oldimageName)) {
+                    unlink($this->destinationPath . '/' . $oldimageName);
+                }
+            } else {
+                $data['image'] = $oldimageName;
             }
 
             $project->update($data);
@@ -121,7 +148,7 @@ class DashboardProjectsController extends Controller
             return back()->withInput()->with('error', 'Failed to update project. Please try again.');
         }
     }
-    
+
     /**
      * destroy
      *
@@ -133,6 +160,11 @@ class DashboardProjectsController extends Controller
         try {
             DB::beginTransaction();
 
+            if ($project->image) {
+                if (file_exists($this->destinationPath . '/' . $project->image)) {
+                    unlink($this->destinationPath . '/' . $project->image);
+                }
+            }
             $project->delete();
 
             DB::commit();

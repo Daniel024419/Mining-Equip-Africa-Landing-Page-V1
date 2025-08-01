@@ -54,7 +54,7 @@
                             <div class="row g-0">
                                 <div class="col-md-4">
                                     <div class="project-img h-100">
-                                        <img src="{{ asset($project->image) }}" class="img-fluid h-100 w-100"
+                                        <img src="{{ asset('files/'.$project->image) }}" class="img-fluid h-100 w-100"
                                             alt="{{ $project->title }}" style="object-fit: cover;">
                                     </div>
                                 </div>

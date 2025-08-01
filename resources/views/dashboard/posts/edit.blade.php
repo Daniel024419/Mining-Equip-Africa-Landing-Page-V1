@@ -104,7 +104,7 @@
                         <div class="mt-2">
                             @if($post->image)
                                 <p>Current Image:</p>
-                                <img src="{{ asset('storage/' . $post->image) }}" alt="Current featured image" 
+                                <img src="{{ asset('files/' . $post->image) }}" alt="Current featured image" 
                                      class="img-thumbnail" style="max-height: 200px;">
                             @else
                                 <p>No featured image set</p>

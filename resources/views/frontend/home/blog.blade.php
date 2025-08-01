@@ -48,7 +48,7 @@
                     <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.{{ $loop->index + 2 }}s">
                         <div class="blog-item h-100">
                             <div class="blog-img">
-                                <img src="{{ asset('frontend/img/' . $post->image) }}" class="img-fluid w-100"
+                                <img src="{{ asset('files/' . $post->image) }}" class="img-fluid w-100"
                                     alt="{{ $post->title }}">
                             </div>
                             <div class="blog-content p-4">

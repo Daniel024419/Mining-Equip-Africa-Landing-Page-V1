@@ -81,7 +81,7 @@
 
     <!-- POSTS & INFOS -->
     <div class="card post-detail-card">
-        <div class="card-header">
+        <div class="card-header" style="display: flex;justify-content:space-between">
             <div class="post-header">
                 <h4>View Post</h4>
                 <span class="post-status {{ $post->published_at ? 'status-published' : 'status-draft' }}">
@@ -116,7 +116,7 @@
             <!-- Featured Image -->
             @if($post->image)
                 <div class="detail-label">Featured Image</div>
-                <img src="{{ asset('storage/' . $post->image) }}" class="post-image" alt="Featured image">
+                <img src="{{ asset('files/' . $post->image) }}" class="post-image" alt="Featured image">
             @endif
 
             <!-- Title -->

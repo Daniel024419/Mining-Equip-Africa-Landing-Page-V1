@@ -96,7 +96,7 @@
                         <h4 class="mb-4">Latest Posts</h4>
                         @foreach ($recentPosts as $recent)
                             <div class="d-flex mb-3">
-                                <img src="{{ asset('frontend/img/' . $recent->image) }}" class="img-fluid rounded"
+                                <img src="{{ asset('files/' . $recent->image) }}" class="img-fluid rounded"
                                     style="width: 80px; height: 80px; object-fit: cover;" alt="{{ $recent->title }}">
                                 <div class="ms-3">
                                     <h6 class="mb-1">

@@ -51,7 +51,7 @@
             <div class="col-md-6 mb-3">
                 <h6 class="text-muted">Image</h6>
                 @if ($service->image)
-                    <img src="{{ asset('storage/' . $service->image) }}" alt="Service Image" class="img-fluid rounded" style="max-height: 200px;">
+                    <img src="{{ asset('files/' . $service->image) }}" alt="Service Image" class="img-fluid rounded" style="max-height: 200px;">
                 @else
                     <p>No image uploaded</p>
                 @endif

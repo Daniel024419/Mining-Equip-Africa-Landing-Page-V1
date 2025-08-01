@@ -6,9 +6,23 @@ use App\Models\Equipment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Service\FileUploadInterface;
 
 class DashboardEquipmentsController extends Controller
 {
+    /**
+     * destinationPath
+     *
+     * @var string
+     */
+    public $destinationPath = '';
+
+    public function __construct(
+        private FileUploadInterface $fileUploadInterface
+    ) {
+        $this->destinationPath = public_path('/files');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -36,9 +50,11 @@ class DashboardEquipmentsController extends Controller
         DB::beginTransaction();
 
         try {
-            if ($request->hasFile('image')) {
-                $path = $request->file('image')->store('equipments', 'public');
-                $validated['image'] = $path;
+
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                $validated['image'] = $this->fileUploadInterface->uploadFiles($request->file('image'), $this->destinationPath);
+            } else {
+                $validated['image'] = 'defualt.png';
             }
 
             Equipment::create($validated);
@@ -89,14 +105,17 @@ class DashboardEquipmentsController extends Controller
         DB::beginTransaction();
 
         try {
-            if ($request->hasFile('image')) {
-                // Delete old image if exists
-                //if ($equipment->image && \Storage::disk('public')->exists($equipment->image)) {
-                //   \Storage::disk('public')->delete($equipment->image);
-                //}
+            $oldimageName = $equipment->image ?? '';
 
-                $path = $request->file('image')->store('equipments', 'public');
-                $validated['image'] = $path;
+            $imageFile = $request->has('image') ? $validated['image'] : '';
+
+            if ($imageFile && $imageFile->isValid()) {
+                $validated['image'] = $this->fileUploadInterface->uploadFiles($imageFile, $this->destinationPath);
+                if (file_exists($this->destinationPath . '/' . $oldimageName)) {
+                    unlink($this->destinationPath . '/' . $oldimageName);
+                }
+            } else {
+                $validated['image'] = $oldimageName;
             }
 
             $equipment->update($validated);
@@ -121,9 +140,12 @@ class DashboardEquipmentsController extends Controller
         DB::beginTransaction();
 
         try {
-            //if ($equipment->image && \Storage::disk('public')->exists($equipment->image)) {
-            //   \Storage::disk('public')->delete($equipment->image);
-            //}
+            
+            if ($equipment->image) {
+                if (file_exists($this->destinationPath . '/' . $equipment->image)) {
+                    unlink($this->destinationPath . '/' . $equipment->image);
+                }
+            }
 
             $equipment->delete();
 

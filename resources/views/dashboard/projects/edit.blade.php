@@ -72,7 +72,7 @@
                     </div>
                     @if ($project->image)
                         <div class="mt-2">
-                            <img src="{{ asset('storage/' . $project->image) }}" alt="Project Image"
+                            <img src="{{ asset('files/' . $project->image) }}" alt="Project Image"
                                 class="img-fluid rounded" style="max-height: 200px;">
                         </div>
                     @endif

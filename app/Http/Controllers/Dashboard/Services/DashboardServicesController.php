@@ -6,9 +6,23 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Service\FileUploadInterface;
 
 class DashboardServicesController extends Controller
 {
+    /**
+     * destinationPath
+     *
+     * @var string
+     */
+    public $destinationPath = '';
+
+    public function __construct(
+        private FileUploadInterface $fileUploadInterface
+    ) {
+        $this->destinationPath = public_path('/files');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -36,8 +50,10 @@ class DashboardServicesController extends Controller
         try {
             $data = $request->only(['title', 'description', 'category', 'icon']);
 
-            if ($request->hasFile('image')) {
-                $data['image'] = $request->file('image')->store('services', 'public');
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                $data['image'] = $this->fileUploadInterface->uploadFiles($request->file('image'), $this->destinationPath);
+            } else {
+                $data['image'] = 'defualt.png';
             }
 
             Service::create($data);
@@ -47,7 +63,7 @@ class DashboardServicesController extends Controller
             return redirect()->back()->with('success', 'Service created successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('error', 'Failed to create service.'.$e->getMessage());
+            return redirect()->back()->with('error', 'Failed to create service.' . $e->getMessage());
         }
     }
 
@@ -59,7 +75,7 @@ class DashboardServicesController extends Controller
     {
         return view('dashboard.services.show', compact('service'));
     }
-        
+
     /**
      * edit
      *
@@ -90,11 +106,17 @@ class DashboardServicesController extends Controller
 
             $data = $request->only(['title', 'description', 'category', 'icon']);
 
-            if ($request->hasFile('image')) {
-                if ($service->image) {
-                    //Storage::disk('public')->delete($service->image);
+            $oldimageName = $project->image ?? '';
+
+            $imageFile = $request->has('image') ? $request->file('image') : '';
+
+            if ($imageFile && $imageFile->isValid()) {
+                $data['image'] = $this->fileUploadInterface->uploadFiles($imageFile, $this->destinationPath);
+                if (file_exists($this->destinationPath . '/' . $oldimageName)) {
+                    unlink($this->destinationPath . '/' . $oldimageName);
                 }
-                $data['image'] = $request->file('image')->store('services', 'public');
+            } else {
+                $data['image'] = $oldimageName;
             }
 
             $service->update($data);
@@ -119,7 +141,9 @@ class DashboardServicesController extends Controller
         try {
 
             if ($service->image) {
-                //Storage::disk('public')->delete($service->image);
+                if (file_exists($this->destinationPath . '/' . $service->image)) {
+                    unlink($this->destinationPath . '/' . $service->image);
+                }
             }
 
             $service->delete();

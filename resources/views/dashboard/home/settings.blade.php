@@ -9,44 +9,14 @@
 <body>
     @include('dashboard.partials.nav')
 
-    <!-- HEADER -->
-    <header id="main-header" class="text-white bg-primary py-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h1><i class="fas fa-cog"></i> Configurações</h1>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- ACTIONS -->
-    <section id="actions" class="bg-light mb-4 py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <a href="index.html" class="btn btn-block btn-light">
-                        <i class="fas fa-arrow-left"></i> Voltar para o Dashboard
-                    </a>
-                </div>
-
-                <div class="col-md-3">
-                    <a href="#" class="btn btn-block btn-success">
-                        <i class="fas fa-check"></i> Salvar Alterações
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- SETTINGS -->
     <main id="settings">
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Setar Configurações</h4>
+                    <div class="card" style="margin-top: 20px">
+                        <div class="card-header" style="display: flex;justify-content:space-between">
+                            <h4>Settings</h4>
                         </div>
                         <div class="card-body">
                             <form>

@@ -44,7 +44,7 @@
                 <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="service-detail-content bg-white rounded shadow-sm p-4 mb-5">
                         <div class="service-main-img mb-4">
-                            <img src="{{ $service->image_url }}" class="img-fluid w-100 rounded" alt="{{ $service->title }}">
+                            <img src="{{ asset('files/'. $service->image) }}" class="img-fluid w-100 rounded" alt="{{ $service->title }}">
                             <div class="service-badge bg-primary text-white p-2 px-3 rounded-pill d-inline-block mt-3">
                                 {{ ucfirst($service->category) }} Service
                             </div>
@@ -118,7 +118,7 @@
                 <div class="col-lg-4 mb-4">
                     <div class="related-service bg-white rounded shadow-sm overflow-hidden h-100">
                         <div class="related-img">
-                            <img src="{{ $related->image_url }}" class="img-fluid w-100" alt="{{ $related->title }}">
+                            <img src="{{ asset('files/'. $related->image) }}" class="img-fluid w-100" alt="{{ $related->title }}">
                         </div>
                         <div class="related-content p-4">
                             <h5 class="mb-3">{{ $related->title }}</h5>

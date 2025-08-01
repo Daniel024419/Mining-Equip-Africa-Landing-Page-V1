@@ -9,23 +9,13 @@
 <body>
     @include('dashboard.partials.nav')
 
-    <!-- ACTIONS -->
-    <section id="actions" class="bg-light mb-4 py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <a href="#" class="btn btn-block btn-primary" data-toggle="modal" data-target="#addServiceModal">
-                        <i class="fas fa-plus"></i> Add Services
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
     <div class="card">
-        <div class="card-header">
-            <h4>All services ( {{ $services->total()}} )</h4>
+        <div class="card-header" style="display: flex;justify-content:space-between">
+            <h4>All services ( {{ $services->total() }} )</h4> 
+            <a href="#" style="width: 200px;" class="btn btn-block btn-primary"
+                data-toggle="modal" data-target="#addServiceModal">
+                <i class="fas fa-plus"></i> Add Services
+            </a>
         </div>
 
         <table class="table table-striped table-scroll">
@@ -49,8 +39,7 @@
 
                         <td>
                             @if ($service->image)
-                                <img src="{{ asset('storage/' . $service->image) }}" alt="Image"
-                                    style="height: 40px;">
+                                <img src="{{ asset('files/' . $service->image) }}" alt="Image" style="height: 40px;">
                             @else
                                 —
                             @endif
@@ -71,7 +60,7 @@
                                 <i class="fas fa-trash-alt"></i>
                             </button>
 
-                           @include('dashboard.services.delete-services-modal')
+                            @include('dashboard.services.delete-services-modal')
                         </td>
                     </tr>
 
@@ -82,6 +71,10 @@
                 @endforelse
             </tbody>
         </table>
+        <!-- Pagination -->
+        <div class="row mt-5 wow fadeInUp mt-3 justify-content-center" data-wow-delay="0.3s">
+            {{ $services->links('pagination::bootstrap-4') }}
+        </div>
     </div>
 
 

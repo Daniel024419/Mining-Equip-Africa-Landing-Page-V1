@@ -56,7 +56,7 @@
             <div class="col-md-12 mb-3">
                 <h6 class="text-muted">Image</h6>
                 @if ($equipment->image)
-                    <img src="{{ asset('storage/' . $equipment->image) }}" alt="Equipment Image" class="img-fluid rounded" style="max-height: 300px;">
+                    <img src="{{ asset('files/' . $equipment->image) }}" alt="Equipment Image" class="img-fluid rounded" style="max-height: 300px;">
                 @else
                     <p>No image available</p>
                 @endif

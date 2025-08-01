@@ -63,7 +63,7 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s" data-category="{{ $item->category }}">
                     <div class="gallery-item bg-white rounded shadow-sm overflow-hidden h-100">
                         <div class="gallery-img position-relative">
-                            <img src="{{ asset('storage/'.$item->image) }}" class="img-fluid w-100" alt="{{ $item->name }}">
+                            <img src="{{ asset('files/'.$item->image) }}" class="img-fluid w-100" alt="{{ $item->name }}">
                             <div class="category-badge position-absolute top-0 end-0 bg-primary text-white p-2">
                                 {{ ucfirst($item->category) }}
                             </div>

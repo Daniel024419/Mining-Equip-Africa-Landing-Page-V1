@@ -100,7 +100,6 @@ class FrontendHomeController extends Controller
     public function blog()
     {
         $posts = Post::latest('published_at')
-            ->where('published_at', '<=', now())
             ->paginate(3);
 
         return view('frontend.home.blog', ['posts' => $posts]);

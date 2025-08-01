@@ -6,9 +6,13 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Service\NotificationServiceInterface;
 
 class UsersController extends Controller
 {
+    public function __construct(  private NotificationServiceInterface $notificationService )
+    {
+    }
     /**
      * Display a listing of the resource.
      */

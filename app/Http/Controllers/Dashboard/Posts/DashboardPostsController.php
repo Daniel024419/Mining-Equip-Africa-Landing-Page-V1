@@ -6,10 +6,24 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Service\FileUploadInterface;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardPostsController extends Controller
 {
+    /**
+     * destinationPath
+     *
+     * @var string
+     */
+    public $destinationPath = '';
+
+    public function __construct(
+        private FileUploadInterface $fileUploadInterface
+    ) {
+        $this->destinationPath = public_path('/files');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -47,8 +61,10 @@ class DashboardPostsController extends Controller
             $post->published_at = $request->published_at;
             $post->user_id      = Auth::id();
 
-            if ($request->hasFile('image')) {
-                $post->image = $request->file('image')->store('posts', 'public');
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                $post->image = $this->fileUploadInterface->uploadFiles($request->file('image'), $this->destinationPath);
+            } else {
+                $post->image = 'defualt.png';
             }
 
             $post->save();
@@ -107,8 +123,17 @@ class DashboardPostsController extends Controller
             $post->content      = $request->content;
             $post->published_at = $request->published_at;
 
-            if ($request->hasFile('image')) {
-                $post->image = $request->file('image')->store('posts', 'public');
+            $oldimageName = $post->image ?? '';
+
+            $imageFile = $request->has('image') ? $request->file('image') : '';
+
+            if ($imageFile && $imageFile->isValid()) {
+                $post->image = $this->fileUploadInterface->uploadFiles($imageFile, $this->destinationPath);
+                if (file_exists($this->destinationPath . '/' . $oldimageName)) {
+                    unlink($this->destinationPath . '/' . $oldimageName);
+                }
+            } else {
+                $post->image = $oldimageName;
             }
 
             $post->save();
@@ -129,9 +154,19 @@ class DashboardPostsController extends Controller
     {
         $post = Post::find($post);
         try {
+            DB::beginTransaction();
+
+            if ($post->image) {
+                if (file_exists($this->destinationPath . '/' . $post->image)) {
+                    unlink($this->destinationPath . '/' . $post->image);
+                }
+            }
+            
             $post->delete();
+            DB::commit();
             return redirect()->back()->with('success', 'Post deleted successfully!');
         } catch (\Exception $e) {
+            DB::rollBack();
             return redirect()->back()->with('error', 'Failed to delete post.');
         }
     }

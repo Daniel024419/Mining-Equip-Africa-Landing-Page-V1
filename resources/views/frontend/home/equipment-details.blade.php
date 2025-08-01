@@ -39,7 +39,7 @@
         <div class="row g-4">
             <!-- Image -->
             <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.2s">
-                <img src="{{ $equipment->image_url }}" alt="{{ $equipment->name }}" class="img-fluid rounded-4 w-100" style="height: 400px; object-fit: cover;">
+                <img src="{{ asset('files/'. $equipment->image ) }}"alt="{{ $equipment->name }}" class="img-fluid rounded-4 w-100" style="height: 400px; object-fit: cover;">
                 <div class="equipment-badge bg-warning text-dark px-3 py-1 rounded-pill fw-bold mt-3 text-uppercase" style="width: fit-content;">
                     {{ $equipment->condition }}
                 </div>

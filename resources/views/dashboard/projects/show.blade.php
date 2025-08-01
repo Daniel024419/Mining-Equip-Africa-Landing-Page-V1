@@ -49,7 +49,7 @@
             <div class="col-md-12 mb-3">
                 <h6 class="text-muted">Image</h6>
                 @if ($project->image)
-                    <img src="{{ asset('storage/' . $project->image) }}" alt="Project Image" class="img-fluid rounded" style="max-height: 300px;">
+                    <img src="{{ asset('files/' . $project->image) }}" alt="Project Image" class="img-fluid rounded" style="max-height: 300px;">
                 @else
                     <p>No image uploaded</p>
                 @endif

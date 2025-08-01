@@ -56,7 +56,7 @@
                     </div>
                     @if ($service->image)
                         <div class="mt-2">
-                            <img src="{{ asset('storage/' . $service->image) }}" alt="Service Image" class="img-fluid rounded" style="max-height: 150px;">
+                            <img src="{{ asset('files/' . $service->image) }}" alt="Service Image" class="img-fluid rounded" style="max-height: 150px;">
                         </div>
                     @endif
                 </div>

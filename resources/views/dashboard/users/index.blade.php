@@ -9,24 +9,14 @@
 <body>
     @include('dashboard.partials.nav')
 
-    <!-- ACTIONS -->
-    <section id="actions" class="bg-light mb-4 py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <a href="#" class="btn btn-block btn-primary" data-toggle="modal" data-target="#addUserModal">
-                        <i class="fas fa-plus"></i> Add User
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
     <!-- USERS & INFOS -->
     <div class="card">
-        <div class="card-header bg-dark text-white">
-            <h4>All Users ( {{$users->total()}} )</h4>
+        <div class="card-header" style="display: flex;justify-content:space-between">
+            <h4>All Users ( {{ $users->total() }} )</h4>
+            <a href="#" style="width: 200px" class="btn btn-block btn-primary" data-toggle="modal"
+                data-target="#addUserModal">
+                <i class="fas fa-plus"></i> Add User
+            </a>
         </div>
 
         <div class="table-responsive" style="max-height: 400px;">
@@ -72,6 +62,11 @@
                     @endforelse
                 </tbody>
             </table>
+
+        </div>
+        <!-- Pagination -->
+        <div class="row mt-5 wow fadeInUp mt-3 justify-content-center" data-wow-delay="0.3s">
+            {{ $users->links('pagination::bootstrap-4') }}
         </div>
     </div>
 

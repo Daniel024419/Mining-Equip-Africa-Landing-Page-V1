@@ -54,7 +54,7 @@
                     <div class="col-lg-4 wow fadeInUp" data-wow-delay="{{ 0.2 + ($loop->index % 3) * 0.2 }}s">
                         <div class="equipment-item border border-warning rounded-4 overflow-hidden bg-dark h-100">
                             <div class="equipment-img position-relative">
-                                <img src="{{ $equipment->image_url }}" class="img-fluid w-100"
+                                <img src="{{ asset('files/'. $equipment->image ) }}" class="img-fluid w-100"
                                     alt="{{ $equipment->name }}" style="height: 250px; object-fit: cover;">
                                 <div
                                     class="equipment-badge bg-warning text-dark px-3 py-1 position-absolute top-0 end-0 m-3 rounded-pill fw-bold text-uppercase">
