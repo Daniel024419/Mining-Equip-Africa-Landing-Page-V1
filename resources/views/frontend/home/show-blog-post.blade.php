@@ -41,9 +41,15 @@
         <div class="container py-5">
             <!-- Back Button -->
             <div class="mb-4">
-                <a href="{{ route('frontend.home.blog') }}" class="btn btn-secondary">
+                <a href="{{ route('frontend.home.blog') }}" class="btn btn-secondary py-2 px-4">
                     <i class="fas fa-arrow-left me-2"></i> Back to Blog
                 </a>
+
+                <!-- Share Button -->
+                <button class="btn btn-primary py-2 px-4" onclick="openShareActions('{{ json_encode($post->id) }}')"
+                    >
+                    <i class="fas fa-share-alt" id="shareIcon"></i> Share Post
+                </button>
             </div>
 
             <!-- Main Content -->
@@ -137,7 +143,7 @@
     <!-- Footer Start -->
     @include('frontend.partials.footer')
     <!-- Footer End -->
-
+    @include('frontend.home.partials.share-and-copy-post-to-clipboard')
     <!-- JavaScript Libraries -->
     @include('frontend.partials.script')
 </body>

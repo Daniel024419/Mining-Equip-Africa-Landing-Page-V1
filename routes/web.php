@@ -31,13 +31,16 @@ Route::prefix('/')
                 Route::get('/quotes', 'quotes')->name('quotes');
                 Route::get('/blog', 'blog')->name('blog');
                 Route::get('/blog/show/{post}', 'showPost')->name('showPost');
+                Route::get('/blog/post/get-details/{post}','getPostDetails')->name('getPostDetails');
                 Route::get('/team', 'teams')->name('teams');
                 Route::get('/testimonial', 'testimonial')->name('testimonial');
                 Route::get('/features', 'features')->name('features');
                 Route::get('/gallery', 'gallery')->name('gallery');
                 Route::get('/equipments/{condition}', 'equipments')->name('equipments');
                 Route::get('/equipment/show/{equipment}', 'showEquiment')->name('showEquiment');
+                Route::get('/equipment/show/get-details/{equipment}','getEquipmentsDetails')->name('getEquipmentsDetails');
                 Route::get('/services/show/{service}', 'showService')->name('showService');
+                Route::get('/services/show/get-details/{service}','getServiceDetails')->name('getServiceDetails');
                 Route::post('/store-inquiries', 'storeInquiries')->name('storeInquiries');
                 Route::post('/users/store-vistor', 'registerVistor')->name('registerVistor');
             });

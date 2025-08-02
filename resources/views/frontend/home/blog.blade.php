@@ -62,11 +62,23 @@
                                         {{ $post->author->name }}
                                     </p>
                                 </div>
+
+
                                 <a href="{{ route('frontend.home.showPost', $post) }}"
                                     class="h4 d-block mb-4">{{ $post->title }}</a>
-                                <a class="btn btn-secondary py-2 px-4" href="{{ route('frontend.home.showPost', $post) }}">
-                                    Read More
-                                </a>
+                                <div class="d-flex align-items-center gap-2">
+                                    <!-- Read More Button -->
+                                    <a class="btn btn-secondary py-2 px-4"
+                                        href="{{ route('frontend.home.showPost', $post) }}">
+                                        Read More
+                                    </a>
+
+                                    <!-- Share Button -->
+                                    <button class="btn btn-primary py-2 px-4" onclick="openShareActions('{{ json_encode($post->id)}}')" >
+                                        <i class="fas fa-share-alt" id="shareIcon"></i> Share Post
+                                    </button>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -77,9 +89,9 @@
     <!-- Footer Start -->
     @include('frontend.partials.footer')
     <!-- Footer End -->
-
+    @include('frontend.home.partials.share-and-copy-post-to-clipboard')
     <!-- JavaScript Libraries -->
-    @include('frontend.partials.script')    
+    @include('frontend.partials.script')
 
 </body>
 

@@ -23,7 +23,13 @@ class FrontendHomeController extends Controller
      */
     public function index()
     {
-        return view('frontend.home.index');
+        $posts = Post::latest('published_at')
+            ->paginate(3);
+        
+        $services = Service::query()->latest()
+            ->paginate(3);
+
+        return view('frontend.home.index',compact('posts','services'));
     }
 
     /**
@@ -79,6 +85,22 @@ class FrontendHomeController extends Controller
     }
 
     /**
+     * getServiceDetails
+     *
+     * @param  int $id
+     * @return void
+     */
+    public function getServiceDetails( int $id)
+    {
+        $service = Service::findOrFail($id);
+        return response()->json([
+            'title' => $service->title,
+            'url' => route('frontend.home.showService', $service->id),
+            'image' => $service->image, 
+        ]);
+    }
+
+    /**
      * projects
      *
      * @return void
@@ -100,7 +122,7 @@ class FrontendHomeController extends Controller
     public function blog()
     {
         $posts = Post::latest('published_at')
-            ->paginate(3);
+            ->paginate(10);
 
         return view('frontend.home.blog', ['posts' => $posts]);
     }
@@ -121,6 +143,23 @@ class FrontendHomeController extends Controller
 
         return view('frontend.home.show-blog-post',  compact('post', 'recentPosts'));
     }
+    
+    /**
+     * getPostDetails
+     *
+     * @param  int $id
+     * @return void
+     */
+    public function getPostDetails( int $id)
+    {
+        $post = Post::findOrFail($id);
+        return response()->json([
+            'title' => $post->title,
+            'url' => route('frontend.home.showPost', $post->slug),
+            'image' => $post->image, 
+        ]);
+    }
+
 
     /**
      * teams
@@ -201,6 +240,22 @@ class FrontendHomeController extends Controller
     }
 
     /**
+     * getEquipmentsDetails
+     *
+     * @param  int $id
+     * @return void
+     */
+    public function getEquipmentsDetails(int $id)
+    {
+        $equipment = Equipment::findOrFail($id);
+        return response()->json([
+            'title' => $equipment->name.'( condition : '.$equipment->condition.')',
+            'url' => route('frontend.home.showEquiment', $equipment->id),
+            'image' => $equipment->image,
+        ]);
+    }
+
+    /**
      * Store a newly created inquiry in storage.
      */
     public function storeInquiries(Request $request)
@@ -249,13 +304,15 @@ class FrontendHomeController extends Controller
             DB::commit();
 
             return redirect()->back()->with(
-                'message', 'Registration successful',
+                'message',
+                'Registration successful',
             );
         } catch (\Exception $e) {
             DB::rollBack();
             logger($e);
             return redirect()->back()->with(
-                'message' , 'Registration failed. Please try again.',
+                'message',
+                'Registration failed. Please try again.',
             );
         }
     }

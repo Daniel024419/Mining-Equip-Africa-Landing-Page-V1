@@ -210,8 +210,8 @@
                                     <div>
                                         <h5 class="text-warning">Email Us</h5>
                                         <p class="text-light mb-0 small">
-                                            info@miningequipafrica.com<br>
-                                            sales@miningequipafrica.com
+                                           <a style="color: white" href="mailto: info@miningequipafrica.com"> info@miningequipafrica.com</a><br>
+                                            <a style="color: white" href="mailto:sales@miningequipafrica.com">sales@miningequipafrica.com</a>
                                         </p>
                                     </div>
                                 </div>
@@ -224,8 +224,8 @@
                                     <div>
                                         <h5 class="text-warning">Call Us</h5>
                                         <p class="text-light mb-0 small">
-                                            +233 24 442 8332<br>
-                                            +233 20 067 2219
+                                            <a style="color: white" href="tel:+233244428332">+233 24 442 8332</a><br>
+                                            <a style="color: white" href="tel:+233 20 067 2219">+233200672219</a>
                                         </p>
                                     </div>
                                 </div>
@@ -243,7 +243,7 @@
                                 <i class="fas fa-exclamation-triangle fa-3x text-dark me-md-4 mb-3 mb-md-0"></i>
                                 <div>
                                     <h3 class="text-dark mb-1">24/7 Equipment Emergency Line</h3>
-                                    <h2 class="text-dark">+233 50 123 4567</h2>
+                                    <h2 class="text-dark"><a href="tel:+233501234567">+233 50 123 4567</a></h2>
                                     <p class="mb-0">For immediate technical support on active mining operations</p>
                                 </div>
                             </div>

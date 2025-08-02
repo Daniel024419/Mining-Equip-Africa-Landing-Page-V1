@@ -39,12 +39,25 @@
     <!-- Service Detail Start -->
     <div class="container-fluid service-detail py-5">
         <div class="container py-5">
+            <!-- Back Button -->
+            <div class="mb-4">
+                <a href="{{ route('frontend.home.services') }}" class="btn btn-secondary py-2 px-4">
+                    <i class="fas fa-arrow-left me-2"></i> Back to Service
+                </a>
+
+                <!-- Share Button -->
+                <button class="btn btn-primary py-2 px-4" onclick="openShareActions('{{ json_encode($service->id) }}')">
+                    <i class="fas fa-share-alt" id="shareIcon"></i> Share Service
+                </button>
+            </div>
+
             <div class="row g-5">
                 <!-- Main Content -->
                 <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="service-detail-content bg-white rounded shadow-sm p-4 mb-5">
                         <div class="service-main-img mb-4">
-                            <img src="{{ asset('files/'. $service->image) }}" class="img-fluid w-100 rounded" alt="{{ $service->title }}">
+                            <img src="{{ asset('files/' . $service->image) }}" class="img-fluid w-100 rounded"
+                                alt="{{ $service->title }}">
                             <div class="service-badge bg-primary text-white p-2 px-3 rounded-pill d-inline-block mt-3">
                                 {{ ucfirst($service->category) }} Service
                             </div>
@@ -55,20 +68,20 @@
                         </div>
 
                         <!-- Features (if available) -->
-                        @if($service->features)
-                        <div class="service-features mb-5">
-                            <h4 class="mb-4">Key Features</h4>
-                            <ul class="list-unstyled">
-                                @foreach(explode("\n", $service->features) as $feature)
-                                    @if(trim($feature))
-                                        <li class="mb-2">
-                                            <i class="fas fa-check-circle text-primary me-2"></i>
-                                            {{ trim($feature) }}
-                                        </li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </div>
+                        @if ($service->features)
+                            <div class="service-features mb-5">
+                                <h4 class="mb-4">Key Features</h4>
+                                <ul class="list-unstyled">
+                                    @foreach (explode("\n", $service->features) as $feature)
+                                        @if (trim($feature))
+                                            <li class="mb-2">
+                                                <i class="fas fa-check-circle text-primary me-2"></i>
+                                                {{ trim($feature) }}
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
                         @endif
                     </div>
                 </div>
@@ -80,19 +93,23 @@
                         <h4 class="mb-4">Our Service Categories</h4>
                         <ul class="list-unstyled">
                             <li class="mb-2">
-                                <a href="{{ route('frontend.home.services') }}?category=equipment" class="d-flex justify-content-between align-items-center py-2 px-3 rounded {{ $service->category == 'equipment' ? 'bg-light' : '' }}">
-                                    <span><i class="fas fa-truck-pickup text-primary me-2"></i> Equipment Services</span>
+                                <a href="{{ route('frontend.home.services') }}?category=equipment"
+                                    class="d-flex justify-content-between align-items-center py-2 px-3 rounded {{ $service->category == 'equipment' ? 'bg-light' : '' }}">
+                                    <span><i class="fas fa-truck-pickup text-primary me-2"></i> Equipment
+                                        Services</span>
                                     <i class="fas fa-arrow-right"></i>
                                 </a>
                             </li>
                             <li class="mb-2">
-                                <a href="{{ route('frontend.home.services') }}?category=consulting" class="d-flex justify-content-between align-items-center py-2 px-3 rounded {{ $service->category == 'consulting' ? 'bg-light' : '' }}">
+                                <a href="{{ route('frontend.home.services') }}?category=consulting"
+                                    class="d-flex justify-content-between align-items-center py-2 px-3 rounded {{ $service->category == 'consulting' ? 'bg-light' : '' }}">
                                     <span><i class="fas fa-clipboard-check text-primary me-2"></i> Consulting</span>
                                     <i class="fas fa-arrow-right"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('frontend.home.services') }}?category=support" class="d-flex justify-content-between align-items-center py-2 px-3 rounded {{ $service->category == 'support' ? 'bg-light' : '' }}">
+                                <a href="{{ route('frontend.home.services') }}?category=support"
+                                    class="d-flex justify-content-between align-items-center py-2 px-3 rounded {{ $service->category == 'support' ? 'bg-light' : '' }}">
                                     <span><i class="fas fa-tools text-primary me-2"></i> Support</span>
                                     <i class="fas fa-arrow-right"></i>
                                 </a>
@@ -114,19 +131,21 @@
                 <div class="col-12">
                     <h3 class="mb-5">Related Services</h3>
                 </div>
-                @foreach($relatedServices as $related)
-                <div class="col-lg-4 mb-4">
-                    <div class="related-service bg-white rounded shadow-sm overflow-hidden h-100">
-                        <div class="related-img">
-                            <img src="{{ asset('files/'. $related->image) }}" class="img-fluid w-100" alt="{{ $related->title }}">
-                        </div>
-                        <div class="related-content p-4">
-                            <h5 class="mb-3">{{ $related->title }}</h5>
-                            <p class="mb-3">{{ Str::limit($related->description, 100) }}</p>
-                            <a href="{{ route('frontend.home.showService', $related->id) }}" class="btn btn-primary py-2 px-4">View Details</a>
+                @foreach ($relatedServices as $related)
+                    <div class="col-lg-4 mb-4">
+                        <div class="related-service bg-white rounded shadow-sm overflow-hidden h-100">
+                            <div class="related-img">
+                                <img src="{{ asset('files/' . $related->image) }}" class="img-fluid w-100"
+                                    alt="{{ $related->title }}">
+                            </div>
+                            <div class="related-content p-4">
+                                <h5 class="mb-3">{{ $related->title }}</h5>
+                                <p class="mb-3">{{ Str::limit($related->description, 100) }}</p>
+                                <a href="{{ route('frontend.home.showService', $related->id) }}"
+                                    class="btn btn-primary py-2 px-4">View Details</a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
@@ -136,8 +155,9 @@
     <!-- Footer Start -->
     @include('frontend.partials.footer')
     <!-- Footer End -->
-
+    @include('frontend.home.partials.share-and-copy-service-to-clipboard')
     <!-- JavaScript Libraries -->
     @include('frontend.partials.script')
 </body>
+
 </html>

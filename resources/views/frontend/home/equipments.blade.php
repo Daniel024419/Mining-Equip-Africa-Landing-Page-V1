@@ -54,7 +54,7 @@
                     <div class="col-lg-4 wow fadeInUp" data-wow-delay="{{ 0.2 + ($loop->index % 3) * 0.2 }}s">
                         <div class="equipment-item border border-warning rounded-4 overflow-hidden bg-dark h-100">
                             <div class="equipment-img position-relative">
-                                <img src="{{ asset('files/'. $equipment->image ) }}" class="img-fluid w-100"
+                                <img src="{{ asset('files/' . $equipment->image) }}" class="img-fluid w-100"
                                     alt="{{ $equipment->name }}" style="height: 250px; object-fit: cover;">
                                 <div
                                     class="equipment-badge bg-warning text-dark px-3 py-1 position-absolute top-0 end-0 m-3 rounded-pill fw-bold text-uppercase">
@@ -63,7 +63,7 @@
                             </div>
                             <div class="equipment-content p-4">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h3 class="text-warning mb-0">{{ Str::ucfirst($equipment->name ) }}</h3>
+                                    <h3 class="text-warning mb-0">{{ Str::ucfirst($equipment->name) }}</h3>
                                     <div class="text-warning">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -78,18 +78,29 @@
                                     <li>{{ Str::limit($equipment->description, 60) }}</li>
                                 </ul>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a href="{{route('frontend.home.showEquiment',$equipment->id)}}" class="btn btn-outline-warning py-2 px-4">Details</a>
+                                   <div class="d-flex align-items-center gap-2">
+                                    <a href="{{ route('frontend.home.showEquiment', $equipment->id) }}"
+                                        class="btn btn-outline-warning py-2 px-4">Details</a>
+
+                                    <!-- Share Button -->
+                                    <button class="btn btn-outline-warning py-2 px-4"
+                                        onclick="openShareActions('{{ json_encode($equipment->id) }}')">
+                                        <i class="fas fa-share-alt" id="shareIcon"></i> Share
+                                    </button>
+                                   </div>
+
                                     <span class="text-warning fw-bold">
-                                        GHS {{ is_numeric($equipment->price) ? number_format($equipment->price, 2) : $equipment->price }}
+                                        GHS
+                                        {{ is_numeric($equipment->price) ? number_format($equipment->price, 2) : $equipment->price }}
                                     </span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                 @empty
-                    <h2 class="text-white" >No {{ request('condition') }} equiment matching the condition is found</h2>
-                @endforelse 
+                    <h2 class="text-white">No {{ request('condition') }} equiment matching the condition is found</h2>
+                @endforelse
 
                 <!-- Pagination -->
                 <div class="row mt-5 wow fadeInUp mt-3 justify-content-center" data-wow-delay="0.3s">
@@ -180,7 +191,7 @@
     <!-- Footer Start -->
     @include('frontend.partials.footer')
     <!-- Footer End -->
-
+    @include('frontend.home.partials.share-and-copy-equipment-to-clipboard')
     <!-- JavaScript Libraries -->
     @include('frontend.partials.script')
 </body>

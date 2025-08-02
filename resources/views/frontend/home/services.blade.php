@@ -93,6 +93,12 @@
                                         class="btn btn-primary rounded-pill px-4 py-2 d-inline-flex align-items-center">
                                         Learn More <i class="fas fa-arrow-right ms-2 small"></i>
                                     </a>
+
+                                    <!-- Share Button -->
+                                    <button class="btn btn-warning rounded-pill px-4 py-2 d-inline-flex align-items-center"
+                                        onclick="openShareActions('{{ json_encode($service->id) }}')">
+                                        <i class="fas fa-share-alt me-2" id="shareIcon"></i> Share
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +117,7 @@
     <!-- Footer Start -->
     @include('frontend.partials.footer')
     <!-- Footer End -->
-
+    @include('frontend.home.partials.share-and-copy-service-to-clipboard')
     <!-- JavaScript Libraries -->
     @include('frontend.partials.script')
 
