@@ -74,15 +74,15 @@
                 </div>
 
                 <!-- Call-to-Action Buttons -->
-                <div class="d-flex align-items-center flex-nowrap pt-3 pt-lg-0 ms-lg-3">
+                <div class="d-flex flex-wrap align-items-center gap-2 pt-3 pt-lg-0 ms-lg-3">
                     <!-- Language Selector Dropdown -->
-                    <div class="dropdown me-3">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" id="languageDropdown"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-warning dropdown-toggle d-flex align-items-center" type="button"
+                            id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-language me-1"></i>
                             <span class="d-none d-md-inline">Language</span>
                         </button>
-                        <ul class="dropdown-menu dropdown-menu-end bg-dark border-warning"
+                        <ul class="dropdown-menu dropdown-menu-end bg-dark border-warning mt-1"
                             aria-labelledby="languageDropdown">
                             <li>
                                 <div id="google_translate_element" class="p-2"></div>
@@ -90,62 +90,40 @@
                             <li>
                                 <hr class="dropdown-divider border-warning">
                             </li>
+                            <!-- Uncomment below to manually show language options -->
                             {{-- <li>
-                                <a class="dropdown-item text-white" href="#"
-                                    onclick="doGTranslate('en|en');return false;">
-                                    <img src="https://flagcdn.com/w20/gb.png" alt="English" class="me-2"> English
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item text-white" href="#"
-                                    onclick="doGTranslate('en|fr');return false;">
-                                    <img src="https://flagcdn.com/w20/fr.png" alt="French" class="me-2"> Français
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item text-white" href="#"
-                                    onclick="doGTranslate('en|es');return false;">
-                                    <img src="https://flagcdn.com/w20/es.png" alt="Spanish" class="me-2"> Español
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item text-white" href="#"
-                                    onclick="doGTranslate('en|de');return false;">
-                                    <img src="https://flagcdn.com/w20/de.png" alt="German" class="me-2"> Deutsch
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item text-white" href="#"
-                                    onclick="doGTranslate('en|zh-CN');return false;">
-                                    <img src="https://flagcdn.com/w20/cn.png" alt="Chinese" class="me-2"> 中文
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item text-white" href="#"
-                                    onclick="doGTranslate('en|ar');return false;">
-                                    <img src="https://flagcdn.com/w20/sa.png" alt="Arabic" class="me-2"> العربية
-                                </a>
-                            </li> --}}
+                <a class="dropdown-item text-white" href="#" onclick="doGTranslate('en|en');return false;">
+                    <img src="https://flagcdn.com/w20/gb.png" class="me-2"> English
+                </a>
+            </li> --}}
                         </ul>
                     </div>
 
+                    <!-- Search Button -->
                     <button class="btn btn-outline-warning py-2 px-3" data-bs-toggle="modal"
                         data-bs-target="#searchModal">
                         <i class="fas fa-search"></i>
                     </button>
-                    <a href="tel:0244428332" class="btn btn-warning py-2 px-4 ms-3 fw-bold text-dark">
-                        <i class="fas fa-phone-alt me-2"></i>
+
+                    <!-- Call Button -->
+                    <a href="tel:0244428332" class="btn btn-warning py-2 px-4 fw-bold text-dark">
+                        <i class="fas fa-phone-alt me-2"></i>Call
                     </a>
+
+                    <!-- Auth Buttons -->
                     @auth
-                        <a class="btn btn-secondary py-2 px-4 ms-3 fw-bold text-dark"
-                            href="{{ route('dashboard.auth.logout') }}"><i class="fa fa-lock"></i> Logout</a>
+                        <a class="btn btn-secondary py-2 px-4 fw-bold text-dark"
+                            href="{{ route('dashboard.auth.logout') }}">
+                            <i class="fa fa-lock me-1"></i> Logout
+                        </a>
                     @else
-                        <a class="btn btn-secondary py-2 px-4 ms-3 fw-bold text-dark"
-                            href="{{ route('dashboard.auth.index') }}"><i class="fa fa-user"></i> Login</a>
+                        <a class="btn btn-secondary py-2 px-4 fw-bold text-dark"
+                            href="{{ route('dashboard.auth.index') }}">
+                            <i class="fa fa-user me-1"></i> Login
+                        </a>
                     @endauth
-
-
                 </div>
+
             </div>
 
             <!-- Google Translate Script -->
