@@ -22,7 +22,7 @@
                 <div class="d-flex align-items-center justify-content-end">
                     <div class="text-light me-3 d-flex align-items-center">
                         <i class="fas fa-clock text-warning me-2"></i>
-                        <span>Mon-Fri: 7:30 - 15:00 | Sat: 8:00 - 14:00</span>
+                        <span>Mon-Sat: 7:30 - 17:00</span>
                     </div>
                     <div class="d-flex">
                         <a href="#" class="btn btn-outline-warning btn-square rounded-circle me-2">

@@ -100,7 +100,7 @@
                     <ul class="list-unstyled text-light">
                         <li class="mb-3"><i class="fas fa-map-marker-alt me-3 text-warning"></i> P.O. Box TD 483,
                             Takoradi Airport Ridge , Ghana </li>
-                        <li class="mb-3"><i class="fas fa-map-marker-alt me-3 text-warning"></i> Biabiani, Ghana </li>
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-3 text-warning"></i> Bibiani, Ghana </li>
                         <li class="mb-3"><i class="fas fa-envelope me-3 text-warning"></i> info@miningequipafrica.com
                         </li>
                         <li class="mb-3"><i class="fas fa-phone me-3 text-warning"></i> +233 24 442 8332</li>

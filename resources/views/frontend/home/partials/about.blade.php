@@ -4,8 +4,8 @@
             <!-- Image Gallery (Left Column) -->
             <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.1s">
                 <div class="d-flex position-relative">
-                    <!-- Main Equipment Image -->
-                    <img src="{{ asset('logo.png') }}" alt="Mining Drill Rig">
+                    <!-- Main Equipment Image (Responsive) -->
+                    <img src="{{ asset('logo.png') }}" alt="Mining Drill Rig" class="img-fluid w-100">
 
                     <!-- Overlay Badge (Gold Accent) -->
                     <div class="position-absolute top-0 start-0 translate-middle bg-warning p-3 rounded-circle shadow"
@@ -17,6 +17,7 @@
                     </div>
                 </div>
             </div>
+
 
             <!-- Content (Right Column) -->
             <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.1s">
@@ -31,7 +32,7 @@
                     </p>
 
                     <!-- Key Services -->
-                    <div class="pb-4 mb-4 border-bottom border-warning">
+                    <div class="pb-4 mb-4 border-botom border-warning">
                         <div class="row g-4">
                             <div class="col-lg-4">
                                 <img src="{{ asset('files/mining equip.png') }}" class="img-fluid rounded-3 h-100"
@@ -89,7 +90,7 @@
                                     <div>
                                         <h5 class="text-warning mb-1">Location</h5>
                                         <p class="text-light mb-0">P.O. Box TD 483, Takoradi Airport Ridge, Ghana</p>
-                                        <p class="text-light mb-0" > Biabiani, Ghana </p>
+                                        <p class="text-light mb-0"> Bibiani, Ghana </p>
                                     </div>
                                 </div>
                             </div>
