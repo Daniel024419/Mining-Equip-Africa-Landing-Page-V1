@@ -26,7 +26,7 @@ class EquipmentFactory extends Factory
             'condition' => $this->faker->randomElement($conditions),
             'year' => $this->faker->numberBetween(2010, 2023),
             'price' => $this->faker->numberBetween(50000, 500000),
-            'image' => $this->faker->imageUrl()
+            'image' => 'mining-logistics.jpg'
         ];
     }
 }

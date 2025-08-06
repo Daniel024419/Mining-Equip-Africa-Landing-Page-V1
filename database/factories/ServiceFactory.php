@@ -30,7 +30,7 @@ class ServiceFactory extends Factory
             'description' => $this->faker->paragraph(3),
             'category' => $this->faker->randomElement($categories),
             'icon' => $this->faker->randomElement($icons),
-            'image' => $this->faker->imageUrl(),
+            'image' => 'mining-logistics.jpg',
         ];
     }
 }

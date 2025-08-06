@@ -18,12 +18,7 @@ class ProjectFactory extends Factory
             'category' => $this->faker->randomElement(['Gold Mining', 'Copper Mining', 'Iron Ore', 'Safety Training']),
             'title' => $this->faker->sentence(3),
             'description' => $this->faker->paragraph(2),
-            'image' => 'frontend/img/' . $this->faker->randomElement([
-                'gold-mining-project.jpg',
-                'copper-mining-project.jpg',
-                'iron-ore-project.jpg',
-                'training-project.jpg'
-            ]),
+            'image' => 'mining-logistics.jpg',
             'badges' => $this->faker->randomElements([
                 'RC Drilling', 'Equipment Lease', 'Operator Training',
                 'Diamond Drilling', 'Underground', 'Maintenance',

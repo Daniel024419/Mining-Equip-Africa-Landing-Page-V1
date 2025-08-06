@@ -21,7 +21,7 @@ class PostFactory extends Factory
             'slug' => $this->faker->unique()->slug,
             'excerpt' => $this->faker->paragraph(2),
             'content' => $this->faker->paragraphs(6, true),
-            'image' => 'blog-' . $this->faker->numberBetween(1, 5) . '.jpg',
+            'image' => 'mining-logistics.jpg',
             'published_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'user_id' => \App\Models\User::factory()
         ];
