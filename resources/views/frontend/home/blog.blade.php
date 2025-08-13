@@ -48,8 +48,11 @@
                     <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.{{ $loop->index + 2 }}s">
                         <div class="blog-item h-100">
                             <div class="blog-img">
-                                <img src="{{ asset('files/' . $post->image) }}" class="img-fluid w-100"
-                                    alt="{{ $post->title }}">
+                             <img  src="{{ asset('files/' . ($post->image ?? 'default.png')) }}"
+                                    class="img-fluid w-100 transition-transform hover-scale" alt="{{ $post->title }}"
+                                    style="height: 220px; object-fit: cover;"
+                                    onerror="this.onerror=null; this.src='{{ asset('files/default.png') }}'">
+                                    
                             </div>
                             <div class="blog-content p-4">
                                 <div class="d-flex justify-content-between mb-3">

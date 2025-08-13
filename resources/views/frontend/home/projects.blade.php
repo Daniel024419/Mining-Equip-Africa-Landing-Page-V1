@@ -54,8 +54,10 @@
                             <div class="row g-0">
                                 <div class="col-md-4">
                                     <div class="project-img h-100">
-                                        <img src="{{ asset('files/'.$project->image) }}" class="img-fluid h-100 w-100"
-                                            alt="{{ $project->title }}" style="object-fit: cover;">
+                                    <img  src="{{ asset('files/' . ($project->image ?? 'default.png')) }}"
+                                    class="img-fluid w-100 h-100 transition-transform hover-scale" alt="{{ $project->title }}"
+                                    style="object-fit: cover;"
+                                    onerror="this.onerror=null; this.src='{{ asset('files/default.png') }}'">
                                     </div>
                                 </div>
                                 <div class="col-md-8">

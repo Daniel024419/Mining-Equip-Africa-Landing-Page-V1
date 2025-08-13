@@ -224,8 +224,9 @@
                                     <div>
                                         <h5 class="text-warning">Call Us</h5>
                                         <p class="text-light mb-0 small">
-                                            <a style="color: white" href="tel:+233244428332">+233 24 442 8332</a><br>
-                                            <a style="color: white" href="tel:+233 20 067 2219">+233200672219</a>
+                                            <a style="color: white" href="tel:+233244428332">(GH)  +233 24 442 8332</a><br>
+                                            <a style="color: white" href="tel:+233553247728">(GH) +233 55 324 7728</a><br>
+                                            <a style="color: white" href="tel:0312291486">0312291486</a><br>
                                         </p>
                                     </div>
                                 </div>
@@ -243,7 +244,7 @@
                                 <i class="fas fa-exclamation-triangle fa-3x text-dark me-md-4 mb-3 mb-md-0"></i>
                                 <div>
                                     <h3 class="text-dark mb-1">24/7 Equipment Emergency Line</h3>
-                                    <h2 class="text-dark"><a href="tel:+233501234567">+233 50 123 4567</a></h2>
+                                    <h2 class="text-dark"><a href="tel:+233553247728"> (GH) +233 55 324 7728 / (GH)  +233 24 442 8332</a></h2>
                                     <p class="mb-0">For immediate technical support on active mining operations</p>
                                 </div>
                             </div>

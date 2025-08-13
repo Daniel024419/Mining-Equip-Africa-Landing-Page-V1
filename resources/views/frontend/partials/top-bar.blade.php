@@ -8,8 +8,8 @@
                         <i class="fas fa-map-marker-alt text-warning me-2"></i>P.O. Box TD 483, Takoradi Airport Ridge, Ghana
                     </a>
                     <a href="tel:+233244428332" class="text-light me-4 hover-gold">
-                        <i class="fas fa-phone-alt text-warning me-2"></i>+233 24 442 8332 /
-                        +233 55 324 7728
+                        <i class="fas fa-phone-alt text-warning me-2"></i>(GH) +233 24 442 8332 /
+                        (GH) +233 55 324 7728
                     </a>
                     <a href="mailto:info@miningequipafrica.com" class="text-light hover-gold">
                         <i class="fas fa-envelope text-warning me-2"></i>info@miningequipafrica.com
@@ -22,7 +22,7 @@
                 <div class="d-flex align-items-center justify-content-end">
                     <div class="text-light me-3 d-flex align-items-center">
                         <i class="fas fa-clock text-warning me-2"></i>
-                        <span>Mon-Sat: 7:30 - 17:00</span>
+                        <span>Mon-Sat: 7:30 - 17:00 GMT</span>
                     </div>
                     <div class="d-flex">
                         <a href="#" class="btn btn-outline-warning btn-square rounded-circle me-2">

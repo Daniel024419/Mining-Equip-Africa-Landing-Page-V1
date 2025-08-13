@@ -67,17 +67,17 @@
                         data-category="{{ $service->category }}">
                         <div
                             class="service-card h-100 bg-white rounded-4 overflow-hidden shadow-sm transition-all hover-shadow-lg">
-                            <div class="service-img position-relative overflow-hidden">
-                                <img src="{{ asset('files/' . $service->image) }}"
+                            <div class="service-img position-relative overflow-hidden" style="min-height: 220px;">
+                                <img src="{{ asset('files/' . ($service->image ?? 'default.png')) }}"
                                     class="img-fluid w-100 transition-transform hover-scale" alt="{{ $service->title }}"
-                                    style="height: 220px; object-fit: cover;">
+                                    style="height: 220px; object-fit: cover;"
+                                    onerror="this.onerror=null; this.src='{{ asset('files/default.png') }}'">
+
                                 <div
                                     class="service-badge position-absolute top-3 end-3 bg-primary text-white px-3 py-1 rounded-pill small">
                                     {{ ucfirst($service->category) }}
                                 </div>
-                                <div
-                                    class="service-overlay position-absolute w-100 h-100 top-0 start-0 bg-dark opacity-10">
-                                </div>
+                                
                             </div>
                             <div class="service-content p-4 pb-5 position-relative">
                                 <div class="service-icon position-absolute top-0 start-50 translate-middle">
@@ -95,7 +95,8 @@
                                     </a>
 
                                     <!-- Share Button -->
-                                    <button class="btn btn-warning rounded-pill px-4 py-2 d-inline-flex align-items-center"
+                                    <button
+                                        class="btn btn-warning rounded-pill px-4 py-2 d-inline-flex align-items-center"
                                         onclick="openShareActions('{{ json_encode($service->id) }}')">
                                         <i class="fas fa-share-alt me-2" id="shareIcon"></i> Share
                                     </button>

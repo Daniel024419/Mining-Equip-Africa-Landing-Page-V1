@@ -25,11 +25,11 @@ class FrontendHomeController extends Controller
     {
         $posts = Post::latest('published_at')
             ->paginate(3);
-        
+
         $services = Service::query()->latest()
             ->paginate(3);
 
-        return view('frontend.home.index',compact('posts','services'));
+        return view('frontend.home.index', compact('posts', 'services'));
     }
 
     /**
@@ -79,7 +79,14 @@ class FrontendHomeController extends Controller
      */
     public function showService(Service $service)
     {
-        $relatedServices = [];
+        $relatedServices = Service::query()
+            ->where('id', '!=', $service->id)
+            ->where(function ($query) use ($service) {
+                $query->where('title', $service->title)
+                    ->orWhere('description', 'like', '%' . $service->description . '%')
+                    ->orWhere('category', 'like', '%' . $service->category . '%');
+            })
+            ->take(5)->get();
 
         return view('frontend.home.services-show', compact('service', 'relatedServices'));
     }
@@ -90,13 +97,13 @@ class FrontendHomeController extends Controller
      * @param  int $id
      * @return void
      */
-    public function getServiceDetails( int $id)
+    public function getServiceDetails(int $id)
     {
         $service = Service::findOrFail($id);
         return response()->json([
             'title' => $service->title,
             'url' => route('frontend.home.showService', $service->id),
-            'image' => $service->image, 
+            'image' => $service->image,
         ]);
     }
 
@@ -143,20 +150,20 @@ class FrontendHomeController extends Controller
 
         return view('frontend.home.show-blog-post',  compact('post', 'recentPosts'));
     }
-    
+
     /**
      * getPostDetails
      *
      * @param  int $id
      * @return void
      */
-    public function getPostDetails( int $id)
+    public function getPostDetails(int $id)
     {
         $post = Post::findOrFail($id);
         return response()->json([
             'title' => $post->title,
             'url' => route('frontend.home.showPost', $post->slug),
-            'image' => $post->image, 
+            'image' => $post->image,
         ]);
     }
 
@@ -249,7 +256,7 @@ class FrontendHomeController extends Controller
     {
         $equipment = Equipment::findOrFail($id);
         return response()->json([
-            'title' => $equipment->name.'( condition : '.$equipment->condition.')',
+            'title' => $equipment->name . '( condition : ' . $equipment->condition . ')',
             'url' => route('frontend.home.showEquiment', $equipment->id),
             'image' => $equipment->image,
         ]);

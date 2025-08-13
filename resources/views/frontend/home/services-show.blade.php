@@ -56,8 +56,11 @@
                 <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="service-detail-content bg-white rounded shadow-sm p-4 mb-5">
                         <div class="service-main-img mb-4">
-                            <img src="{{ asset('files/' . $service->image) }}" class="img-fluid w-100 rounded"
-                                alt="{{ $service->title }}">
+                                <img  src="{{ asset('files/' . ($service->image ?? 'default.png')) }}"
+                                    class="img-fluid w-100 rounded transition-transform hover-scale" alt="{{ $service->title }}"
+                                     
+                                    onerror="this.onerror=null; this.src='{{ asset('files/default.png') }}'">
+                                    
                             <div class="service-badge bg-primary text-white p-2 px-3 rounded-pill d-inline-block mt-3">
                                 {{ ucfirst($service->category) }} Service
                             </div>
@@ -93,9 +96,9 @@
                         <h4 class="mb-4">Our Service Categories</h4>
                         <ul class="list-unstyled">
                             <li class="mb-2">
-                                <a href="{{ route('frontend.home.services') }}?category=equipment"
-                                    class="d-flex justify-content-between align-items-center py-2 px-3 rounded {{ $service->category == 'equipment' ? 'bg-light' : '' }}">
-                                    <span><i class="fas fa-truck-pickup text-primary me-2"></i> Equipment
+                                <a href="{{ route('frontend.home.services') }}?category=related"
+                                    class="d-flex justify-content-between align-items-center py-2 px-3 rounded {{ $service->category == 'related' ? 'bg-light' : '' }}">
+                                    <span><i class="fas fa-truck-pickup text-primary me-2"></i> related
                                         Services</span>
                                     <i class="fas fa-arrow-right"></i>
                                 </a>
@@ -135,8 +138,10 @@
                     <div class="col-lg-4 mb-4">
                         <div class="related-service bg-white rounded shadow-sm overflow-hidden h-100">
                             <div class="related-img">
-                                <img src="{{ asset('files/' . $related->image) }}" class="img-fluid w-100"
-                                    alt="{{ $related->title }}">
+                                <img src="{{ asset('files/' . ($related->image ?? 'default.png')) }}"
+                                    class="img-fluid w-100 transition-transform hover-scale"
+                                    alt="{{ $related->title }}"
+                                    onerror="this.onerror=null; this.src='{{ asset('files/default.png') }}'">
                             </div>
                             <div class="related-content p-4">
                                 <h5 class="mb-3">{{ $related->title }}</h5>

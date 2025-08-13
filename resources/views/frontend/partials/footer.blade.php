@@ -103,9 +103,9 @@
                         <li class="mb-3"><i class="fas fa-map-marker-alt me-3 text-warning"></i> Bibiani, Ghana </li>
                         <li class="mb-3"><i class="fas fa-envelope me-3 text-warning"></i> info@miningequipafrica.com
                         </li>
-                        <li class="mb-3"><i class="fas fa-phone me-3 text-warning"></i> +233 24 442 8332</li>
-                        <li class="mb-3"><i class="fas fa-phone me-3 text-warning"></i> +233 20 067 2219</li>
-                        <li class="mb-3"><i class="fas fa-phone me-3 text-warning"></i> +233 55 324 7728</li>
+                        <li class="mb-3"><i class="fas fa-phone me-3 text-warning"></i> (GH) +233 24 442 8332</li>
+                        {{-- <li class="mb-3"><i class="fas fa-phone me-3 text-warning"></i> +233 20 067 2219</li> --}}
+                        <li class="mb-3"><i class="fas fa-phone me-3 text-warning"></i> (GH) +233 55 324 7728</li>
                         <li class="mb-3"><i class="fas fa-phone me-3 text-warning"></i> OFFICE 0312291486</li>
                     </ul>
                     <div class="social-icons mt-4">
@@ -133,8 +133,8 @@
                     All Rights Reserved.</span>
             </div>
             <div class="col-md-6 text-center text-md-end">
-                <span class="text-light">Designed by <a href="https://dndnextgenerationtechnology.com"
-                        class="text-warning hover-underline">D&D NextGen Technology</a></span>
+                <span class="text-light">Designed by <a target="_blank" href="https://dndnextgenerationtechnology.com"
+                        class="text-warning hover-underline">D&D NextGeneration Technology</a></span>
             </div>
         </div>
     </div>

@@ -100,24 +100,24 @@
                     </div>
 
                     <!-- Search Button -->
-                    <button class="btn btn-outline-warning py-2 px-3" data-bs-toggle="modal"
+                    <button class="btn btn-outline-warning " data-bs-toggle="modal"
                         data-bs-target="#searchModal">
                         <i class="fas fa-search"></i>
                     </button>
 
                     <!-- Call Button -->
-                    <a href="tel:0244428332" class="btn btn-warning py-2 px-4 fw-bold text-dark">
+                    <a href="tel:0244428332" class="btn btn-warning fw-bold text-dark">
                         <i class="fas fa-phone-alt me-2"></i>Call
                     </a>
 
                     <!-- Auth Buttons -->
                     @auth
-                        <a class="btn btn-secondary py-2 px-4 fw-bold text-dark"
+                        <a class="btn btn-warning fw-bold text-dark"
                             href="{{ route('dashboard.auth.logout') }}">
                             <i class="fa fa-lock me-1"></i> Logout
                         </a>
                     @else
-                        <a class="btn btn-secondary py-2 px-4 fw-bold text-dark"
+                        <a class="btn btn-warning fw-bold text-dark"
                             href="{{ route('dashboard.auth.index') }}">
                             <i class="fa fa-user me-1"></i> Login
                         </a>

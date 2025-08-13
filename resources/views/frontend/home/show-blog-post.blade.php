@@ -46,8 +46,7 @@
                 </a>
 
                 <!-- Share Button -->
-                <button class="btn btn-primary py-2 px-4" onclick="openShareActions('{{ json_encode($post->id) }}')"
-                    >
+                <button class="btn btn-primary py-2 px-4" onclick="openShareActions('{{ json_encode($post->id) }}')">
                     <i class="fas fa-share-alt" id="shareIcon"></i> Share Post
                 </button>
             </div>
@@ -59,8 +58,10 @@
                     <div class="blog-item">
                         <!-- Featured Image -->
                         <div class="blog-img mb-4">
-                            <img src="{{ asset('frontend/img/' . $post->image) }}" class="img-fluid w-100 rounded"
-                                alt="{{ $post->title }}">
+                            <img src="{{ asset('files/' . ($post->image ?? 'default.png')) }}"
+                                class="img-fluid w-100 rounded transition-transform hover-scale"
+                                alt="{{ $post->title }}" style="height: 220px; object-fit: cover;"
+                                onerror="this.onerror=null; this.src='{{ asset('files/default.png') }}'">
                         </div>
 
                         <!-- Meta Info -->
@@ -87,7 +88,7 @@
                         <div class="mt-5 pt-4 border-top">
                             <div class="d-flex flex-wrap gap-2">
                                 <span class="badge bg-secondary">Mining</span>
-                                <span class="badge bg-secondary">Equipment</span>
+                                <span class="badge bg-secondary">recent</span>
                                 <span class="badge bg-secondary">Technology</span>
                             </div>
                         </div>
@@ -102,8 +103,10 @@
                         <h4 class="mb-4">Latest Posts</h4>
                         @foreach ($recentPosts as $recent)
                             <div class="d-flex mb-3">
-                                <img src="{{ asset('files/' . $recent->image) }}" class="img-fluid rounded"
-                                    style="width: 80px; height: 80px; object-fit: cover;" alt="{{ $recent->title }}">
+                                <img src="{{ asset('files/' . ($recent->image ?? 'default.png')) }}"
+                                    class="img-fluid transition-transform rounded hover-scale"
+                                    alt="{{ $recent->title }}" style="width: 80px; height: 80px; object-fit: cover;"
+                                    onerror="this.onerror=null; this.src='{{ asset('files/default.png') }}'">
                                 <div class="ms-3">
                                     <h6 class="mb-1">
                                         <a
@@ -122,8 +125,7 @@
                         <h4 class="mb-4">Categories</h4>
                         <ul class="list-unstyled">
                             <li class="mb-2">
-                                <a href="#" class="text-dark">Mining Equipment <span
-                                        class="float-end">(5)</span></a>
+                                <a href="#" class="text-dark">Mining recent <span class="float-end">(5)</span></a>
                             </li>
                             <li class="mb-2">
                                 <a href="#" class="text-dark">Drilling Technology <span

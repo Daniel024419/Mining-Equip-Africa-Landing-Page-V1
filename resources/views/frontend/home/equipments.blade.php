@@ -54,8 +54,11 @@
                     <div class="col-lg-4 wow fadeInUp" data-wow-delay="{{ 0.2 + ($loop->index % 3) * 0.2 }}s">
                         <div class="equipment-item border border-warning rounded-4 overflow-hidden bg-dark h-100">
                             <div class="equipment-img position-relative">
-                                <img src="{{ asset('files/' . $equipment->image) }}" class="img-fluid w-100"
-                                    alt="{{ $equipment->name }}" style="height: 250px; object-fit: cover;">
+                                <img  src="{{ asset('files/' . ($equipment->image ?? 'default.png')) }}"
+                                    class="img-fluid w-100 transition-transform hover-scale" alt="{{ $equipment->title }}"
+                                    style="height: 220px; object-fit: cover;"
+                                    onerror="this.onerror=null; this.src='{{ asset('files/default.png') }}'">
+                                    
                                 <div
                                     class="equipment-badge bg-warning text-dark px-3 py-1 position-absolute top-0 end-0 m-3 rounded-pill fw-bold text-uppercase">
                                     {{ strtoupper($equipment->condition) }}
@@ -178,7 +181,7 @@
                             <li>Generators</li>
                             <li>Compressors</li>
                             <li>Light Towers</li>
-                            <li>Service Trucks</li>
+                            <li>equipment Trucks</li>
                         </ul>
                         <a href="#" class="btn btn-outline-warning mt-2">Explore</a>
                     </div>
