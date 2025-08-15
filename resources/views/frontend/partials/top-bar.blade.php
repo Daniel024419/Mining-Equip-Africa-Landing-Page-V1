@@ -11,8 +11,8 @@
                         <i class="fas fa-phone-alt text-warning me-2"></i>(GH) +233 24 442 8332 /
                         (GH) +233 55 324 7728
                     </a>
-                    <a href="mailto:info@miningequipafrica.com" class="text-light hover-gold">
-                        <i class="fas fa-envelope text-warning me-2"></i>info@miningequipafrica.com
+                    <a href="mailto:info@miningequipafrica.org" class="text-light hover-gold">
+                        <i class="fas fa-envelope text-warning me-2"></i>info@miningequipafrica.org
                     </a>
                 </div>
             </div>

@@ -210,8 +210,8 @@
                                     <div>
                                         <h5 class="text-warning">Email Us</h5>
                                         <p class="text-light mb-0 small">
-                                           <a style="color: white" href="mailto: info@miningequipafrica.com"> info@miningequipafrica.com</a><br>
-                                            <a style="color: white" href="mailto:sales@miningequipafrica.com">sales@miningequipafrica.com</a>
+                                           <a style="color: white" href="mailto: info@miningequipafrica.org"> info@miningequipafrica.org</a><br>
+                                            <a style="color: white" href="mailto:sales@miningequipafrica.org">sales@miningequipafrica.org</a>
                                         </p>
                                     </div>
                                 </div>

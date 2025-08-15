@@ -60,7 +60,7 @@
     "@type": "ContactPoint",
     "telephone": "+233244428332",
     "contactType": "sales",
-    "email": "sales@miningequipafrica.com",
+    "email": "sales@miningequipafrica.org",
     "areaServed": "West Africa"
   }
 }
