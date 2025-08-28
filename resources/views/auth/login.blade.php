@@ -39,7 +39,7 @@
                             </div>
                             <input name="identifier" type="email" class="form-control" placeholder="Email or Phone"
                                 required value="{{ old('identifier') }}" />
-                            @if (session('error'))
+                            <br>@if (session('error'))
     <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert" id="alertview">
         <i class="fas fa-times-circle fa-lg text-danger mr-2"></i>
         <div>
