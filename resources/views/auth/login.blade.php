@@ -37,7 +37,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                             </div>
-                            <input name="identifier" type="email" class="form-control" placeholder="Email or Phone"
+                            <input name="identifier" type="text" class="form-control" placeholder="Email or Phone"
                                 required value="{{ old('identifier') }}" />
                             <br>@if (session('error'))
     <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert" id="alertview">
