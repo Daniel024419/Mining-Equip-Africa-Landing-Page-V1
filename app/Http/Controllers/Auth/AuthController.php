@@ -63,7 +63,7 @@ class AuthController extends Controller
         }
         logger()->error('request ' . $request);
         return back()->with(
-            'identifier',
+            'error',
             'The provided credentials do not match our records.',
         )->onlyInput('identifier');
     }

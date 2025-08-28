@@ -39,9 +39,15 @@
                             </div>
                             <input name="identifier" type="email" class="form-control" placeholder="Email or Phone"
                                 required value="{{ old('identifier') }}" />
-                            @if(session('error'))
-                            <div class="invalid-feedback"> {{ session('error') }}</div>
-                            @endif
+                            @if (session('error'))
+    <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert" id="alertview">
+        <i class="fas fa-times-circle fa-lg text-danger mr-2"></i>
+        <div>
+            {{ session('error') }}
+        </div>
+        <button type="button" class="btn-close ml-auto" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
                         </div>
                     </div>
 
