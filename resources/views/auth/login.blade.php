@@ -39,7 +39,7 @@
                             </div>
                             <input name="identifier" type="email" class="form-control" placeholder="Email or Phone"
                                 required value="{{ old('identifier') }}" />
-                            @if (session('error'))
+                            @if(session('error'))
                             <div class="invalid-feedback"> {{ session('error') }}</div>
                             @endif
                         </div>
