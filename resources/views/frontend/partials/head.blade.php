@@ -2,29 +2,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="title" content="Mining Equip Africa | Heavy Equipment Sales & Drilling Services">
-<meta name="description"
-    content="Africa's leading mining equipment provider - New/used machinery sales, RC/diamond drilling services, operator training & 24/7 support across West Africa. Get quotes today.">
-<meta name="keywords"
-    content="mining equipment Africa, used mining machinery, RC drilling services, diamond core drilling, heavy equipment training, Ghana mining supplies, excavators for sale, blast drilling equipment">
+    <title>Mining Equipment Africa | Heavy Machinery Sales & Drilling Services | MiningEquipAfrica</title>
+    <meta name="description" content="Africa's top mining equipment supplier: New/used machinery, RC drilling, diamond core drilling, operator training & 24/7 support across West Africa. Get quotes today.">
+<meta name="keywords" content="mining equipment Africa, mining equipment Africa, miningequipmentAfrica, used mining machinery, RC drilling services, RC drilling, RCdrilling, diamond core drilling, heavy equipment training, Ghana mining supplies, excavators for sale, blast drilling equipment, West Africa mining">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- Canonical URL -->
-<link rel="canonical" href="{{ config('app.url') }}">
+    <link rel="canonical" href="https://miningequipafrica.org">
 
 <!-- Open Graph / Facebook (for social sharing) -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="{{ config('app.url') }}">
-<meta property="og:title" content="Mining Equip Africa | Heavy Equipment Sales & Drilling Services">
-<meta property="og:description"
-    content="Trusted supplier of mining equipment and drilling services across West Africa. Quality machinery with local support.">
-<meta property="og:image" content="{{ config('app.url') }}/frontend/img/mining-equipment-social.jpg">
-
+ <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://miningequipafrica.org/">
+    <meta property="og:title" content="Mining Equipment Africa | Heavy Machinery & Drilling Services">
+    <meta property="og:description" content="Trusted supplier of mining equipment and drilling services across West Africa. Quality machinery with local support.">
+    <meta property="og:image" content="{{asset('logo.png')}}">
 <!-- Twitter Meta -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="{{ config('app.url') }}">
-<meta property="twitter:title" content="Mining Equip Africa | Heavy Equipment Sales & Drilling Services">
-<meta property="twitter:description"
-    content="Trusted supplier of mining equipment and drilling services across West Africa. Quality machinery with local support.">
-<meta property="twitter:image" content="{{ config('app.url') }}/frontend/img/mining-equipment-social.jpg">
+   <!-- Twitter Meta -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://miningequipafrica.org/">
+    <meta property="twitter:title" content="Mining Equipment Africa | Heavy Machinery & Drilling Services">
+    <meta property="twitter:description" content="Trusted supplier of mining equipment and drilling services across West Africa. Quality machinery with local support.">
+    <meta property="twitter:image" content="{{asset('logo.png')}}">
 
 <!-- Google Fonts with Preload -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,34 +34,39 @@
 </noscript>
 
 <!-- Favicon -->
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="{{asset('logo.png')}}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('logo.png') }}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('logo.png') }}">
 <link rel="manifest" href="/site.webmanifest">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "IndustrialEquipmentStore",
-  "name": "Mining Equip Africa",
-  "url": "{{ config('app.url') }}",
-  "logo": "{{ config('app.url') }}/frontend/img/logo.png",
-  "description": "Supplier of mining equipment and drilling services across Africa",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "P.O. Box TD 483",
-    "addressLocality": "Takoradi Airport Ridge",
-    "addressCountry": "GH"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+233244428332",
-    "contactType": "sales",
-    "email": "sales@miningequipafrica.org",
-    "areaServed": "West Africa"
-  }
-}
+ {
+      "@context": "https://schema.org",
+      "@type": "IndustrialEquipmentStore",
+      "name": "Mining Equip Africa",
+      "url": "https://miningequipafrica.org",
+      "logo": "https://miningequipafrica.org/frontend/img/logo.png",
+      "description": "Supplier of mining equipment and drilling services across Africa",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "P.O. Box TD 483",
+        "addressLocality": "Takoradi Airport Ridge",
+        "addressCountry": "GH"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+233244428332",
+        "contactType": "sales",
+        "email": "sales@miningequipafrica.org",
+        "areaServed": "West Africa"
+      },
+      "sameAs": [
+        "https://www.facebook.com/miningequipafrica",
+        "https://www.linkedin.com/company/miningequipafrica",
+        "https://twitter.com/miningequipafrica"
+      ]
+    }
 </script>
 
 <link
