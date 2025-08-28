@@ -57,15 +57,15 @@ class AuthController extends Controller
                 }
             }
         } catch (\Exception $e) {
-            return back()->with([
-                'error' => 'Authentication cant be processed now, Please try again later',
-            ])->onlyInput('identifier');
+            return back()->with(
+                'error' , 'Authentication cant be processed now, Please try again later',
+            )->onlyInput('identifier');
         }
         logger()->error('request ' . $request);
-        return back()->with([
+        return back()->with(
             'identifier',
             'The provided credentials do not match our records.',
-        ])->onlyInput('identifier');
+        )->onlyInput('identifier');
     }
 
 
