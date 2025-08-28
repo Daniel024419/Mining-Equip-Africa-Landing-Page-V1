@@ -41,8 +41,7 @@
                                 required value="{{ old('identifier') }}" />
                             @if (session('error'))
                             <div class="invalid-feedback"> {{ session('error') }}</div>
-                            @endsession
-                            @enderror
+                            @endif
                         </div>
                     </div>
 
