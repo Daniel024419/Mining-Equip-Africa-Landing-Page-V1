@@ -43,7 +43,6 @@ class AuthController extends Controller
 
         $credentials = $request->validated();
         $remember = $credentials['remember_me'] ?? false;
-        dd($request->all());
         try {
 
             $column = filter_var($credentials['identifier'], FILTER_VALIDATE_EMAIL) ? 'email' : 'phone';
