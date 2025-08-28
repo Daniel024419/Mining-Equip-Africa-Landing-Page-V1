@@ -57,7 +57,7 @@ class AuthController extends Controller
                 }
             }
         } catch (\Exception $e) {
-            return back()->withErrors([
+            return back()->with([
                 'error' => 'Authentication cant be processed now, Please try again later',
             ])->onlyInput('identifier');
         }
