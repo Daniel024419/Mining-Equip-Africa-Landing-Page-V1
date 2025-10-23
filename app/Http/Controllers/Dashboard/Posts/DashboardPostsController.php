@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard\Posts;
 
-use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\{Auth, DB};
+use App\Models\Post;
 use App\Http\Controllers\Controller;
 use App\Service\FileUploadInterface;
-use Illuminate\Support\Facades\Auth;
 
 class DashboardPostsController extends Controller
 {
@@ -73,6 +72,8 @@ class DashboardPostsController extends Controller
 
             return redirect()->back()->with('success', 'Post created successfully!');
         } catch (\Exception $e) {
+            logger($e);
+            
             DB::rollBack();
             return redirect()->back()->with('error', 'Failed to create post.');
         }
