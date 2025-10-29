@@ -65,7 +65,7 @@ class DashboardEquipmentsController extends Controller
                 ->with('success', 'Equipment created successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
-            logger($e);
+            dd($e);
 
             return back()->withErrors('Failed to create equipment. Please try again.')
                 ->withInput();
