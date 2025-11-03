@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Inquiry;
 use App\Models\Project;
 use App\Models\Service;
+use App\Models\Component;
 use App\Models\Equipment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -120,6 +121,53 @@ class FrontendHomeController extends Controller
         ]);
     }
 
+
+    /**
+     * Display a list of components, optionally filtered by condition.
+     *
+     * @param string|null $condition
+     * @return \Illuminate\View\View
+     */
+    public function components(?string $condition = null)
+    {
+        $query = Component::with('images')->latest();
+
+        if ($condition && strtolower($condition) !== 'all') {
+            $query->where('condition', $condition);
+        }
+
+        $components = $query->paginate(9);
+
+        return view('frontend.home.components', compact('components'));
+    }
+
+    /**
+     * Display the specified component.
+     *
+     * @param Component $component
+     * @return \Illuminate\View\View
+     */
+    public function showComponent(Component $component)
+    {
+        $component->load('images');
+        return view('frontend.home.component-details', compact('component'));
+    }
+
+    /**
+     * Get component details for sharing.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getComponentDetails(int $id)
+    {
+        $component = Component::findOrFail($id);
+        return response()->json([
+            'title' => $component->name,
+            'url' => route('frontend.home.showComponent', $component->id),
+            'image' => $component->images->isNotEmpty() ? $component->images->first()->path : 'default.png',
+        ]);
+    }
 
     /**
      * blog

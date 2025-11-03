@@ -1,10 +1,10 @@
-<div class="container-fluid sticky-top px-0 shadow-sm" style="background: #000;">
-    <nav class="navbar navbar-expand-lg navbar-dark py-3 px-4">
+<div class="px-0 shadow-sm container-fluid sticky-top" style="background: #000;">
+    <nav class="px-4 py-3 navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <!-- Logo with Mining Branding -->
-            <a href="{{ route('frontend.home.index') }}" class="navbar-brand d-flex align-items-center gap-2 p-0">
+            <a href="{{ route('frontend.home.index') }}" class="gap-2 p-0 navbar-brand d-flex align-items-center">
                 <img src="{{ asset('logo.png') }}" alt="Mining Equip Africa Logo" style="height: 45px; width: auto;">
-                <h1 class="text-warning mb-0" style="font-size: 1.8rem; font-weight: 700;">
+                <h1 class="mb-0 text-warning" style="font-size: 1.8rem; font-weight: 700;">
                     <span class="text-white"><span class="text-warning">AFRICA</span>
                 </h1>
             </a>
@@ -17,64 +17,80 @@
 
             <!-- Main Navigation -->
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto pt-2 pt-lg-0">
-                    <a href="{{ route('frontend.home.index') }}" class="nav-item nav-link px-3 text-white">Home</a>
+                <div class="pt-2 navbar-nav ms-auto pt-lg-0">
+                    <a href="{{ route('frontend.home.index') }}" class="px-3 text-white nav-item nav-link">Home</a>
 
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle px-3 text-white"
+                        <a href="#" class="px-3 text-white nav-link dropdown-toggle"
                             data-bs-toggle="dropdown">Equipment</a>
-                        <div class="dropdown-menu m-0 border-0 shadow-sm" style="background: #111;">
+                        <div class="m-0 border-0 shadow-sm dropdown-menu" style="background: #111;">
                             <a href="{{ route('frontend.home.equipments', 'all') }}"
-                                class="dropdown-item text-white">All
+                                class="text-white dropdown-item">All
                                 Machinery</a>
                             <a href="{{ route('frontend.home.equipments', 'new') }}"
-                                class="dropdown-item text-white">New
+                                class="text-white dropdown-item">New
                                 Machinery</a>
                             <a href="{{ route('frontend.home.equipments', 'used') }}"
-                                class="dropdown-item text-white">Used Equipment</a>
+                                class="text-white dropdown-item">Used Equipment</a>
                             <a href="{{ route('frontend.home.equipments', 'rental') }}"
-                                class="dropdown-item text-white">Rental Fleet</a>
+                                class="text-white dropdown-item">Rental Fleet</a>
                             <div class="dropdown-divider border-warning"></div>
                         </div>
                     </div>
 
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle px-3 text-white"
+                        <a href="#" class="px-3 text-white nav-link dropdown-toggle"
+                            data-bs-toggle="dropdown">Components</a>
+                        <div class="m-0 border-0 shadow-sm dropdown-menu" style="background: #111;">
+                            <a href="{{ route('frontend.home.components', 'all') }}"
+                                class="text-white dropdown-item">All
+                                components</a>
+                            <a href="{{ route('frontend.home.equipments', 'new') }}"
+                                class="text-white dropdown-item">New
+                                components</a>
+                            <a href="{{ route('frontend.home.components', 'used') }}"
+                                class="text-white dropdown-item">Used Components</a> 
+                            <div class="dropdown-divider border-warning"></div>
+                        </div>
+                    </div>
+
+                    <div class="nav-item dropdown">
+                        <a href="#" class="px-3 text-white nav-link dropdown-toggle"
                             data-bs-toggle="dropdown">Services</a>
-                        <div class="dropdown-menu m-0 border-0 shadow-sm" style="background: #111;">
-                            <a href="{{ route('frontend.home.services') }}" class="dropdown-item text-white">Drilling
+                        <div class="m-0 border-0 shadow-sm dropdown-menu" style="background: #111;">
+                            <a href="{{ route('frontend.home.services') }}" class="text-white dropdown-item">Drilling
                                 Services</a>
-                            <a href="{{ route('frontend.home.services') }}" class="dropdown-item text-white">Equipment
+                            <a href="{{ route('frontend.home.services') }}" class="text-white dropdown-item">Equipment
                                 Maintenance</a>
-                            <a href="{{ route('frontend.home.services') }}" class="dropdown-item text-white">Operator
+                            <a href="{{ route('frontend.home.services') }}" class="text-white dropdown-item">Operator
                                 Training</a>
                         </div>
                     </div>
 
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle px-3 text-white"
+                        <a href="#" class="px-3 text-white nav-link dropdown-toggle"
                             data-bs-toggle="dropdown">Company</a>
-                        <div class="dropdown-menu m-0 border-0 shadow-sm" style="background: #111;">
-                            <a href="{{ route('frontend.home.about') }}" class="dropdown-item text-white">About Us</a>
-                            {{-- <a href="{{ route('frontend.home.teams') }}" class="dropdown-item text-white">Our Team</a> --}}
-                            <a href="{{ route('frontend.home.testimonial') }}" class="dropdown-item text-white">Client
+                        <div class="m-0 border-0 shadow-sm dropdown-menu" style="background: #111;">
+                            <a href="{{ route('frontend.home.about') }}" class="text-white dropdown-item">About Us</a>
+                            {{-- <a href="{{ route('frontend.home.teams') }}" class="text-white dropdown-item">Our Team</a> --}}
+                            <a href="{{ route('frontend.home.testimonial') }}" class="text-white dropdown-item">Client
                                 Testimonials</a>
-                            <a href="{{ route('frontend.home.blog') }}" class="dropdown-item text-white">Our Blog</a>
-                            <a href="{{ route('frontend.home.gallery') }}" class="dropdown-item text-white">Our
+                            <a href="{{ route('frontend.home.blog') }}" class="text-white dropdown-item">Our Blog</a>
+                            <a href="{{ route('frontend.home.gallery') }}" class="text-white dropdown-item">Our
                                 Gallery</a>
-                            <a href="{{ route('frontend.home.features') }}" class="dropdown-item text-white">Our
+                            <a href="{{ route('frontend.home.features') }}" class="text-white dropdown-item">Our
                                 Features</a>
-                            <a href="{{ route('frontend.home.projects') }}" class="dropdown-item text-white">Our
+                            <a href="{{ route('frontend.home.projects') }}" class="text-white dropdown-item">Our
                                 Projects</a>
                         </div>
                     </div>
 
                     <a href="{{ route('frontend.home.contacts') }}"
-                        class="nav-item nav-link px-3 text-white">Contact</a>
+                        class="px-3 text-white nav-item nav-link">Contact</a>
                 </div>
 
                 <!-- Call-to-Action Buttons -->
-                <div class="d-flex flex-wrap align-items-center gap-2 pt-3 pt-lg-0 ms-lg-3">
+                <div class="flex-wrap gap-2 pt-3 d-flex align-items-center pt-lg-0 ms-lg-3">
                     <!-- Language Selector Dropdown -->
                     <div class="dropdown">
                         <button class="btn btn-outline-warning dropdown-toggle d-flex align-items-center" type="button"
@@ -82,7 +98,7 @@
                             <i class="fas fa-language me-1"></i>
                             <span class="d-none d-md-inline">Language</span>
                         </button>
-                        <ul class="dropdown-menu dropdown-menu-end bg-dark border-warning mt-1"
+                        <ul class="mt-1 dropdown-menu dropdown-menu-end bg-dark border-warning"
                             aria-labelledby="languageDropdown">
                             <li>
                                 <div id="google_translate_element" class="p-2"></div>
@@ -92,7 +108,7 @@
                             </li>
                             <!-- Uncomment below to manually show language options -->
                             {{-- <li>
-                <a class="dropdown-item text-white" href="#" onclick="doGTranslate('en|en');return false;">
+                <a class="text-white dropdown-item" href="#" onclick="doGTranslate('en|en');return false;">
                     <img src="https://flagcdn.com/w20/gb.png" class="me-2"> English
                 </a>
             </li> --}}

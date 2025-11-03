@@ -1,11 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Auth\GoogleController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\{AuthController, ForgotPasswordController, GoogleController};
 use App\Http\Controllers\Dashboard\Equipments\DashboardEquipmentsController;
-use App\Http\Controllers\Frontend\Home\FrontendHomeController;
+use App\Http\Controllers\Dashboard\Components\DashboardComponentsController;
+use App\Http\Controllers\Frontend\Home\{CommentController, FrontendHomeController};
 use App\Http\Controllers\Dashboard\Home\DashboardHomeController;
 use App\Http\Controllers\Dashboard\Posts\DashboardPostsController;
 use App\Http\Controllers\Dashboard\Quotes\DashboardQuotesController;
@@ -13,7 +12,6 @@ use App\Http\Controllers\Dashboard\Inquiry\DashboardInquiryController;
 use App\Http\Controllers\Dashboard\Projects\DashboardProjectsController;
 use App\Http\Controllers\Dashboard\Services\DashboardServicesController;
 use App\Http\Controllers\Dashboard\Users\UsersController;
-use App\Http\Controllers\Frontend\Home\CommentController;
 use App\Http\Middleware\Auth\AuthMiddleware;
 
 //home
@@ -31,16 +29,19 @@ Route::prefix('/')
                 Route::get('/quotes', 'quotes')->name('quotes');
                 Route::get('/blog', 'blog')->name('blog');
                 Route::get('/blog/show/{post}', 'showPost')->name('showPost');
-                Route::get('/blog/post/get-details/{post}','getPostDetails')->name('getPostDetails');
+                Route::get('/blog/post/get-details/{post}', 'getPostDetails')->name('getPostDetails');
                 Route::get('/team', 'teams')->name('teams');
                 Route::get('/testimonial', 'testimonial')->name('testimonial');
                 Route::get('/features', 'features')->name('features');
                 Route::get('/gallery', 'gallery')->name('gallery');
                 Route::get('/equipments/{condition}', 'equipments')->name('equipments');
                 Route::get('/equipment/show/{equipment}', 'showEquiment')->name('showEquiment');
-                Route::get('/equipment/show/get-details/{equipment}','getEquipmentsDetails')->name('getEquipmentsDetails');
+                Route::get('/equipment/show/get-details/{equipment}', 'getEquipmentsDetails')->name('getEquipmentsDetails');
+                Route::get('/components/{condition?}', 'components')->name('components');
+                Route::get('/component/show/{component}', 'showComponent')->name('showComponent');
+                Route::get('/component/show/get-details/{component}', 'getComponentDetails')->name('getComponentDetails');
                 Route::get('/services/show/{service}', 'showService')->name('showService');
-                Route::get('/services/show/get-details/{service}','getServiceDetails')->name('getServiceDetails');
+                Route::get('/services/show/get-details/{service}', 'getServiceDetails')->name('getServiceDetails');
                 Route::post('/store-inquiries', 'storeInquiries')->name('storeInquiries');
                 Route::post('/users/store-vistor', 'registerVistor')->name('registerVistor');
             });
@@ -138,6 +139,18 @@ Route::prefix('/dashboard')
                 Route::get('/edit/{service}', 'edit')->name('edit');
                 Route::get('/show/{service}', 'show')->name('show');
                 Route::delete('/delete/{service}', 'destroy')->name('destroy');
+            });
+        //components
+        Route::controller(DashboardComponentsController::class)
+            ->name('components.')
+            ->prefix('/components')
+            ->group(function () {
+                Route::get('/index', 'index')->name('index');
+                Route::post('/store', 'store')->name('store');
+                Route::put('/update/{component}', 'update')->name('update');
+                Route::get('/edit/{component}', 'edit')->name('edit');
+                Route::get('/show/{component}', 'show')->name('show');
+                Route::delete('/delete/{component}', 'destroy')->name('destroy');
             });
         //services
         Route::controller(DashboardEquipmentsController::class)
