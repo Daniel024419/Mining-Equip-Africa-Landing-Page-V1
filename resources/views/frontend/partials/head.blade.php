@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="title" content="Mining Equip Africa | Heavy Equipment Sales & Drilling Services">
-    <title>Mining Equipment Africa | Heavy Machinery Sales & Drilling Services | MiningEquipAfrica</title>
+    <title>Mining Equip Africa | Heavy Machinery Sales & Drilling Services | MiningEquipAfrica</title>
     <meta name="description" content="Africa's top mining equipment supplier: New/used machinery, RC drilling, diamond core drilling, operator training & 24/7 support across West Africa. Get quotes today.">
 <meta name="keywords" content="mining equipment Africa, mining equipment Africa, miningequipmentAfrica, used mining machinery, RC drilling services, RC drilling, RCdrilling, diamond core drilling, heavy equipment training, Ghana mining supplies, excavators for sale, blast drilling equipment, West Africa mining">
 <meta name="csrf-token" content="{{ csrf_token() }}">
