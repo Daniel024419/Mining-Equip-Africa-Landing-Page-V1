@@ -13,14 +13,14 @@
  <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://miningequipafrica.org/">
-    <meta property="og:title" content="Mining Equipment Africa | Heavy Machinery & Drilling Services">
+    <meta property="og:title" content="Mining Equip Africa | Heavy Machinery & Drilling Services">
     <meta property="og:description" content="Trusted supplier of mining equipment and drilling services across West Africa. Quality machinery with local support.">
     <meta property="og:image" content="{{asset('logo.png')}}">
 <!-- Twitter Meta -->
    <!-- Twitter Meta -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://miningequipafrica.org/">
-    <meta property="twitter:title" content="Mining Equipment Africa | Heavy Machinery & Drilling Services">
+    <meta property="twitter:title" content="Mining Equip Africa | Heavy Machinery & Drilling Services">
     <meta property="twitter:description" content="Trusted supplier of mining equipment and drilling services across West Africa. Quality machinery with local support.">
     <meta property="twitter:image" content="{{asset('logo.png')}}">
 
