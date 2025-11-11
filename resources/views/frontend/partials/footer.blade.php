@@ -16,33 +16,6 @@
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
-                    <div class="mt-4">
-                        <h5 class="mb-3 text-warning">Trusted By</h5>
-
-                        <!-- Partner Logo -->
-                        <div class="mb-3">
-                            <img src="https://via.placeholder.com/120x40/000000/FFD700?text=Partners" alt="Partners"
-                                class="img-fluid" style="max-height: 40px;">
-                        </div>
-
-                        <div class="text-white row">
-                            <div class="col-md-6">
-                                <ul class="list-unstyled">
-                                    <li>1. PW Mining International</li>
-                                    <li>2. Mensin Gold Bibiani</li>
-                                    <li>3. Asante Gold Corperation</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <ul class="list-unstyled">
-                                    <li>4. S.E.F Limited, UK</li>
-                                    <li>5. Nordgold</li>
-                                    <li>6. SEDIS-PLUS Ghana Limited</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                    </div>
 
                 </div>
             </div>
