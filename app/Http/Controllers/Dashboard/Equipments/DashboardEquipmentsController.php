@@ -128,7 +128,7 @@ class DashboardEquipmentsController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
 
-            return back()->withErrors('Failed to update equipment. Please try again.')
+            return back()->withErrors('Failed to update equipment. Please try again.'.$e->getMessage())
                 ->withInput();
         }
     }
