@@ -27,9 +27,9 @@
 
     <!-- Header Start -->
     <div class="container-fluid bg-breadcrumb">
-        <div class="container text-center py-5" style="max-width: 900px;">
-            <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Our Features</h4>
-            <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+        <div class="container py-5 text-center" style="max-width: 900px;">
+            <h4 class="mb-4 text-white display-4 wow fadeInDown" data-wow-delay="0.1s">Our Features</h4>
+            <ol class="mb-0 breadcrumb d-flex justify-content-center wow fadeInDown" data-wow-delay="0.3s">
                 <li class="breadcrumb-item"><a href="{{ route('frontend.home.index') }}">Home</a></li>
                 <li class="breadcrumb-item"><a href="#">Pages</a></li>
                 <li class="breadcrumb-item active text-secondary">Festures</li>
@@ -39,19 +39,18 @@
     <!-- Header End -->
 
     <!-- Features Start -->
-    <div class="container-fluid feature bg-light py-5">
+    <div class="py-5 container-fluid feature bg-light">
         <div class="container py-5">
-            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <p class="text-uppercase text-primary fs-5 mb-2">WHY CHOOSE US</p>
-                <h2 class="display-4 text-capitalize mb-3">Africa's Premier Mining Equipment Partner</h2>
+            <div class="pb-5 mx-auto text-center wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                <p class="mb-2 text-uppercase text-primary fs-5">WHY CHOOSE US</p>
                 <p class="lead">Trusted by mining operations across the continent for quality and reliability</p>
             </div>
             <div class="row g-4">
                 <!-- Feature 1 -->
                 <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                     <div
-                        class="feature-item text-center bg-white rounded-4 p-5 h-100 shadow-sm transition-all hover-shadow">
-                        <div class="feature-icon bg-primary-light d-inline-flex p-4 rounded-circle mb-4">
+                        class="p-5 text-center transition-all bg-white shadow-sm feature-item rounded-4 h-100 hover-shadow">
+                        <div class="p-4 mb-4 feature-icon bg-primary-light d-inline-flex rounded-circle">
                             <i class="fas fa-hard-hat text-primary fa-4x"></i>
                         </div>
                         <h4 class="mb-3">Mining-Specialized Expertise</h4>
@@ -64,8 +63,8 @@
                 <!-- Feature 2 -->
                 <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
                     <div
-                        class="feature-item text-center bg-white rounded-4 p-5 h-100 shadow-sm transition-all hover-shadow">
-                        <div class="feature-icon bg-primary-light d-inline-flex p-4 rounded-circle mb-4">
+                        class="p-5 text-center transition-all bg-white shadow-sm feature-item rounded-4 h-100 hover-shadow">
+                        <div class="p-4 mb-4 feature-icon bg-primary-light d-inline-flex rounded-circle">
                             <i class="fas fa-check-circle text-primary fa-4x"></i>
                         </div>
                         <h4 class="mb-3">Rigorous Quality Assurance</h4>
@@ -77,8 +76,8 @@
                 <!-- Feature 3 -->
                 <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
                     <div
-                        class="feature-item text-center bg-white rounded-4 p-5 h-100 shadow-sm transition-all hover-shadow">
-                        <div class="feature-icon bg-primary-light d-inline-flex p-4 rounded-circle mb-4">
+                        class="p-5 text-center transition-all bg-white shadow-sm feature-item rounded-4 h-100 hover-shadow">
+                        <div class="p-4 mb-4 feature-icon bg-primary-light d-inline-flex rounded-circle">
                             <i class="fas fa-truck text-primary fa-4x"></i>
                         </div>
                         <h4 class="mb-3">Pan-African Logistics Network</h4>
@@ -90,8 +89,8 @@
                 <!-- Feature 4 -->
                 <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                     <div
-                        class="feature-item text-center bg-white rounded-4 p-5 h-100 shadow-sm transition-all hover-shadow">
-                        <div class="feature-icon bg-primary-light d-inline-flex p-4 rounded-circle mb-4">
+                        class="p-5 text-center transition-all bg-white shadow-sm feature-item rounded-4 h-100 hover-shadow">
+                        <div class="p-4 mb-4 feature-icon bg-primary-light d-inline-flex rounded-circle">
                             <i class="fas fa-hand-holding-usd text-primary fa-4x"></i>
                         </div>
                         <h4 class="mb-3">Flexible Financing Options</h4>
@@ -103,8 +102,8 @@
                 <!-- Feature 5 -->
                 <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
                     <div
-                        class="feature-item text-center bg-white rounded-4 p-5 h-100 shadow-sm transition-all hover-shadow">
-                        <div class="feature-icon bg-primary-light d-inline-flex p-4 rounded-circle mb-4">
+                        class="p-5 text-center transition-all bg-white shadow-sm feature-item rounded-4 h-100 hover-shadow">
+                        <div class="p-4 mb-4 feature-icon bg-primary-light d-inline-flex rounded-circle">
                             <i class="fas fa-cogs text-primary fa-4x"></i>
                         </div>
                         <h4 class="mb-3">Comprehensive After-Sales Support</h4>
@@ -116,8 +115,8 @@
                 <!-- Feature 6 -->
                 <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
                     <div
-                        class="feature-item text-center bg-white rounded-4 p-5 h-100 shadow-sm transition-all hover-shadow">
-                        <div class="feature-icon bg-primary-light d-inline-flex p-4 rounded-circle mb-4">
+                        class="p-5 text-center transition-all bg-white shadow-sm feature-item rounded-4 h-100 hover-shadow">
+                        <div class="p-4 mb-4 feature-icon bg-primary-light d-inline-flex rounded-circle">
                             <i class="fas fa-chart-line text-primary fa-4x"></i>
                         </div>
                         <h4 class="mb-3">Mining Productivity Focus</h4>

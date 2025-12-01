@@ -29,9 +29,9 @@
     <!-- Header Start -->
     <div class="container-fluid bg-breadcrumb"
         style="background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('{{ asset('frontend/img/mining-equipment-banner.jpg') }}') center/cover no-repeat;">
-        <div class="container text-center py-5" style="max-width: 900px;">
-            <h1 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Component Details</h1>
-            <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+        <div class="container py-5 text-center" style="max-width: 900px;">
+            <h1 class="mb-4 text-white display-4 wow fadeInDown" data-wow-delay="0.1s">Component Details</h1>
+            <ol class="mb-0 breadcrumb d-flex justify-content-center wow fadeInDown" data-wow-delay="0.3s">
                 <li class="breadcrumb-item"><a href="{{ route('frontend.home.index') }}" class="text-light">Home</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('frontend.home.components') }}"
                         class="text-light">Components</a></li>
@@ -42,16 +42,16 @@
     <!-- Header End -->
 
     <!-- Component Detail Start -->
-    <div class="container-fluid py-5 bg-dark">
+    <div class="py-5 container-fluid bg-dark">
         <div class="container py-5">
             <!-- Back Button and Share Button -->
             <div class="mb-4">
-                <a href="{{ route('frontend.home.components') }}" class="btn btn-outline-warning py-2 px-4">
+                <a href="{{ route('frontend.home.components') }}" class="px-4 py-2 btn btn-outline-warning">
                     <i class="fas fa-arrow-left me-2"></i> Back to Components
                 </a>
 
                 <!-- Share Button -->
-                <button class="btn btn-outline-warning py-2 px-4 ms-2"
+                <button class="px-4 py-2 btn btn-outline-warning ms-2"
                     onclick="openShareActions('{{ json_encode($component->id) }}')">
                     <i class="fas fa-share-alt" id="shareIcon"></i> Share Component
                 </button>
@@ -94,16 +94,16 @@
 
                 <!-- Component Details -->
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="h-100 bg-dark p-4 border border-warning rounded-4">
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h2 class="text-warning mb-0">{{ $component->name }}</h2>
-                            <span class="bg-warning text-dark px-3 py-1 rounded-pill fw-bold">
+                    <div class="p-4 border h-100 bg-dark border-warning rounded-4">
+                        <div class="mb-4 d-flex justify-content-between align-items-center">
+                            <h2 class="mb-0 text-warning">{{ $component->name }}</h2>
+                            <span class="px-3 py-1 bg-warning text-dark rounded-pill fw-bold">
                                 {{ strtoupper($component->condition) }}
                             </span>
                         </div>
 
                         <div class="mb-4">
-                            <h4 class="text-light mb-3">Specifications:</h4>
+                            <h4 class="mb-3 text-light">Specifications:</h4>
                             <ul class="list-unstyled text-light">
                                 <li class="mb-2"><i class="fas fa-check text-warning me-2"></i>
                                     <strong>Category:</strong> {{ $component->category }}</li>
@@ -118,12 +118,12 @@
                         </div>
 
                         <div class="mb-4">
-                            <h4 class="text-light mb-3">Description:</h4>
+                            <h4 class="mb-3 text-light">Description:</h4>
                             <p class="text-light">{{ $component->description }}</p>
                         </div>
 
                         <div class="mb-4">
-                            <h4 class="text-light mb-3">Features:</h4>
+                            <h4 class="mb-3 text-light">Features:</h4>
                             <ul class="list-unstyled text-light">
                                 @foreach (explode("\n", $component->features ?? '') as $feature)
                                     @if (trim($feature))
@@ -134,10 +134,14 @@
                             </ul>
                         </div>
 
-                        <div class="d-flex justify-content-between align-items-center mt-4">
-                            <h3 class="text-warning mb-0">Price: GHS {{ number_format($component->price, 2) }}</h3>
-                            <a href="#inquiry" class="btn btn-warning py-2 px-4">Request Quote</a>
+                        <div class="mt-4 d-flex justify-content-between align-items-center">
+                            <h3 class="mb-0 text-warning">Price: GHS {{ number_format($component->price, 2) }}</h3>
+                            <h3 class="mb-0 text-warning">Price: USD {{ number_format(CurrencyConverter::convert($component->price)->from('GHS')->to('USD')->get(), 2) }}</h3>
+                            <h3 class="mb-0 text-warning">Price: CFA {{ number_format(CurrencyConverter::convert($component->price)->from('GHS')->to('XOF')->get(), 2) }}</h3>
+                            
                         </div>
+                        <br>
+                        <a href="#inquiry" class="px-4 py-2 btn btn-warning">Request Quote</a>
                     </div>
                 </div>
 

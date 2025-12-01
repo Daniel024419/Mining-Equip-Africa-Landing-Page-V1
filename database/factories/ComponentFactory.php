@@ -24,7 +24,7 @@ class ComponentFactory extends Factory
          'description' => $this->faker->sentence(12),
          'manufacturer' => $this->faker->company(),
          'condition' => $this->faker->randomElement($conditions),
-         'price' => $this->faker->optional()->randomFloat(2, 10, 50000),
+         'price' => $this->faker->randomFloat(2, 10, 500),
          'image' => null,
       ];
    }

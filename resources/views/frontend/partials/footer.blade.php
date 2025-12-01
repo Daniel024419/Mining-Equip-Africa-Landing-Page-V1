@@ -15,15 +15,7 @@
                             type="button">
                             <i class="fas fa-paper-plane"></i>
                         </button>
-                    </div>
-                    <div class="mt-4">
-
-                        <!-- Partner Logo -->
-                        <div class="mb-3">
-                            <img src="https://via.placeholder.com/120x40/000000/FFD700?text=Partners" alt="Partners"
-                                class="img-fluid" style="max-height: 40px;">
-                        </div>
-                    </div>
+                    </div> 
 
                 </div>
             </div>

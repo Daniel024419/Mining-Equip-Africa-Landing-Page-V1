@@ -91,3 +91,8 @@
 <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
 
 <link rel="shortcut icon" href="{{ asset('logo.png') }}" type="image/x-icon">
+
+
+    @php
+        use Mgcodeur\CurrencyConverter\Facades\CurrencyConverter;
+    @endphp
